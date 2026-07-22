@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>V2C VPN — Unlimited Free VPN</title>
+    <link rel="icon" href="https://s34.picofile.com/file/8490997326/favicon.png" type="image/png" />
+
+    <!-- فونت یکان‌بخ (نسخه کامل) -->
+    <link href="https://cdn.fontiran.com/fonts/iran-yekan/IRANYekanWeb.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #090909;
+            --green: #64FF3A;
+            --green-glow: rgba(100, 255, 58, 0.15);
+            --green-soft: rgba(100, 255, 58, 0.06);
+            --green-gradient: linear-gradient(135deg, #5DFF73, #2DFF8F);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(100, 255, 58, 0.25);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.75);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --font: 'IRANYekanWeb', 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow-glow: 0 0 60px rgba(100, 255, 58, 0.06);
+            --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--green);
+            border-radius: 10px;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 12px;
+            display: inline-block;
+            background: var(--green-soft);
+            padding: 4px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(100, 255, 58, 0.10);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .section-title span {
+            background: var(--green-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(9, 9, 9, 0.50);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
+        header.scrolled {
+            background: rgba(9, 9, 9, 0.82);
+            border-bottom-color: rgba(100, 255, 58, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        .logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+        .logo .badge-free {
+            font-size: 0.6rem;
+            font-weight: 600;
+            background: var(--green);
+            color: #000;
+            padding: 2px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-right: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-actions a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .nav-actions a:hover {
+            color: var(--green);
+        }
+
+        .btn-download-nav {
+            background: var(--green);
+            color: #000 !important;
+            padding: 8px 22px;
+            border-radius: 100px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download-nav:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px rgba(100, 255, 58, 0.25);
+            color: #000 !important;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('https://s34.picofile.com/file/8490999342/v2c_bg.png') center center / cover no-repeat;
+            filter: brightness(0.7) saturate(1.1);
+            transform: scale(1.02);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(9, 9, 9, 0.35);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 620px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(9, 9, 9, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(100, 255, 58, 0.15);
+            border-radius: 100px;
+            padding: 6px 18px 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--green);
+            width: fit-content;
+            letter-spacing: 0.02em;
+        }
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        .hero h1 .highlight {
+            background: var(--green-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 460px;
+            line-height: 1.7;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            margin-top: 4px;
+        }
+        .hero-features span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 450;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+        .hero-features span svg {
+            color: var(--green);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--green);
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 38px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font);
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.15);
+        }
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 60px rgba(100, 255, 58, 0.30);
+        }
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            font-family: var(--font);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 10px 24px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            cursor: pointer;
+        }
+        .btn-ghost:hover {
+            color: var(--green);
+            background: rgba(100, 255, 58, 0.06);
+            border-color: rgba(100, 255, 58, 0.15);
+        }
+        .btn-ghost svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: rgba(9, 9, 9, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 60px rgba(100, 255, 58, 0.03);
+            transition: var(--transition);
+        }
+        .hero-logo:hover {
+            border-color: rgba(100, 255, 58, 0.10);
+            transform: scale(1.01);
+        }
+        .hero-logo img {
+            max-width: 160px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(100, 255, 58, 0.06));
+        }
+        .hero-logo .badge-free-lg {
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--green);
+            color: #000;
+            padding: 4px 16px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 100px 0 80px;
+        }
+        .features .section-title {
+            text-align: center;
+        }
+        .features .section-sub {
+            text-align: center;
+            margin: 0 auto 48px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: var(--transition);
+            text-align: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--green);
+            box-shadow: var(--shadow-glow), 0 0 30px rgba(100, 255, 58, 0.03);
+            background: rgba(100, 255, 58, 0.02);
+        }
+
+        .feature-card .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--green-soft);
+            border: 1px solid rgba(100, 255, 58, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: var(--green);
+            transition: var(--transition);
+        }
+        .feature-card:hover .icon {
+            background: rgba(100, 255, 58, 0.12);
+            transform: scale(1.04);
+        }
+        .feature-card .icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 60px 0 80px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 28px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
+        .stat-item:hover {
+            border-color: rgba(100, 255, 58, 0.10);
+            background: rgba(100, 255, 58, 0.01);
+        }
+        .stat-item .number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: var(--green-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-weight: 450;
+        }
+
+        /* ===== WHY ===== */
+        .why {
+            padding: 80px 0 100px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius);
+            padding: 44px 40px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition);
+        }
+        .why-card:hover {
+            border-color: rgba(100, 255, 58, 0.10);
+        }
+
+        .why-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .why-card h2 span {
+            background: var(--green-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .why-list .item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+            font-weight: 450;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .why-list .item:last-child {
+            border-bottom: none;
+        }
+        .why-list .item svg {
+            color: var(--green);
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .why-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .why-logo img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 60px rgba(100, 255, 58, 0.04));
+        }
+        .why-logo .caption {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+
+        /* ===== DOWNLOAD ===== */
+        .download {
+            padding: 60px 0 100px;
+            text-align: center;
+        }
+        .download .section-sub {
+            margin: 0 auto 40px;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            padding: 14px 32px;
+            text-decoration: none;
+            color: #fff;
+            transition: var(--transition);
+            font-family: var(--font);
+            min-width: 200px;
+        }
+        .btn-store:hover {
+            background: rgba(100, 255, 58, 0.06);
+            border-color: rgba(100, 255, 58, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .btn-store .icon-wrap {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+        .btn-store .text {
+            text-align: right;
+        }
+        .btn-store .text .small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 450;
+            display: block;
+        }
+        .btn-store .text .big {
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 1px;
+        }
+
+        /* ===== COMMENTS SECTION ===== */
+        .comments {
+            padding: 60px 0 100px;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .comments-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .comment-form {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 32px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .comment-form h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm);
+            color: #fff;
+            font-family: var(--font);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--green);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 20px rgba(100, 255, 58, 0.04);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 8px;
+            direction: ltr;
+        }
+
+        .star-rating .star {
+            font-size: 28px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .star-rating .star.active {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .star-rating .star:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-submit {
+            background: var(--green);
+            color: #000;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font);
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(100, 255, 58, 0.2);
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .comment-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .comment-list::-webkit-scrollbar-thumb {
+            background: var(--green);
+            border-radius: 10px;
+        }
+
+        .comment-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            transition: var(--transition);
+            animation: fadeUp 0.4s ease forwards;
+        }
+
+        .comment-item:hover {
+            border-color: rgba(100, 255, 58, 0.08);
+            background: rgba(100, 255, 58, 0.02);
+        }
+
+        .comment-item .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .comment-item .comment-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .comment-item .comment-stars {
+            color: #FFD700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .comment-item .comment-os {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2px 12px;
+            border-radius: 100px;
+        }
+
+        .comment-item .comment-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 4px;
+        }
+
+        .comment-item .comment-date {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            opacity: 0.4;
+            margin-top: 8px;
+            display: block;
+        }
+
+        .no-comments {
+            color: var(--text-secondary);
+            opacity: 0.4;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-brand img {
+            height: 32px;
+            width: auto;
+        }
+        .footer-brand .brand-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .footer-brand .brand-text span {
+            color: var(--green);
+        }
+        .footer-brand .tagline {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.4;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 450;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--green);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .hero-content {
+                align-items: center;
+                max-width: 100%;
+            }
+            .hero p {
+                max-width: 100%;
+            }
+            .hero-features {
+                justify-content: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-logo {
+                flex-direction: row;
+                gap: 20px;
+                padding: 16px 28px;
+                width: fit-content;
+                margin: 0 auto;
+            }
+            .hero-logo img {
+                max-width: 120px;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .why-logo {
+                order: -1;
+            }
+            .why-logo img {
+                max-width: 200px;
+            }
+            .comments-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 90px 0 40px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-logo {
+                flex-direction: column;
+                padding: 16px;
+                width: 100%;
+                max-width: 200px;
+            }
+            .hero-logo img {
+                max-width: 100px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .stat-item .number {
+                font-size: 2rem;
+            }
+            .why-card {
+                padding: 28px 20px;
+            }
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-store {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+            .header-inner .nav-actions a:not(.btn-download-nav) {
+                display: none;
+            }
+            .logo img {
+                height: 28px;
+            }
+            .logo .badge-free {
+                font-size: 0.5rem;
+                padding: 1px 8px;
+            }
+            .btn-download-nav {
+                padding: 6px 16px;
+                font-size: 0.75rem !important;
+            }
+            .hero-features {
+                gap: 12px 20px;
+            }
+            .hero-features span {
+                font-size: 0.8rem;
+            }
+            .comments-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .comment-form {
+                padding: 20px;
+            }
+            .comment-item {
+                padding: 16px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .fade-up-d1 {
+            animation-delay: 0.10s;
+        }
+        .fade-up-d2 {
+            animation-delay: 0.20s;
+        }
+        .fade-up-d3 {
+            animation-delay: 0.30s;
+        }
+        .fade-up-d4 {
+            animation-delay: 0.40s;
+        }
+        .fade-up-d5 {
+            animation-delay: 0.50s;
+        }
+        .fade-up-d6 {
+            animation-delay: 0.60s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== DECORATIVE GLOW ===== */
+        .glow-orb-bg {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glow-orb-bg.g1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            background: rgba(100, 255, 58, 0.03);
+        }
+        .glow-orb-bg.g2 {
+            width: 300px;
+            height: 300px;
+            bottom: 0;
+            left: -80px;
+            background: rgba(100, 255, 58, 0.02);
+        }
+
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--green);
+            color: #000;
+            padding: 16px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-family: var(--font);
+            z-index: 9999;
+            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== DECORATIVE GLOW ===== -->
+    <div class="glow-orb-bg g1"></div>
+    <div class="glow-orb-bg g2"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="https://s34.picofile.com/file/8490997326/favicon.png" alt="V2C VPN" />
+                <span class="badge-free">رایگان</span>
+            </a>
+            <div class="nav-actions">
+                <a href="#features">ویژگی‌ها</a>
+                <a href="#why">چرا V2C</a>
+                <a href="#comments">نظرات</a>
+                <a href="#download" class="btn-download-nav">دانلود</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-grid">
+
+            <div class="hero-content">
+                <div class="hero-badge fade-up">
+                    <span class="dot"></span>
+                    نسخه جدید · کاملاً رایگان
+                </div>
+
+                <h1 class="fade-up fade-up-d1">
+                    Unlimited <br />
+                    <span class="highlight">Free VPN</span>
+                </h1>
+
+                <p class="fade-up fade-up-d2">
+                    سریع · امن · نامحدود <br />
+                    اینترنت بدون مرز را با سرعت برق‌آسا تجربه کن.
+                </p>
+
+                <div class="hero-features fade-up fade-up-d3">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
+                </div>
+
+                <div class="hero-actions fade-up fade-up-d4">
+                    <a href="#download" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        دانلود کنید
+                    </a>
+                    <button class="btn-ghost" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
+                        بیشتر بدانید
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-logo fade-up fade-up-d5">
+                <img src="https://s34.picofile.com/file/8490997350/GRouteTransparentBlack.png" alt="V2C Free" />
+                <span class="badge-free-lg">رایگان</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <span class="section-label fade-up">ویژگی‌ها</span>
+            <h2 class="section-title fade-up fade-up-d1">
+                همه‌چیز در <span>یکجا</span>
+            </h2>
+            <p class="section-sub fade-up fade-up-d2">
+                چهار ستون قدرت V2C — امنیت، سرعت، دسترسی جهانی و آزادی بی‌نهایت.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card fade-up fade-up-d3">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <h3>رمزنگاری نظامی</h3>
+                    <p>امنیت AES-256 — استاندارد جهانی برای محافظت از داده‌های شما.</p>
+                </div>
+
+                <div class="feature-card fade-up fade-up-d4">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>سرعت فوق‌العاده</h3>
+                    <p>سرورهای بهینه‌شده برای پخش 4K و بازی بدون تأخیر.</p>
+                </div>
+
+                <div class="feature-card fade-up fade-up-d5">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>سرورهای جهانی</h3>
+                    <p>دسترسی به بیش از ۵۰ کشور با یک کلیک.</p>
+                </div>
+
+                <div class="feature-card fade-up fade-up-d6">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <h3>بی‌نهایت</h3>
+                    <p>بدون محدودیت در پهنای باند، ترافیک یا زمان استفاده.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-up">
+                    <div class="number">۱۵M+</div>
+                    <div class="label">کاربران</div>
+                </div>
+                <div class="stat-item fade-up fade-up-d1">
+                    <div class="number">۹۹٫۹۹%</div>
+                    <div class="label">در دسترس بودن</div>
+                </div>
+                <div class="stat-item fade-up fade-up-d2">
+                    <div class="number">۱۰۰%</div>
+                    <div class="label">رایگان</div>
+                </div>
+                <div class="stat-item fade-up fade-up-d3">
+                    <div class="number">۲۴/۷</div>
+                    <div class="label">آنلاین</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY ===== -->
+    <section class="why" id="why">
+        <div class="container why-grid">
+
+            <div class="why-card fade-up">
+                <h2>چرا <span>V2C</span>؟</h2>
+                <div class="why-list">
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        بدون ثبت‌نام
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        پهنای باند نامحدود
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        بدون تبلیغ
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        اتصال سریع
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        پروتکل‌های مدرن
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-logo fade-up fade-up-d2">
+                <img src="https://s34.picofile.com/file/8490997350/GRouteTransparentBlack.png" alt="V2C Free" />
+                <span class="caption">— رایگان همیشگی —</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== COMMENTS ===== -->
+    <section class="comments" id="comments">
+        <div class="container">
+            <span class="section-label fade-up">نظرات</span>
+            <h2 class="section-title fade-up fade-up-d1">
+                کاربران چه <span>می‌گویند</span>
+            </h2>
+            <p class="section-sub fade-up fade-up-d2">
+                نظرات و تجربیات کاربران V2C را بخوانید و نظر خود را بنویسید.
+            </p>
+
+            <div class="comments-wrapper">
+                <!-- فرم نظر -->
+                <div class="comment-form fade-up fade-up-d3">
+                    <h3>📝 نظر خود را بنویسید</h3>
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <label>نام شما</label>
+                            <input type="text" id="userName" placeholder="مثلاً: علیرضا" required />
+                        </div>
+                        <div class="form-group">
+                            <label>سیستم‌عامل</label>
+                            <select id="userOS">
+                                <option value="Windows">Windows</option>
+                                <option value="macOS">macOS</option>
+                                <option value="Android">Android</option>
+                                <option value="iOS">iOS</option>
+                                <option value="Linux">Linux</option>
+                                <option value="Other">سایر</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>امتیاز شما</label>
+                            <div class="star-rating" id="starRating">
+                                <span class="star" data-value="1">☆</span>
+                                <span class="star" data-value="2">☆</span>
+                                <span class="star" data-value="3">☆</span>
+                                <span class="star" data-value="4">☆</span>
+                                <span class="star" data-value="5">☆</span>
+                            </div>
+                            <input type="hidden" id="userRating" value="0" />
+                        </div>
+                        <div class="form-group">
+                            <label>متن نظر</label>
+                            <textarea id="userComment" placeholder="تجربه شما از V2C..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">ارسال نظر</button>
+                    </form>
+                </div>
+
+                <!-- لیست نظرات -->
+                <div class="comment-list" id="commentList">
+                    <!-- نظرات به صورت داینامیک بارگذاری می‌شوند -->
+                    <div class="no-comments">هنوز نظری ثبت نشده است. اولین نفر باشید!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DOWNLOAD ===== -->
+    <section class="download" id="download">
+        <div class="container">
+            <span class="section-label fade-up">دانلود</span>
+            <h2 class="section-title fade-up fade-up-d1">
+                همین حالا <span>شروع کن</span>
+            </h2>
+            <p class="section-sub fade-up fade-up-d2">
+                V2C را روی دستگاه خود نصب کن و از اینترنت آزاد لذت ببر.
+            </p>
+
+            <div class="download-buttons fade-up fade-up-d3">
+                <a href="#" class="btn-store">
+                    <span class="icon-wrap">⤵</span>
+                    <span class="text">
+                        <span class="small">دریافت مستقیم </span>
+                        <span class="big">APK</span>
+                    </span>
+                </a>
+                <a href="#" class="btn-store">
+                    <span class="icon-wrap">▶</span>
+                    <span class="text">
+                        <span class="small">دریافت از</span>
+                        <span class="big">Google Play</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <img src="https://s34.picofile.com/file/8490997342/dad.png" alt="V2C VPN" />
+                <span class="brand-text">V2C <span>VPN</span></span>
+                <span class="tagline">Unlimited. Fast. Free.</span>
+            </div>
+            <div class="footer-links">
+                <a href="#features">ویژگی‌ها</a>
+                <a href="#why">درباره</a>
+                <a href="#comments">نظرات</a>
+                <a href="#download">دانلود</a>
+                <a href="#">حریم خصوصی</a>
+            </div>
+            <div class="footer-copy">
+                &copy; ۲۰۲۶ V2C VPN — تمامی حقوق محفوظ است.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">✅ نظر شما با موفقیت ثبت شد!</div>
+
+    <!-- ============================================================ -->
+    <!-- ===== SCRIPT ===== -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== HEADER SCROLL =====
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== FADE-UP OBSERVER =====
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+        fadeEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                el.style.animationPlayState = 'running';
+            }
+        });
+
+        // ============================================================
+        // ===== COMMENT SYSTEM (با ذخیره در localStorage) =====
+        // ============================================================
+
+        const STORAGE_KEY = 'v2c_comments';
+
+        // ===== دریافت نظرات از localStorage =====
+        function getComments() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        // ===== ذخیره نظرات در localStorage =====
+        function saveComments(comments) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+        }
+
+        // ===== نمایش نظرات =====
+        function renderComments() {
+            const list = document.getElementById('commentList');
+            const comments = getComments();
+
+            if (comments.length === 0) {
+                list.innerHTML = `<div class="no-comments">هنوز نظری ثبت نشده است. اولین نفر باشید!</div>`;
+                return;
+            }
+
+            // مرتب‌سازی از جدید به قدیم
+            const sorted = [...comments].reverse();
+
+            list.innerHTML = sorted.map((c, index) => {
+                const stars = '★'.repeat(c.rating) + '☆'.repeat(5 - c.rating);
+                const date = new Date(c.date).toLocaleDateString('fa-IR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                return `
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-name">${escapeHtml(c.name)}</span>
+                                <span class="comment-stars">${stars}</span>
+                                <span class="comment-os">${escapeHtml(c.os)}</span>
+                            </div>
+                            <div class="comment-text">${escapeHtml(c.text)}</div>
+                            <span class="comment-date">${date}</span>
+                        </div>
+                    `;
+            }).join('');
+        }
+
+        // ===== امن‌سازی HTML =====
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ===== ستاره‌ها =====
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('userRating');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = parseInt(this.dataset.value);
+                selectedRating = value;
+                ratingInput.value = value;
+
+                stars.forEach(s => {
+                    const val = parseInt(s.dataset.value);
+                    if (val <= value) {
+                        s.classList.add('active');
+                        s.textContent = '★';
+                    } else {
+                        s.classList.remove('active');
+                        s.textContent = '☆';
+                    }
+                });
+            });
+
+            star.addEventListener('mouseenter', function() {
+                const value = parseInt(this.dataset.value);
+                stars.forEach(s => {
+                    const val = parseInt(s.dataset.value);
+                    if (val <= value) {
+                        s.style.color = '#FFD700';
+                    } else {
+                        s.style.color = 'rgba(255,255,255,0.2)';
+                    }
+                });
+            });
+
+            star.addEventListener('mouseleave', function() {
+                stars.forEach(s => {
+                    if (s.classList.contains('active')) {
+                        s.style.color = '#FFD700';
+                    } else {
+                        s.style.color = 'rgba(255,255,255,0.2)';
+                    }
+                });
+            });
+        });
+
+        // ===== تشخیص سیستم‌عامل =====
+        function detectOS() {
+            const ua = navigator.userAgent;
+            if (ua.includes('Windows')) return 'Windows';
+            if (ua.includes('Mac')) return 'macOS';
+            if (ua.includes('Android')) return 'Android';
+            if (ua.includes('iOS') || ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
+            if (ua.includes('Linux')) return 'Linux';
+            return 'Other';
+        }
+
+        // تنظیم OS پیش‌فرش
+        document.addEventListener('DOMContentLoaded', () => {
+            const osSelect = document.getElementById('userOS');
+            const detected = detectOS();
+            for (let option of osSelect.options) {
+                if (option.value === detected) {
+                    option.selected = true;
+                    break;
+                }
+            }
+        });
+
+        // ===== ارسال نظر =====
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('userName').value.trim();
+            const os = document.getElementById('userOS').value;
+            const text = document.getElementById('userComment').value.trim();
+            const rating = parseInt(ratingInput.value);
+
+            if (!name || !text || rating === 0) {
+                showToast('لطفاً نام، متن نظر و امتیاز را وارد کنید.');
+                return;
+            }
+
+            const comment = {
+                name: name,
+                os: os,
+                text: text,
+                rating: rating,
+                date: Date.now()
+            };
+
+            const comments = getComments();
+            comments.push(comment);
+            saveComments(comments);
+            renderComments();
+
+            // ریست فرم
+            document.getElementById('userName').value = '';
+            document.getElementById('userComment').value = '';
+            ratingInput.value = '0';
+            selectedRating = 0;
+            stars.forEach(s => {
+                s.classList.remove('active');
+                s.textContent = '☆';
+                s.style.color = 'rgba(255,255,255,0.2)';
+            });
+
+            showToast('✅ نظر شما با موفقیت ثبت شد!');
+        });
+
+        // ===== Toast =====
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ===== بارگذاری اولیه نظرات =====
+        renderComments();
+
+        // ===== ذخیره نظرات در فایل JSON (برای GitHub Pages) =====
+        // توجه: این تابع نظرات را به صورت JSON در کنسول لاگ می‌کند
+        // برای ذخیره واقعی در GitHub باید از GitHub API استفاده کرد
+        // یا از سرویس‌های خارجی مانند jsonbin.io استفاده کرد
+        console.log('💬 نظرات ذخیره شده در localStorage:');
+        console.log(getComments());
+
+        // ===== راهنما برای ذخیره در GitHub =====
+        console.log('📌 برای ذخیره نظرات در GitHub:');
+        console.log('1. از GitHub API استفاده کنید');
+        console.log('2. یا از سرویس‌هایی مانند jsonbin.io برای ذخیره آنلاین استفاده کنید');
+        console.log('3. یا نظرات را به صورت فایل JSON در مخزن خود ذخیره کنید');
+    </script>
+
+</body>
+</html>
