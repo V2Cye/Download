@@ -6,12 +6,12 @@
     <title>V2C VPN — Unlimited Free VPN</title>
     <link rel="icon" href="https://s34.picofile.com/file/8490997326/favicon.png" type="image/png" />
 
-    <!-- فونت یکان‌بخ (نسخه کامل) -->
+    <!-- فونت یکان‌بخ -->
     <link href="https://cdn.fontiran.com/fonts/iran-yekan/IRANYekanWeb.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
 
     <style>
-        /* ===== RESET & BASE ===== */
+        /* ===== تمام استایل‌های قبلی ===== */
         *,
         *::before,
         *::after {
@@ -51,7 +51,6 @@
             overflow-x: hidden;
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -63,7 +62,6 @@
             border-radius: 10px;
         }
 
-        /* ===== UTILITY ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -371,10 +369,6 @@
             background: rgba(100, 255, 58, 0.06);
             border-color: rgba(100, 255, 58, 0.15);
         }
-        .btn-ghost svg {
-            width: 18px;
-            height: 18px;
-        }
 
         .hero-logo {
             display: flex;
@@ -602,65 +596,7 @@
             font-weight: 400;
         }
 
-        /* ===== DOWNLOAD ===== */
-        .download {
-            padding: 60px 0 100px;
-            text-align: center;
-        }
-        .download .section-sub {
-            margin: 0 auto 40px;
-        }
-
-        .download-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .btn-store {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-sm);
-            padding: 14px 32px;
-            text-decoration: none;
-            color: #fff;
-            transition: var(--transition);
-            font-family: var(--font);
-            min-width: 200px;
-        }
-        .btn-store:hover {
-            background: rgba(100, 255, 58, 0.06);
-            border-color: rgba(100, 255, 58, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-        .btn-store .icon-wrap {
-            font-size: 1.6rem;
-            line-height: 1;
-        }
-        .btn-store .text {
-            text-align: right;
-        }
-        .btn-store .text .small {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-secondary);
-            font-weight: 450;
-            display: block;
-        }
-        .btn-store .text .big {
-            font-size: 1.05rem;
-            font-weight: 600;
-            display: block;
-            margin-top: 1px;
-        }
-
-        /* ===== COMMENTS SECTION ===== */
+        /* ===== COMMENTS ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
@@ -776,6 +712,12 @@
             box-shadow: 0 0 30px rgba(100, 255, 58, 0.2);
         }
 
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .comment-list {
             display: flex;
             flex-direction: column;
@@ -858,6 +800,43 @@
             font-size: 0.95rem;
         }
 
+        /* ===== DOWNLOAD ===== */
+        .download {
+            padding: 60px 0 100px;
+            text-align: center;
+        }
+        .download .section-sub {
+            margin: 0 auto 40px;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            padding: 14px 32px;
+            text-decoration: none;
+            color: #fff;
+            transition: var(--transition);
+            font-family: var(--font);
+            min-width: 200px;
+        }
+        .btn-store:hover {
+            background: rgba(100, 255, 58, 0.06);
+            border-color: rgba(100, 255, 58, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
         /* ===== FOOTER ===== */
         footer {
             padding: 60px 0 40px;
@@ -915,6 +894,46 @@
             color: var(--text-secondary);
             opacity: 0.3;
             letter-spacing: 0.02em;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--green);
+            color: #000;
+            padding: 16px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-family: var(--font);
+            z-index: 9999;
+            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ===== LOADING ===== */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 0.8s ease infinite;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* ===== RESPONSIVE ===== */
@@ -1077,7 +1096,6 @@
             }
         }
 
-        /* ===== DECORATIVE GLOW ===== */
         .glow-orb-bg {
             position: fixed;
             border-radius: 50%;
@@ -1100,26 +1118,85 @@
             background: rgba(100, 255, 58, 0.02);
         }
 
-        /* ===== Toast ===== */
-        .toast {
+        /* ===== SETTINGS PANEL ===== */
+        .settings-panel {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9998;
+            background: rgba(9, 9, 9, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            max-width: 280px;
+        }
+
+        .settings-panel summary {
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .settings-panel summary:hover {
+            color: var(--green);
+        }
+
+        .settings-panel .setting-group {
+            margin-top: 12px;
+        }
+
+        .settings-panel .setting-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .settings-panel .setting-group input {
+            width: 100%;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            outline: none;
+        }
+
+        .settings-panel .setting-group input:focus {
+            border-color: var(--green);
+        }
+
+        .settings-panel .btn-save-settings {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
             background: var(--green);
             color: #000;
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
+            border: none;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
             font-family: var(--font);
-            z-index: 9999;
-            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: var(--transition);
         }
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
+
+        .settings-panel .btn-save-settings:hover {
+            transform: scale(1.02);
+        }
+
+        .settings-panel .status {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            margin-top: 8px;
+            text-align: center;
         }
     </style>
 </head>
@@ -1350,14 +1427,16 @@
                             <label>متن نظر</label>
                             <textarea id="userComment" placeholder="تجربه شما از V2C..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">ارسال نظر</button>
+                        <button type="submit" class="btn-submit" id="submitBtn">ارسال نظر</button>
                     </form>
+                    <div style="margin-top:12px;font-size:0.75rem;color:var(--text-secondary);opacity:0.4;text-align:center;">
+                        نظرات در GitHub ذخیره می‌شوند
+                    </div>
                 </div>
 
                 <!-- لیست نظرات -->
                 <div class="comment-list" id="commentList">
-                    <!-- نظرات به صورت داینامیک بارگذاری می‌شوند -->
-                    <div class="no-comments">هنوز نظری ثبت نشده است. اولین نفر باشید!</div>
+                    <div class="no-comments">در حال بارگذاری نظرات...</div>
                 </div>
             </div>
         </div>
@@ -1376,14 +1455,14 @@
 
             <div class="download-buttons fade-up fade-up-d3">
                 <a href="#" class="btn-store">
-                    <span class="icon-wrap">⤵</span>
+                    <span style="font-size:1.6rem;line-height:1;">⤵</span>
                     <span class="text">
                         <span class="small">دریافت مستقیم </span>
                         <span class="big">APK</span>
                     </span>
                 </a>
                 <a href="#" class="btn-store">
-                    <span class="icon-wrap">▶</span>
+                    <span style="font-size:1.6rem;line-height:1;">▶</span>
                     <span class="text">
                         <span class="small">دریافت از</span>
                         <span class="big">Google Play</span>
@@ -1414,6 +1493,25 @@
         </div>
     </footer>
 
+    <!-- ===== SETTINGS PANEL (برای تنظیم GitHub Token) ===== -->
+    <details class="settings-panel">
+        <summary>⚙️ تنظیمات GitHub</summary>
+        <div class="setting-group">
+            <label>GitHub Token</label>
+            <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx" />
+        </div>
+        <div class="setting-group">
+            <label>نام مخزن (مثال: username/repo)</label>
+            <input type="text" id="githubRepo" placeholder="username/repo" />
+        </div>
+        <div class="setting-group">
+            <label>مسیر فایل (مثال: comments.json)</label>
+            <input type="text" id="githubPath" value="comments.json" />
+        </div>
+        <button class="btn-save-settings" id="saveSettings">ذخیره تنظیمات</button>
+        <div class="status" id="githubStatus">⚪ غیرفعال</div>
+    </details>
+
     <!-- ===== TOAST ===== -->
     <div class="toast" id="toast">✅ نظر شما با موفقیت ثبت شد!</div>
 
@@ -1421,87 +1519,196 @@
     <!-- ===== SCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
-        // ===== HEADER SCROLL =====
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    const offset = 80;
-                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ===== FADE-UP OBSERVER =====
-        const fadeEls = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, { threshold: 0.1 });
-        fadeEls.forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-        fadeEls.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                el.style.animationPlayState = 'running';
-            }
-        });
-
         // ============================================================
-        // ===== COMMENT SYSTEM (با ذخیره در localStorage) =====
+        // ===== CONFIGURATION =====
         // ============================================================
 
-        const STORAGE_KEY = 'v2c_comments';
+        // تنظیمات پیش‌فرض (از localStorage خوانده می‌شود)
+        let CONFIG = {
+            token: '',
+            repo: '',
+            path: 'comments.json'
+        };
 
-        // ===== دریافت نظرات از localStorage =====
-        function getComments() {
+        // بارگذاری تنظیمات از localStorage
+        function loadConfig() {
             try {
-                const data = localStorage.getItem(STORAGE_KEY);
-                return data ? JSON.parse(data) : [];
-            } catch {
-                return [];
+                const saved = localStorage.getItem('v2c_github_config');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    CONFIG = { ...CONFIG, ...parsed };
+                    document.getElementById('githubToken').value = CONFIG.token || '';
+                    document.getElementById('githubRepo').value = CONFIG.repo || '';
+                    document.getElementById('githubPath').value = CONFIG.path || 'comments.json';
+                }
+            } catch (e) {
+                console.warn('خطا در بارگذاری تنظیمات:', e);
+            }
+            updateGitHubStatus();
+        }
+
+        // ذخیره تنظیمات
+        function saveConfig() {
+            CONFIG.token = document.getElementById('githubToken').value.trim();
+            CONFIG.repo = document.getElementById('githubRepo').value.trim();
+            CONFIG.path = document.getElementById('githubPath').value.trim() || 'comments.json';
+            localStorage.setItem('v2c_github_config', JSON.stringify(CONFIG));
+            updateGitHubStatus();
+            showToast('✅ تنظیمات ذخیره شد');
+        }
+
+        function updateGitHubStatus() {
+            const status = document.getElementById('githubStatus');
+            if (CONFIG.token && CONFIG.repo) {
+                status.textContent = '✅ متصل به GitHub';
+                status.style.color = 'var(--green)';
+            } else {
+                status.textContent = '⚪ غیرفعال (تنظیمات را وارد کنید)';
+                status.style.color = 'var(--text-secondary)';
             }
         }
 
-        // ===== ذخیره نظرات در localStorage =====
-        function saveComments(comments) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+        // ============================================================
+        // ===== GITHUB API =====
+        // ============================================================
+
+        async function fetchCommentsFromGitHub() {
+            if (!CONFIG.token || !CONFIG.repo) {
+                return null;
+            }
+
+            try {
+                const url = `https://api.github.com/repos/${CONFIG.repo}/contents/${CONFIG.path}`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `token ${CONFIG.token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        // فایل وجود ندارد → بازگشت آرایه خالی
+                        return [];
+                    }
+                    throw new Error(`GitHub API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const content = atob(data.content);
+                const comments = JSON.parse(content);
+                return Array.isArray(comments) ? comments : [];
+            } catch (error) {
+                console.error('خطا در دریافت نظرات از GitHub:', error);
+                return null;
+            }
         }
 
-        // ===== نمایش نظرات =====
+        async function saveCommentsToGitHub(comments) {
+            if (!CONFIG.token || !CONFIG.repo) {
+                throw new Error('تنظیمات GitHub کامل نیست');
+            }
+
+            try {
+                // ابتدا SHA فایل را دریافت می‌کنیم (برای آپدیت)
+                const url = `https://api.github.com/repos/${CONFIG.repo}/contents/${CONFIG.path}`;
+                let sha = null;
+
+                try {
+                    const getResponse = await fetch(url, {
+                        headers: {
+                            'Authorization': `token ${CONFIG.token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+
+                    if (getResponse.ok) {
+                        const data = await getResponse.json();
+                        sha = data.sha;
+                    }
+                } catch (e) {
+                    // فایل وجود ندارد → ایجاد جدید
+                }
+
+                const content = btoa(JSON.stringify(comments, null, 2));
+
+                const body = {
+                    message: `Update comments - ${new Date().toISOString()}`,
+                    content: content,
+                    sha: sha || undefined
+                };
+
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${CONFIG.token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || `GitHub API Error: ${response.status}`);
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('خطا در ذخیره نظرات در GitHub:', error);
+                throw error;
+            }
+        }
+
+        // ============================================================
+        // ===== COMMENT SYSTEM =====
+        // ============================================================
+
+        let comments = [];
+        let isLoading = false;
+
+        // بارگذاری نظرات
+        async function loadComments() {
+            const list = document.getElementById('commentList');
+
+            try {
+                isLoading = true;
+                list.innerHTML = `<div class="no-comments">⏳ در حال بارگذاری نظرات...</div>`;
+
+                const data = await fetchCommentsFromGitHub();
+
+                if (data === null) {
+                    // خطا در دریافت یا تنظیمات ناقص
+                    list.innerHTML =
+                        `<div class="no-comments">⚠️ لطفاً تنظیمات GitHub را در پنل پایین سمت چپ تکمیل کنید.</div>`;
+                    comments = [];
+                    return;
+                }
+
+                comments = data;
+                renderComments();
+
+            } catch (error) {
+                console.error('خطا:', error);
+                list.innerHTML = `<div class="no-comments">❌ خطا در بارگذاری نظرات: ${error.message}</div>`;
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        // نمایش نظرات
         function renderComments() {
             const list = document.getElementById('commentList');
-            const comments = getComments();
 
-            if (comments.length === 0) {
+            if (!comments || comments.length === 0) {
                 list.innerHTML = `<div class="no-comments">هنوز نظری ثبت نشده است. اولین نفر باشید!</div>`;
                 return;
             }
 
-            // مرتب‌سازی از جدید به قدیم
             const sorted = [...comments].reverse();
 
-            list.innerHTML = sorted.map((c, index) => {
-                const stars = '★'.repeat(c.rating) + '☆'.repeat(5 - c.rating);
+            list.innerHTML = sorted.map((c) => {
+                const stars = '★'.repeat(c.rating || 5) + '☆'.repeat(5 - (c.rating || 5));
                 const date = new Date(c.date).toLocaleDateString('fa-IR', {
                     year: 'numeric',
                     month: 'long',
@@ -1510,25 +1717,28 @@
                 return `
                         <div class="comment-item">
                             <div class="comment-header">
-                                <span class="comment-name">${escapeHtml(c.name)}</span>
+                                <span class="comment-name">${escapeHtml(c.name || 'ناشناس')}</span>
                                 <span class="comment-stars">${stars}</span>
-                                <span class="comment-os">${escapeHtml(c.os)}</span>
+                                <span class="comment-os">${escapeHtml(c.os || 'نامشخص')}</span>
                             </div>
-                            <div class="comment-text">${escapeHtml(c.text)}</div>
+                            <div class="comment-text">${escapeHtml(c.text || '')}</div>
                             <span class="comment-date">${date}</span>
                         </div>
                     `;
             }).join('');
         }
 
-        // ===== امن‌سازی HTML =====
         function escapeHtml(text) {
+            if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // ===== ستاره‌ها =====
+        // ============================================================
+        // ===== STAR RATING =====
+        // ============================================================
+
         const stars = document.querySelectorAll('.star');
         const ratingInput = document.getElementById('userRating');
         let selectedRating = 0;
@@ -1555,26 +1765,18 @@
                 const value = parseInt(this.dataset.value);
                 stars.forEach(s => {
                     const val = parseInt(s.dataset.value);
-                    if (val <= value) {
-                        s.style.color = '#FFD700';
-                    } else {
-                        s.style.color = 'rgba(255,255,255,0.2)';
-                    }
+                    s.style.color = val <= value ? '#FFD700' : 'rgba(255,255,255,0.2)';
                 });
             });
 
             star.addEventListener('mouseleave', function() {
                 stars.forEach(s => {
-                    if (s.classList.contains('active')) {
-                        s.style.color = '#FFD700';
-                    } else {
-                        s.style.color = 'rgba(255,255,255,0.2)';
-                    }
+                    s.style.color = s.classList.contains('active') ? '#FFD700' : 'rgba(255,255,255,0.2)';
                 });
             });
         });
 
-        // ===== تشخیص سیستم‌عامل =====
+        // تشخیص OS
         function detectOS() {
             const ua = navigator.userAgent;
             if (ua.includes('Windows')) return 'Windows';
@@ -1585,7 +1787,6 @@
             return 'Other';
         }
 
-        // تنظیم OS پیش‌فرش
         document.addEventListener('DOMContentLoaded', () => {
             const osSelect = document.getElementById('userOS');
             const detected = detectOS();
@@ -1597,9 +1798,14 @@
             }
         });
 
-        // ===== ارسال نظر =====
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
+        // ============================================================
+        // ===== SUBMIT COMMENT =====
+        // ============================================================
+
+        document.getElementById('commentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+
+            if (isLoading) return;
 
             const name = document.getElementById('userName').value.trim();
             const os = document.getElementById('userOS').value;
@@ -1607,38 +1813,63 @@
             const rating = parseInt(ratingInput.value);
 
             if (!name || !text || rating === 0) {
-                showToast('لطفاً نام، متن نظر و امتیاز را وارد کنید.');
+                showToast('⚠️ لطفاً نام، متن نظر و امتیاز را وارد کنید.');
                 return;
             }
 
-            const comment = {
-                name: name,
-                os: os,
-                text: text,
-                rating: rating,
-                date: Date.now()
-            };
+            if (!CONFIG.token || !CONFIG.repo) {
+                showToast('⚠️ لطفاً ابتدا تنظیمات GitHub را در پنل پایین سمت چپ تکمیل کنید.');
+                return;
+            }
 
-            const comments = getComments();
-            comments.push(comment);
-            saveComments(comments);
-            renderComments();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳ در حال ثبت...';
+            btn.disabled = true;
 
-            // ریست فرم
-            document.getElementById('userName').value = '';
-            document.getElementById('userComment').value = '';
-            ratingInput.value = '0';
-            selectedRating = 0;
-            stars.forEach(s => {
-                s.classList.remove('active');
-                s.textContent = '☆';
-                s.style.color = 'rgba(255,255,255,0.2)';
-            });
+            try {
+                const newComment = {
+                    name: name,
+                    os: os,
+                    text: text,
+                    rating: rating,
+                    date: Date.now()
+                };
 
-            showToast('✅ نظر شما با موفقیت ثبت شد!');
+                const allComments = comments || [];
+                allComments.push(newComment);
+
+                await saveCommentsToGitHub(allComments);
+
+                comments = allComments;
+                renderComments();
+
+                // ریست فرم
+                document.getElementById('userName').value = '';
+                document.getElementById('userComment').value = '';
+                ratingInput.value = '0';
+                selectedRating = 0;
+                stars.forEach(s => {
+                    s.classList.remove('active');
+                    s.textContent = '☆';
+                    s.style.color = 'rgba(255,255,255,0.2)';
+                });
+
+                showToast('✅ نظر شما با موفقیت در GitHub ثبت شد!');
+
+            } catch (error) {
+                showToast(`❌ خطا: ${error.message}`);
+                console.error(error);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         });
 
-        // ===== Toast =====
+        // ============================================================
+        // ===== TOAST =====
+        // ============================================================
+
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -1646,24 +1877,81 @@
             clearTimeout(toast._timeout);
             toast._timeout = setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000);
+            }, 4000);
         }
 
-        // ===== بارگذاری اولیه نظرات =====
-        renderComments();
+        // ============================================================
+        // ===== HEADER SCROLL =====
+        // ============================================================
 
-        // ===== ذخیره نظرات در فایل JSON (برای GitHub Pages) =====
-        // توجه: این تابع نظرات را به صورت JSON در کنسول لاگ می‌کند
-        // برای ذخیره واقعی در GitHub باید از GitHub API استفاده کرد
-        // یا از سرویس‌های خارجی مانند jsonbin.io استفاده کرد
-        console.log('💬 نظرات ذخیره شده در localStorage:');
-        console.log(getComments());
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        });
 
-        // ===== راهنما برای ذخیره در GitHub =====
-        console.log('📌 برای ذخیره نظرات در GitHub:');
-        console.log('1. از GitHub API استفاده کنید');
-        console.log('2. یا از سرویس‌هایی مانند jsonbin.io برای ذخیره آنلاین استفاده کنید');
-        console.log('3. یا نظرات را به صورت فایل JSON در مخزن خود ذخیره کنید');
+        // ============================================================
+        // ===== SMOOTH SCROLL =====
+        // ============================================================
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ============================================================
+        // ===== FADE-UP OBSERVER =====
+        // ============================================================
+
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeEls.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // بررسی اولیه
+        fadeEls.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.style.animationPlayState = 'running';
+            }
+        });
+
+        // ============================================================
+        // ===== EVENTS =====
+        // ============================================================
+
+        document.getElementById('saveSettings').addEventListener('click', () => {
+            saveConfig();
+            // بارگذاری مجدد نظرات با تنظیمات جدید
+            loadComments();
+        });
+
+        // بارگذاری اولیه
+        loadConfig();
+        loadComments();
+
+        console.log('💬 سیستم نظرات V2C با GitHub API فعال شد');
+        console.log('📌 برای استفاده:');
+        console.log('1. یک GitHub Token با دسترسی repo ایجاد کنید');
+        console.log('2. نام مخزن را وارد کنید (مثلاً: username/repo)');
+        console.log('3. روی "ذخیره تنظیمات" کلیک کنید');
+        console.log('4. نظرات به صورت خودکار در فایل comments.json ذخیره می‌شوند');
     </script>
 
 </body>
