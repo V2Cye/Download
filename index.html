@@ -35,6 +35,9 @@
             --font: 'IRANYekanWeb', 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
             --shadow-glow: 0 0 60px rgba(100, 255, 58, 0.06);
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --input-border: rgba(255, 255, 255, 0.08);
+            --input-focus: rgba(100, 255, 58, 0.15);
         }
 
         html {
@@ -596,7 +599,7 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS (Google Form) ===== */
+        /* ===== COMMENTS (Custom Google Form) ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
@@ -607,25 +610,178 @@
             margin: 0 auto 40px;
         }
 
-        .google-form-wrapper {
-            max-width: 800px;
+        .custom-form-wrapper {
+            max-width: 700px;
             margin: 0 auto;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 40px 36px;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            overflow: hidden;
             box-shadow: var(--shadow-glow);
         }
 
-        .google-form-wrapper iframe {
-            width: 100%;
-            height: 764px;
-            border: none;
-            border-radius: var(--radius-sm);
+        .custom-form-wrapper .form-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
             display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--green);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 20px var(--input-focus);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        .form-group select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .btn-submit-form {
+            width: 100%;
+            padding: 14px 32px;
+            background: var(--green);
+            color: #000;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 0 30px rgba(100, 255, 58, 0.05);
+            margin-top: 8px;
+        }
+
+        .btn-submit-form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.20);
+        }
+
+        .btn-submit-form:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+            font-family: var(--font);
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(100, 255, 58, 0.08);
+            border: 1px solid rgba(100, 255, 58, 0.15);
+            color: var(--green);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(255, 50, 50, 0.08);
+            border: 1px solid rgba(255, 50, 50, 0.15);
+            color: #ff6b6b;
+        }
+
+        /* راهنما برای پیدا کردن name فیلدها */
+        .helper-box {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .helper-box summary {
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            user-select: none;
+            font-family: var(--font);
+        }
+
+        .helper-box summary:hover {
+            color: var(--green);
+        }
+
+        .helper-box .step {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            font-family: var(--font);
+            line-height: 1.8;
+        }
+
+        .helper-box .step:last-child {
+            border-bottom: none;
+        }
+
+        .helper-box .step code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--green);
+            font-family: monospace;
+            direction: ltr;
+            display: inline-block;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -738,6 +894,28 @@
             letter-spacing: 0.02em;
         }
 
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--green);
+            color: #000;
+            padding: 16px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-family: var(--font);
+            z-index: 9999;
+            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -783,6 +961,12 @@
             }
             .why-logo img {
                 max-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .custom-form-wrapper {
+                padding: 24px 18px;
             }
         }
 
@@ -853,19 +1037,15 @@
                 font-size: 0.8rem;
             }
 
-            /* گوگل فرم در موبایل */
-            .google-form-wrapper {
-                padding: 10px;
+            .custom-form-wrapper {
+                padding: 18px 14px;
                 border-radius: var(--radius-sm);
             }
-            .google-form-wrapper iframe {
-                height: 700px;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .google-form-wrapper iframe {
-                height: 650px;
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+                padding: 10px 14px;
             }
         }
 
@@ -1105,7 +1285,7 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS (Google Form) ===== -->
+    <!-- ===== COMMENTS (Custom Google Form) ===== -->
     <section class="comments" id="comments">
         <div class="container">
             <span class="section-label fade-up">نظرات</span>
@@ -1116,10 +1296,73 @@
                 تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
             </p>
 
-            <div class="google-form-wrapper fade-up fade-up-d3">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
-                    Loading…
-                </iframe>
+            <div class="custom-form-wrapper fade-up fade-up-d3">
+                <div class="form-title">📝 فرم نظر</div>
+
+                <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse" method="POST" target="hidden_iframe">
+                    <!-- 
+                        ⚠️ نام فیلدها را با نام فیلدهای فرم خودتان جایگزین کنید.
+                        برای پیدا کردن نام فیلدها:
+                        1. فرم گوگل را در مرورگر باز کنید
+                        2. روی فیلد مورد نظر راست کلیک > Inspect
+                        3. در کد HTML به دنبال attribute "name" بگردید
+                        4. مقدار آن را در اینجا قرار دهید (مثلاً entry.1234567890)
+                    -->
+                    <div class="form-group">
+                        <label>نام شما</label>
+                        <input type="text" name="entry.1234567890" placeholder="نام خود را وارد کنید" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>ایمیل</label>
+                        <input type="email" name="entry.1234567891" placeholder="ایمیل خود را وارد کنید" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>سیستم‌عامل</label>
+                        <select name="entry.1234567892">
+                            <option value="Windows">Windows</option>
+                            <option value="macOS">macOS</option>
+                            <option value="Android">Android</option>
+                            <option value="iOS">iOS</option>
+                            <option value="Linux">Linux</option>
+                            <option value="Other">سایر</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>متن نظر</label>
+                        <textarea name="entry.1234567893" placeholder="تجربه شما از V2C..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit-form" id="submitBtn">ثبتش کنم؟</button>
+                </form>
+
+                <div class="form-status" id="formStatus"></div>
+
+                <!-- راهنما برای تنظیم نام فیلدها -->
+                <div class="helper-box">
+                    <details>
+                        <summary>🔧 راهنما: تنظیم نام فیلدها</summary>
+                        <div class="step">
+                            <strong>مرحله ۱:</strong> فرم گوگل خود را در مرورگر باز کنید.
+                        </div>
+                        <div class="step">
+                            <strong>مرحله ۲:</strong> روی فیلد مورد نظر (مثلاً "نام") راست کلیک کنید و <strong>Inspect</strong> را انتخاب کنید.
+                        </div>
+                        <div class="step">
+                            <strong>مرحله ۳:</strong> در کد HTML، به دنبال <code>name="entry.1234567890"</code> بگردید.
+                        </div>
+                        <div class="step">
+                            <strong>مرحله ۴:</strong> مقدار <code>entry.1234567890</code> را در کد بالا جایگزین کنید.
+                        </div>
+                        <div class="step" style="border-bottom:none;">
+                            <strong>⚠️ توجه:</strong> هر فیلد یک name منحصر‌به‌فرد دارد. آنها را به‌ترتیب در کد قرار دهید.
+                        </div>
+                    </details>
+                </div>
+
+                <iframe name="hidden_iframe" style="display:none;"></iframe>
             </div>
         </div>
     </section>
@@ -1175,6 +1418,9 @@
         </div>
     </footer>
 
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">✅ نظر شما با موفقیت ثبت شد!</div>
+
     <!-- ============================================================ -->
     <!-- ===== SCRIPT ===== -->
     <!-- ============================================================ -->
@@ -1219,15 +1465,103 @@
             observer.observe(el);
         });
 
-        // بررسی اولیه
         fadeEls.forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight) {
                 el.style.animationPlayState = 'running';
             }
         });
 
-        console.log('💬 سیستم نظرات با Google Form فعال شد');
-        console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
+        // ===== FORM SUBMIT =====
+        const form = document.getElementById('googleForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusDiv = document.getElementById('formStatus');
+        const toast = document.getElementById('toast');
+
+        // دریافت iframe مخفی
+        const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+
+        // وقتی فرم ارسال شد
+        form.addEventListener('submit', function(e) {
+            // غیرفعال کردن دکمه
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ در حال ارسال...';
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+
+            // نمایش پیام در صورت موفقیت
+            setTimeout(() => {
+                // بررسی اینکه آیا iframe بارگذاری شده است
+                iframe.onload = function() {
+                    // بعد از ارسال، پیام موفقیت نمایش داده می‌شود
+                    showSuccess();
+                };
+            }, 500);
+
+            // اگر بعد از 10 ثانیه چیزی نشد، فرض می‌کنیم موفق بوده
+            setTimeout(() => {
+                if (!submitBtn.disabled) return;
+                showSuccess();
+            }, 10000);
+        });
+
+        function showSuccess() {
+            statusDiv.className = 'form-status success';
+            statusDiv.textContent = '✅ نظر شما با موفقیت ثبت شد! متشکریم 🙏';
+            statusDiv.style.display = 'block';
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ثبتش کنم؟';
+
+            // ریست فرم بعد از 3 ثانیه
+            setTimeout(() => {
+                form.reset();
+                statusDiv.style.display = 'none';
+            }, 5000);
+
+            // نمایش toast
+            showToast('✅ نظر شما با موفقیت ثبت شد!');
+        }
+
+        // ===== TOAST =====
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // ===== تشخیص سیستم‌عامل =====
+        function detectOS() {
+            const ua = navigator.userAgent;
+            if (ua.includes('Windows')) return 'Windows';
+            if (ua.includes('Mac')) return 'macOS';
+            if (ua.includes('Android')) return 'Android';
+            if (ua.includes('iOS') || ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
+            if (ua.includes('Linux')) return 'Linux';
+            return 'Other';
+        }
+
+        // تنظیم خودکار سیستم‌عامل در select
+        document.addEventListener('DOMContentLoaded', function() {
+            const osSelect = document.querySelector('select[name="entry.1234567892"]');
+            if (osSelect) {
+                const detected = detectOS();
+                for (let option of osSelect.options) {
+                    if (option.value === detected) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            }
+        });
+
+        console.log('💬 سیستم نظرات با Google Forms سفارشی');
+        console.log('📌 فرم به آدرس زیر ارسال می‌شود:');
+        console.log('https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse');
+        console.log('⚠️ نام فیلدها را با نام فیلدهای فرم خودتان جایگزین کنید.');
+        console.log('🔧 از بخش "راهنما" در پایین فرم برای تنظیم استفاده کنید.');
     </script>
 
 </body>
