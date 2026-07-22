@@ -36,11 +36,29 @@
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* ===== فونت Vazirmatn ===== */
+        /* ===== فونت Vazirmatn با پشتیبانی کامل از موبایل ===== */
         @font-face {
             font-family: 'Vazirmatn';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('css');
-            font-weight: 100 900;
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-ExtraBold.woff2') format('woff2');
+            font-weight: 800;
             font-display: swap;
         }
 
@@ -133,6 +151,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -159,6 +179,43 @@
             letter-spacing: 0.04em;
             text-transform: uppercase;
             margin-right: 2px;
+        }
+
+        /* ===== بج وسط هدر ===== */
+        .header-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(100, 255, 58, 0.08);
+            border: 1px solid rgba(100, 255, 58, 0.12);
+            border-radius: 100px;
+            padding: 4px 16px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--green);
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .header-badge .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
         }
 
         .nav-actions {
@@ -293,42 +350,6 @@
             max-width: 620px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(9, 9, 9, 0.5);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(100, 255, 58, 0.15);
-            border-radius: 100px;
-            padding: 6px 18px 6px 14px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--green);
-            width: fit-content;
-            letter-spacing: 0.02em;
-        }
-        .hero-badge .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
-        }
-
         .hero h1 {
             font-size: clamp(2.8rem, 6vw, 4.8rem);
             font-weight: 800;
@@ -343,20 +364,26 @@
             background-clip: text;
         }
 
-        /* ===== افکت تایپ‌رایتر با رنگ و گلو ===== */
+        /* ===== افکت تایپ‌رایتر با رنگ و گلو (سایز بزرگ‌تر) ===== */
+        #typed-text {
+            font-size: clamp(3.2rem, 7vw, 5.6rem);
+            font-weight: 800;
+            display: inline-block;
+            line-height: 1.1;
+        }
         .typed-blue {
             color: #3b82f6;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.7), 0 0 60px rgba(59, 130, 246, 0.3);
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
             transition: text-shadow 0.3s ease;
         }
         .typed-yellow {
             color: #facc15;
-            text-shadow: 0 0 20px rgba(250, 204, 21, 0.7), 0 0 60px rgba(250, 204, 21, 0.3);
+            text-shadow: 0 0 30px rgba(250, 204, 21, 0.8), 0 0 80px rgba(250, 204, 21, 0.4);
             transition: text-shadow 0.3s ease;
         }
         .typed-red {
             color: #ef4444;
-            text-shadow: 0 0 20px rgba(239, 68, 68, 0.7), 0 0 60px rgba(239, 68, 68, 0.3);
+            text-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 80px rgba(239, 68, 68, 0.4);
             transition: text-shadow 0.3s ease;
         }
 
@@ -1080,6 +1107,9 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
+            #typed-text {
+                font-size: 2.8rem !important;
+            }
 
             .hero-logo-wrapper {
                 padding: 5px;
@@ -1195,11 +1225,26 @@
             .google-form-iframe iframe {
                 height: 620px;
             }
+
+            /* ===== هدر در موبایل ===== */
+            .header-inner {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .header-badge {
+                display: none;
+            }
+            .header-inner .nav-actions a:not(.btn-neon-download) {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            #typed-text {
+                font-size: 2.2rem !important;
             }
             .hero p {
                 font-size: 0.95rem;
@@ -1235,6 +1280,13 @@
             .btn-ghost {
                 padding: 8px 18px;
                 font-size: 0.8rem;
+            }
+        }
+
+        /* ===== نمایش بج هدر در نسخه دسکتاپ و تبلت ===== */
+        @media (min-width: 641px) {
+            .header-badge {
+                display: flex;
             }
         }
 
@@ -1306,6 +1358,13 @@
                 <img src="https://s34.picofile.com/file/8490997326/favicon.png" alt="V2C VPN" />
                 <span class="badge-free">رایگان</span>
             </a>
+
+            <!-- ===== بج وسط هدر ===== -->
+            <div class="header-badge">
+                <span class="dot"></span>
+                نسخه جدید · کاملاً رایگان
+            </div>
+
             <div class="nav-actions">
                 <a href="#features">ویژگی‌ها</a>
                 <a href="#why">چرا V2C</a>
@@ -1326,11 +1385,6 @@
         <div class="container hero-grid">
 
             <div class="hero-content">
-                <div class="hero-badge fade-up">
-                    <span class="dot"></span>
-                    نسخه جدید · کاملاً رایگان
-                </div>
-
                 <h1 class="fade-up fade-up-d1">
                     <span id="typed-text"></span> <br />
                     <span class="highlight">Free VPN</span>
@@ -1619,7 +1673,7 @@
             }
         });
 
-        // ===== TYPED.JS =====
+        // ===== TYPED.JS (سریع‌تر و بزرگ‌تر) =====
         document.addEventListener('DOMContentLoaded', function() {
             const typed = new Typed('#typed-text', {
                 strings: [
@@ -1627,9 +1681,9 @@
                     '<span class="typed-yellow">FAST</span>',
                     '<span class="typed-red">secure</span>'
                 ],
-                typeSpeed: 120,
-                backSpeed: 80,
-                backDelay: 1800,
+                typeSpeed: 200, // تایپ سریع‌تر
+                backSpeed: 150, // پاک‌کردن سریع‌تر
+                backDelay: 1400,
                 startDelay: 300,
                 loop: true,
                 showCursor: false,
