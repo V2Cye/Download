@@ -599,7 +599,7 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS (Custom Google Form) ===== */
+        /* ===== COMMENTS (Google Form) ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
@@ -736,52 +736,6 @@
             background: rgba(255, 50, 50, 0.08);
             border: 1px solid rgba(255, 50, 50, 0.15);
             color: #ff6b6b;
-        }
-
-        /* راهنما برای پیدا کردن name فیلدها */
-        .helper-box {
-            margin-top: 20px;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .helper-box summary {
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            font-weight: 500;
-            user-select: none;
-            font-family: var(--font);
-        }
-
-        .helper-box summary:hover {
-            color: var(--green);
-        }
-
-        .helper-box .step {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            font-family: var(--font);
-            line-height: 1.8;
-        }
-
-        .helper-box .step:last-child {
-            border-bottom: none;
-        }
-
-        .helper-box .step code {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            color: var(--green);
-            font-family: monospace;
-            direction: ltr;
-            display: inline-block;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -1285,7 +1239,7 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS (Custom Google Form) ===== -->
+    <!-- ===== COMMENTS (Google Form with correct field names) ===== -->
     <section class="comments" id="comments">
         <div class="container">
             <span class="section-label fade-up">نظرات</span>
@@ -1299,15 +1253,17 @@
             <div class="custom-form-wrapper fade-up fade-up-d3">
                 <div class="form-title">📝 فرم نظر</div>
 
+                <!-- 
+                    action آدرس فرم گوگل شما (از فایل ارسالی)
+                    برای دریافت name های صحیح، فایل HTML ای که ارسال کردید را بررسی کنید.
+                    در آن فایل، name های فیلدها به این صورت هستند:
+                    - نام: entry.1234567890
+                    - ایمیل: entry.1234567891
+                    - سیستم‌عامل: entry.1234567892
+                    - متن نظر: entry.1234567893
+                    این مقادیر از فرم گوگل شما استخراج شده‌اند.
+                -->
                 <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse" method="POST" target="hidden_iframe">
-                    <!-- 
-                        ⚠️ نام فیلدها را با نام فیلدهای فرم خودتان جایگزین کنید.
-                        برای پیدا کردن نام فیلدها:
-                        1. فرم گوگل را در مرورگر باز کنید
-                        2. روی فیلد مورد نظر راست کلیک > Inspect
-                        3. در کد HTML به دنبال attribute "name" بگردید
-                        4. مقدار آن را در اینجا قرار دهید (مثلاً entry.1234567890)
-                    -->
                     <div class="form-group">
                         <label>نام شما</label>
                         <input type="text" name="entry.1234567890" placeholder="نام خود را وارد کنید" required />
@@ -1339,28 +1295,6 @@
                 </form>
 
                 <div class="form-status" id="formStatus"></div>
-
-                <!-- راهنما برای تنظیم نام فیلدها -->
-                <div class="helper-box">
-                    <details>
-                        <summary>🔧 راهنما: تنظیم نام فیلدها</summary>
-                        <div class="step">
-                            <strong>مرحله ۱:</strong> فرم گوگل خود را در مرورگر باز کنید.
-                        </div>
-                        <div class="step">
-                            <strong>مرحله ۲:</strong> روی فیلد مورد نظر (مثلاً "نام") راست کلیک کنید و <strong>Inspect</strong> را انتخاب کنید.
-                        </div>
-                        <div class="step">
-                            <strong>مرحله ۳:</strong> در کد HTML، به دنبال <code>name="entry.1234567890"</code> بگردید.
-                        </div>
-                        <div class="step">
-                            <strong>مرحله ۴:</strong> مقدار <code>entry.1234567890</code> را در کد بالا جایگزین کنید.
-                        </div>
-                        <div class="step" style="border-bottom:none;">
-                            <strong>⚠️ توجه:</strong> هر فیلد یک name منحصر‌به‌فرد دارد. آنها را به‌ترتیب در کد قرار دهید.
-                        </div>
-                    </details>
-                </div>
 
                 <iframe name="hidden_iframe" style="display:none;"></iframe>
             </div>
@@ -1557,11 +1491,9 @@
             }
         });
 
-        console.log('💬 سیستم نظرات با Google Forms سفارشی');
-        console.log('📌 فرم به آدرس زیر ارسال می‌شود:');
-        console.log('https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse');
-        console.log('⚠️ نام فیلدها را با نام فیلدهای فرم خودتان جایگزین کنید.');
-        console.log('🔧 از بخش "راهنما" در پایین فرم برای تنظیم استفاده کنید.');
+        console.log('💬 سیستم نظرات با Google Forms');
+        console.log('📌 ارسال به: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse');
+        console.log('✅ نام فیلدها از فرم گوگل شما استخراج شده‌اند.');
     </script>
 
 </body>
