@@ -596,208 +596,36 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS ===== */
+        /* ===== COMMENTS (Google Form) ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
         }
 
-        .comments-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
+        .comments .section-sub {
+            text-align: center;
+            margin: 0 auto 40px;
         }
 
-        .comment-form {
+        .google-form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 20px;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
         }
 
-        .comment-form h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .google-form-wrapper iframe {
             width: 100%;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--radius-sm);
-            color: #fff;
-            font-family: var(--font);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--green);
-            background: rgba(255, 255, 255, 0.07);
-            box-shadow: 0 0 20px rgba(100, 255, 58, 0.04);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-group select option {
-            background: #1a1a1a;
-            color: #fff;
-        }
-
-        .star-rating {
-            display: flex;
-            gap: 8px;
-            direction: ltr;
-        }
-
-        .star-rating .star {
-            font-size: 28px;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-            user-select: none;
-        }
-
-        .star-rating .star.active {
-            color: #FFD700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .star-rating .star:hover {
-            transform: scale(1.2);
-        }
-
-        .btn-submit {
-            background: var(--green);
-            color: #000;
+            height: 764px;
             border: none;
-            padding: 12px 32px;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font);
-            width: 100%;
-        }
-
-        .btn-submit:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(100, 255, 58, 0.2);
-        }
-
-        .btn-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .comment-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-height: 600px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .comment-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        .comment-list::-webkit-scrollbar-thumb {
-            background: var(--green);
-            border-radius: 10px;
-        }
-
-        .comment-item {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: var(--radius-sm);
-            padding: 20px 24px;
-            transition: var(--transition);
-            animation: fadeUp 0.4s ease forwards;
-        }
-
-        .comment-item:hover {
-            border-color: rgba(100, 255, 58, 0.08);
-            background: rgba(100, 255, 58, 0.02);
-        }
-
-        .comment-item .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .comment-item .comment-name {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .comment-item .comment-stars {
-            color: #FFD700;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-
-        .comment-item .comment-os {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.04);
-            padding: 2px 12px;
-            border-radius: 100px;
-        }
-
-        .comment-item .comment-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-top: 4px;
-        }
-
-        .comment-item .comment-date {
-            font-size: 0.65rem;
-            color: var(--text-secondary);
-            opacity: 0.4;
-            margin-top: 8px;
             display: block;
-        }
-
-        .no-comments {
-            color: var(--text-secondary);
-            opacity: 0.4;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.95rem;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -835,6 +663,20 @@
             border-color: rgba(100, 255, 58, 0.15);
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .btn-store .text .small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 450;
+            display: block;
+        }
+        .btn-store .text .big {
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 1px;
         }
 
         /* ===== FOOTER ===== */
@@ -896,46 +738,6 @@
             letter-spacing: 0.02em;
         }
 
-        /* ===== TOAST ===== */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--green);
-            color: #000;
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-family: var(--font);
-            z-index: 9999;
-            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* ===== LOADING ===== */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top-color: #000;
-            animation: spin 0.8s ease infinite;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -981,9 +783,6 @@
             }
             .why-logo img {
                 max-width: 200px;
-            }
-            .comments-wrapper {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1053,14 +852,20 @@
             .hero-features span {
                 font-size: 0.8rem;
             }
-            .comments-wrapper {
-                grid-template-columns: 1fr;
+
+            /* گوگل فرم در موبایل */
+            .google-form-wrapper {
+                padding: 10px;
+                border-radius: var(--radius-sm);
             }
-            .comment-form {
-                padding: 20px;
+            .google-form-wrapper iframe {
+                height: 700px;
             }
-            .comment-item {
-                padding: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .google-form-wrapper iframe {
+                height: 650px;
             }
         }
 
@@ -1116,92 +921,6 @@
             bottom: 0;
             left: -80px;
             background: rgba(100, 255, 58, 0.02);
-        }
-
-        /* ===== JSONBin Settings ===== */
-        .settings-panel {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9998;
-            background: rgba(9, 9, 9, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-sm);
-            padding: 16px 20px;
-            max-width: 280px;
-        }
-
-        .settings-panel summary {
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            font-weight: 500;
-            user-select: none;
-        }
-
-        .settings-panel summary:hover {
-            color: var(--green);
-        }
-
-        .settings-panel .setting-group {
-            margin-top: 12px;
-        }
-
-        .settings-panel .setting-group label {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .settings-panel .setting-group input {
-            width: 100%;
-            padding: 6px 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            color: #fff;
-            font-family: var(--font);
-            font-size: 0.8rem;
-            outline: none;
-        }
-
-        .settings-panel .setting-group input:focus {
-            border-color: var(--green);
-        }
-
-        .settings-panel .btn-save-settings {
-            margin-top: 10px;
-            width: 100%;
-            padding: 8px;
-            background: var(--green);
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            font-family: var(--font);
-            transition: var(--transition);
-        }
-
-        .settings-panel .btn-save-settings:hover {
-            transform: scale(1.02);
-        }
-
-        .settings-panel .status {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            opacity: 0.5;
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        .settings-panel .status.connected {
-            color: var(--green);
-            opacity: 1;
         }
     </style>
 </head>
@@ -1386,63 +1105,21 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS ===== -->
+    <!-- ===== COMMENTS (Google Form) ===== -->
     <section class="comments" id="comments">
         <div class="container">
             <span class="section-label fade-up">نظرات</span>
             <h2 class="section-title fade-up fade-up-d1">
-                کاربران چه <span>می‌گویند</span>
+                نظر خود را <span>بنویسید</span>
             </h2>
             <p class="section-sub fade-up fade-up-d2">
-                نظرات و تجربیات کاربران V2C را بخوانید و نظر خود را بنویسید.
+                تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
             </p>
 
-            <div class="comments-wrapper">
-                <!-- فرم نظر -->
-                <div class="comment-form fade-up fade-up-d3">
-                    <h3>📝 نظر خود را بنویسید</h3>
-                    <form id="commentForm">
-                        <div class="form-group">
-                            <label>نام شما</label>
-                            <input type="text" id="userName" placeholder="مثلاً: علیرضا" required />
-                        </div>
-                        <div class="form-group">
-                            <label>سیستم‌عامل</label>
-                            <select id="userOS">
-                                <option value="Windows">Windows</option>
-                                <option value="macOS">macOS</option>
-                                <option value="Android">Android</option>
-                                <option value="iOS">iOS</option>
-                                <option value="Linux">Linux</option>
-                                <option value="Other">سایر</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>امتیاز شما</label>
-                            <div class="star-rating" id="starRating">
-                                <span class="star" data-value="1">☆</span>
-                                <span class="star" data-value="2">☆</span>
-                                <span class="star" data-value="3">☆</span>
-                                <span class="star" data-value="4">☆</span>
-                                <span class="star" data-value="5">☆</span>
-                            </div>
-                            <input type="hidden" id="userRating" value="0" />
-                        </div>
-                        <div class="form-group">
-                            <label>متن نظر</label>
-                            <textarea id="userComment" placeholder="تجربه شما از V2C..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit" id="submitBtn">ارسال نظر</button>
-                    </form>
-                    <div style="margin-top:12px;font-size:0.75rem;color:var(--text-secondary);opacity:0.4;text-align:center;">
-                        نظرات در JSONBin.io ذخیره می‌شوند 🔒
-                    </div>
-                </div>
-
-                <!-- لیست نظرات -->
-                <div class="comment-list" id="commentList">
-                    <div class="no-comments">در حال بارگذاری نظرات...</div>
-                </div>
+            <div class="google-form-wrapper fade-up fade-up-d3">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
+                    Loading…
+                </iframe>
             </div>
         </div>
     </section>
@@ -1498,405 +1175,21 @@
         </div>
     </footer>
 
-    <!-- ===== JSONBin SETTINGS PANEL ===== -->
-    <details class="settings-panel">
-        <summary>⚙️ تنظیمات JSONBin</summary>
-        <div class="setting-group">
-            <label>Bin ID</label>
-            <input type="text" id="binId" placeholder="مثلاً: 5f8f8f8f8f8f8f" />
-        </div>
-        <div class="setting-group">
-            <label>API Key (اختیاری)</label>
-            <input type="password" id="apiKey" placeholder="برای نوشتن نیاز است" />
-        </div>
-        <button class="btn-save-settings" id="saveSettings">ذخیره تنظیمات</button>
-        <div class="status" id="binStatus">⚪ غیرفعال</div>
-    </details>
-
-    <!-- ===== TOAST ===== -->
-    <div class="toast" id="toast">✅ نظر شما با موفقیت ثبت شد!</div>
-
     <!-- ============================================================ -->
     <!-- ===== SCRIPT ===== -->
     <!-- ============================================================ -->
     <script>
-        // ============================================================
-        // ===== JSONBin CONFIGURATION =====
-        // ============================================================
-
-        let CONFIG = {
-            binId: '',
-            apiKey: ''
-        };
-
-        // بارگذاری تنظیمات از localStorage
-        function loadConfig() {
-            try {
-                const saved = localStorage.getItem('v2c_jsonbin_config');
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    CONFIG = { ...CONFIG, ...parsed };
-                    document.getElementById('binId').value = CONFIG.binId || '';
-                    document.getElementById('apiKey').value = CONFIG.apiKey || '';
-                }
-            } catch (e) {
-                console.warn('خطا در بارگذاری تنظیمات:', e);
-            }
-            updateStatus();
-        }
-
-        // ذخیره تنظیمات
-        function saveConfig() {
-            CONFIG.binId = document.getElementById('binId').value.trim();
-            CONFIG.apiKey = document.getElementById('apiKey').value.trim();
-            localStorage.setItem('v2c_jsonbin_config', JSON.stringify(CONFIG));
-            updateStatus();
-            showToast('✅ تنظیمات ذخیره شد');
-            loadComments(); // بارگذاری مجدد نظرات
-        }
-
-        function updateStatus() {
-            const status = document.getElementById('binStatus');
-            if (CONFIG.binId) {
-                status.textContent = '✅ متصل به JSONBin';
-                status.className = 'status connected';
-            } else {
-                status.textContent = '⚪ غیرفعال (Bin ID را وارد کنید)';
-                status.className = 'status';
-            }
-        }
-
-        // ============================================================
-        // ===== JSONBin API =====
-        // ============================================================
-
-        const JSONBIN_API = 'https://api.jsonbin.io/v3';
-
-        // دریافت نظرات از JSONBin
-        async function fetchCommentsFromJSONBin() {
-            if (!CONFIG.binId) {
-                return null;
-            }
-
-            try {
-                const headers = {
-                    'Content-Type': 'application/json'
-                };
-                if (CONFIG.apiKey) {
-                    headers['X-Master-Key'] = CONFIG.apiKey;
-                }
-
-                const response = await fetch(`${JSONBIN_API}/b/${CONFIG.binId}/latest`, {
-                    headers: headers
-                });
-
-                if (!response.ok) {
-                    if (response.status === 404) {
-                        return []; // Bin وجود ندارد
-                    }
-                    throw new Error(`JSONBin API Error: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const record = data.record;
-
-                // اگر record آرایه باشد، همان را برمی‌گردانیم
-                if (Array.isArray(record)) {
-                    return record;
-                }
-                // اگر record یک شیء با کلید comments باشد
-                if (record && record.comments && Array.isArray(record.comments)) {
-                    return record.comments;
-                }
-                // در غیر این صورت، یک آرایه خالی برمی‌گردانیم
-                return [];
-            } catch (error) {
-                console.error('خطا در دریافت نظرات از JSONBin:', error);
-                return null;
-            }
-        }
-
-        // ذخیره نظرات در JSONBin
-        async function saveCommentsToJSONBin(comments) {
-            if (!CONFIG.binId) {
-                throw new Error('Bin ID تنظیم نشده است');
-            }
-
-            if (!CONFIG.apiKey) {
-                throw new Error('API Key برای نوشتن در JSONBin نیاز است');
-            }
-
-            try {
-                // ساختار داده: یک شیء با کلید comments
-                const data = {
-                    comments: comments
-                };
-
-                const response = await fetch(`${JSONBIN_API}/b/${CONFIG.binId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': CONFIG.apiKey
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || `JSONBin API Error: ${response.status}`);
-                }
-
-                return await response.json();
-            } catch (error) {
-                console.error('خطا در ذخیره نظرات در JSONBin:', error);
-                throw error;
-            }
-        }
-
-        // ============================================================
-        // ===== COMMENT SYSTEM =====
-        // ============================================================
-
-        let comments = [];
-        let isLoading = false;
-
-        // بارگذاری نظرات
-        async function loadComments() {
-            const list = document.getElementById('commentList');
-
-            try {
-                isLoading = true;
-                list.innerHTML = `<div class="no-comments">⏳ در حال بارگذاری نظرات...</div>`;
-
-                if (!CONFIG.binId) {
-                    list.innerHTML =
-                        `<div class="no-comments">⚙️ لطفاً Bin ID را در پنل تنظیمات وارد کنید.</div>`;
-                    comments = [];
-                    return;
-                }
-
-                const data = await fetchCommentsFromJSONBin();
-
-                if (data === null) {
-                    list.innerHTML =
-                        `<div class="no-comments">❌ خطا در ارتباط با JSONBin. لطفاً تنظیمات را بررسی کنید.</div>`;
-                    comments = [];
-                    return;
-                }
-
-                comments = Array.isArray(data) ? data : [];
-                renderComments();
-
-            } catch (error) {
-                console.error('خطا:', error);
-                list.innerHTML = `<div class="no-comments">❌ خطا در بارگذاری نظرات: ${error.message}</div>`;
-            } finally {
-                isLoading = false;
-            }
-        }
-
-        // نمایش نظرات
-        function renderComments() {
-            const list = document.getElementById('commentList');
-
-            if (!comments || comments.length === 0) {
-                list.innerHTML = `<div class="no-comments">هنوز نظری ثبت نشده است. اولین نفر باشید!</div>`;
-                return;
-            }
-
-            const sorted = [...comments].reverse();
-
-            list.innerHTML = sorted.map((c) => {
-                const stars = '★'.repeat(c.rating || 5) + '☆'.repeat(5 - (c.rating || 5));
-                const date = new Date(c.date).toLocaleDateString('fa-IR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                return `
-                        <div class="comment-item">
-                            <div class="comment-header">
-                                <span class="comment-name">${escapeHtml(c.name || 'ناشناس')}</span>
-                                <span class="comment-stars">${stars}</span>
-                                <span class="comment-os">${escapeHtml(c.os || 'نامشخص')}</span>
-                            </div>
-                            <div class="comment-text">${escapeHtml(c.text || '')}</div>
-                            <span class="comment-date">${date}</span>
-                        </div>
-                    `;
-            }).join('');
-        }
-
-        function escapeHtml(text) {
-            if (!text) return '';
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // ============================================================
-        // ===== STAR RATING =====
-        // ============================================================
-
-        const stars = document.querySelectorAll('.star');
-        const ratingInput = document.getElementById('userRating');
-        let selectedRating = 0;
-
-        stars.forEach(star => {
-            star.addEventListener('click', function() {
-                const value = parseInt(this.dataset.value);
-                selectedRating = value;
-                ratingInput.value = value;
-
-                stars.forEach(s => {
-                    const val = parseInt(s.dataset.value);
-                    if (val <= value) {
-                        s.classList.add('active');
-                        s.textContent = '★';
-                    } else {
-                        s.classList.remove('active');
-                        s.textContent = '☆';
-                    }
-                });
-            });
-
-            star.addEventListener('mouseenter', function() {
-                const value = parseInt(this.dataset.value);
-                stars.forEach(s => {
-                    const val = parseInt(s.dataset.value);
-                    s.style.color = val <= value ? '#FFD700' : 'rgba(255,255,255,0.2)';
-                });
-            });
-
-            star.addEventListener('mouseleave', function() {
-                stars.forEach(s => {
-                    s.style.color = s.classList.contains('active') ? '#FFD700' : 'rgba(255,255,255,0.2)';
-                });
-            });
-        });
-
-        // تشخیص OS
-        function detectOS() {
-            const ua = navigator.userAgent;
-            if (ua.includes('Windows')) return 'Windows';
-            if (ua.includes('Mac')) return 'macOS';
-            if (ua.includes('Android')) return 'Android';
-            if (ua.includes('iOS') || ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
-            if (ua.includes('Linux')) return 'Linux';
-            return 'Other';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const osSelect = document.getElementById('userOS');
-            const detected = detectOS();
-            for (let option of osSelect.options) {
-                if (option.value === detected) {
-                    option.selected = true;
-                    break;
-                }
-            }
-        });
-
-        // ============================================================
-        // ===== SUBMIT COMMENT =====
-        // ============================================================
-
-        document.getElementById('commentForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            if (isLoading) return;
-
-            const name = document.getElementById('userName').value.trim();
-            const os = document.getElementById('userOS').value;
-            const text = document.getElementById('userComment').value.trim();
-            const rating = parseInt(ratingInput.value);
-
-            if (!name || !text || rating === 0) {
-                showToast('⚠️ لطفاً نام، متن نظر و امتیاز را وارد کنید.');
-                return;
-            }
-
-            if (!CONFIG.binId) {
-                showToast('⚠️ لطفاً Bin ID را در پنل تنظیمات وارد کنید.');
-                return;
-            }
-
-            if (!CONFIG.apiKey) {
-                showToast('⚠️ برای ثبت نظر، API Key را در پنل تنظیمات وارد کنید.');
-                return;
-            }
-
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '⏳ در حال ثبت...';
-            btn.disabled = true;
-
-            try {
-                const newComment = {
-                    name: name,
-                    os: os,
-                    text: text,
-                    rating: rating,
-                    date: Date.now()
-                };
-
-                const allComments = comments || [];
-                allComments.push(newComment);
-
-                await saveCommentsToJSONBin(allComments);
-
-                comments = allComments;
-                renderComments();
-
-                // ریست فرم
-                document.getElementById('userName').value = '';
-                document.getElementById('userComment').value = '';
-                ratingInput.value = '0';
-                selectedRating = 0;
-                stars.forEach(s => {
-                    s.classList.remove('active');
-                    s.textContent = '☆';
-                    s.style.color = 'rgba(255,255,255,0.2)';
-                });
-
-                showToast('✅ نظر شما با موفقیت در JSONBin ثبت شد!');
-
-            } catch (error) {
-                showToast(`❌ خطا: ${error.message}`);
-                console.error(error);
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        });
-
-        // ============================================================
-        // ===== TOAST =====
-        // ============================================================
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toast._timeout);
-            toast._timeout = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
-
-        // ============================================================
         // ===== HEADER SCROLL =====
-        // ============================================================
-
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 40);
+            if (window.scrollY > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        // ============================================================
         // ===== SMOOTH SCROLL =====
-        // ============================================================
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -1911,10 +1204,7 @@
             });
         });
 
-        // ============================================================
         // ===== FADE-UP OBSERVER =====
-        // ============================================================
-
         const fadeEls = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1936,25 +1226,8 @@
             }
         });
 
-        // ============================================================
-        // ===== EVENTS =====
-        // ============================================================
-
-        document.getElementById('saveSettings').addEventListener('click', () => {
-            saveConfig();
-        });
-
-        // بارگذاری اولیه
-        loadConfig();
-        loadComments();
-
-        console.log('💬 سیستم نظرات V2C با JSONBin.io فعال شد');
-        console.log('📌 برای استفاده:');
-        console.log('1. به سایت jsonbin.io بروید');
-        console.log('2. یک Bin جدید بسازید');
-        console.log('3. Bin ID را در پنل تنظیمات وارد کنید');
-        console.log('4. برای نوشتن نظر، API Key را نیز وارد کنید');
-        console.log('5. روی "ذخیره تنظیمات" کلیک کنید');
+        console.log('💬 سیستم نظرات با Google Form فعال شد');
+        console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
     </script>
 
 </body>
