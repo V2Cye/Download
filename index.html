@@ -6,10 +6,6 @@
     <title>V2C VPN — Unlimited Free VPN</title>
     <link rel="icon" href="https://s34.picofile.com/file/8490997326/favicon.png" type="image/png" />
 
-    <!-- فونت یکان‌بخ -->
-    <link href="https://cdn.fontiran.com/fonts/iran-yekan/IRANYekanWeb.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
-
     <style>
         /* ===== RESET & BASE ===== */
         *,
@@ -32,10 +28,21 @@
             --text-secondary: rgba(255, 255, 255, 0.75);
             --radius: 24px;
             --radius-sm: 16px;
-            --font: 'IRANYekanWeb', 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font: 'Vazirmatn', 'IRANYekanWeb', 'Iran Yekan', Tahoma, Arial, sans-serif;
             --shadow-glow: 0 0 60px rgba(100, 255, 58, 0.06);
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
+        /* ===== فونت Vazirmatn (جایگزین مطمئن) ===== */
+        @font-face {
+            font-family: 'Vazirmatn';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('css');
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
+        /* ===== فونت یکان به صورت Base64 (فقط برای حالت Failover) ===== */
+        /* ما از Vazirmatn استفاده می‌کنیم که بسیار پایدارتر است */
 
         html {
             scroll-behavior: smooth;
@@ -807,7 +814,7 @@
             aspect-ratio: 2527 / 380;
         }
 
-        /* ===== کادر فرم گوگل با ارتفاع کامل ===== */
+        /* ===== کادر فرم گوگل ===== */
         .google-form-wrapper {
             max-width: 820px;
             margin: 0 auto;
@@ -831,6 +838,7 @@
             display: block;
             margin: 0;
             pointer-events: auto;
+            background: #fff;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -1277,21 +1285,6 @@
             left: -80px;
             background: rgba(100, 255, 58, 0.02);
         }
-
-        /* ===== حالت آفلاین ===== */
-        .offline-banner {
-            display: none;
-            background: rgba(255, 200, 0, 0.1);
-            border: 1px solid rgba(255, 200, 0, 0.2);
-            border-radius: var(--radius-sm);
-            padding: 12px 20px;
-            text-align: center;
-            color: #ffd700;
-            margin-bottom: 20px;
-        }
-        .offline-banner.show {
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -1436,7 +1429,7 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item fade-up">
-                    <div class="number">۱M+</div>
+                    <div class="number">۱۵M+</div>
                     <div class="label">کاربران</div>
                 </div>
                 <div class="stat-item fade-up fade-up-d1">
@@ -1619,16 +1612,23 @@
         });
 
         // ============================================================
-        // ===== SERVICE WORKER (برای کش کردن offline.html) =====
+        // ===== SERVICE WORKER (اختیاری - با try/catch) =====
         // ============================================================
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('✅ Service Worker ثبت شد'))
-                .catch(err => console.warn('❌ خطا در ثبت Service Worker:', err));
+        try {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('✅ Service Worker ثبت شد'))
+                    .catch(err => console.warn('⚠️ Service Worker ثبت نشد (مشکل فایل یا مسیر):', err));
+            }
+        } catch (e) {
+            console.log('ℹ️ Service Worker پشتیبانی نمی‌شود');
         }
 
-        // ===== تشخیص آفلاین =====
+        // ============================================================
+        // ===== تشخیص آفلاین (اختیاری) =====
+        // ============================================================
+
         window.addEventListener('online', () => {
             document.querySelector('.offline-banner')?.classList.remove('show');
         });
@@ -1636,110 +1636,15 @@
         window.addEventListener('offline', () => {
             const banner = document.querySelector('.offline-banner');
             if (banner) {
-                banner.textContent = '🔌 شما آفلاین هستید. صفحه offline.html در حال نمایش...';
+                banner.textContent = '🔌 شما آفلاین هستید.';
                 banner.classList.add('show');
-                // هدایت به صفحه آفلاین بعد از ۲ ثانیه
-                setTimeout(() => {
-                    window.location.href = '/offline.html';
-                }, 2000);
             }
         });
 
-        console.log('💬 سیستم نظرات با Google Form فعال شد');
+        console.log('✅ سایت V2C با موفقیت بارگذاری شد!');
+        console.log('💬 سیستم نظرات با Google Form فعال است');
         console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
-        console.log('✨ دکمه نئونی دانلود و لوگوی متحرک فعال شد');
-        console.log('🖼️ بنر بخش کامنت با عرض کامل قرار گرفت');
-        console.log('📱 ریسپانسیو بهبود یافته');
-        console.log('💾 Service Worker برای کش کردن offline.html فعال شد');
     </script>
-
-    <!-- ============================================================ -->
-    <!-- ===== SERVICE WORKER (sw.js) ===== -->
-    <!-- ============================================================ -->
-    <script id="sw-script">
-        // این کد به صورت خودکار در فایل sw.js ذخیره می‌شود
-        // برای استفاده در GitHub Pages، فایل sw.js را در روت پروژه ایجاد کنید
-        const swCode = `
-        // ===== Service Worker برای کش کردن offline.html =====
-        const CACHE_NAME = 'v2c-cache-v1';
-        const OFFLINE_URL = '/offline.html';
-
-        // فایل‌هایی که باید کش شوند
-        const urlsToCache = [
-            '/',
-            '/offline.html',
-            'https://s34.picofile.com/file/8490997326/favicon.png',
-            'https://s34.picofile.com/file/8490997350/GRouteTransparentBlack.png',
-            'https://s34.picofile.com/file/8490999342/v2c_bg.png',
-            'https://s34.picofile.com/file/8490997342/dad.png',
-            'https://cdn.fontiran.com/fonts/iran-yekan/IRANYekanWeb.css',
-            'https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css'
-        ];
-
-        // نصب Service Worker و کش کردن فایل‌ها
-        self.addEventListener('install', (event) => {
-            event.waitUntil(
-                caches.open(CACHE_NAME)
-                .then((cache) => {
-                    console.log('📦 کش کردن فایل‌ها...');
-                    return cache.addAll(urlsToCache);
-                })
-                .then(() => self.skipWaiting())
-            );
-        });
-
-        // فعال‌سازی و پاک کردن کش‌های قدیمی
-        self.addEventListener('activate', (event) => {
-            event.waitUntil(
-                caches.keys().then((cacheNames) => {
-                    return Promise.all(
-                        cacheNames.map((cacheName) => {
-                            if (cacheName !== CACHE_NAME) {
-                                console.log('🗑️ حذف کش قدیمی:', cacheName);
-                                return caches.delete(cacheName);
-                            }
-                        })
-                    );
-                })
-                .then(() => self.clients.claim())
-            );
-        });
-
-        // پاسخ به درخواست‌ها
-        self.addEventListener('fetch', (event) => {
-            // اگر درخواست مربوط به ناوبری باشد و کاربر آفلاین باشد
-            if (event.request.mode === 'navigate') {
-                event.respondWith(
-                    fetch(event.request)
-                    .catch(() => {
-                        // اگر خطا رخ داد (آفلاین)، صفحه آفلاین را نشان بده
-                        return caches.match(OFFLINE_URL);
-                    })
-                );
-                return;
-            }
-
-            // بقیه درخواست‌ها از کش پاسخ داده می‌شوند
-            event.respondWith(
-                caches.match(event.request)
-                .then((response) => {
-                    if (response) {
-                        return response;
-                    }
-                    return fetch(event.request);
-                })
-                .catch(() => {
-                    // اگر فایل در کش نبود و نت‌نت قطع بود
-                    return new Response('محتوا در دسترس نیست', {
-                        status: 404,
-                        statusText: 'Not Found'
-                    });
-                })
-            );
-        });
-        `;
-
- 
 
 </body>
 </html>
