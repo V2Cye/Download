@@ -35,9 +35,6 @@
             --font: 'IRANYekanWeb', 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
             --shadow-glow: 0 0 60px rgba(100, 255, 58, 0.06);
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-            --input-bg: rgba(255, 255, 255, 0.05);
-            --input-border: rgba(255, 255, 255, 0.08);
-            --input-focus: rgba(100, 255, 58, 0.15);
         }
 
         html {
@@ -323,89 +320,30 @@
             margin-top: 8px;
         }
 
-        /* ===== دکمه نئونی با افکت نور ===== */
-        .btn-neon {
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background: transparent;
-            color: var(--green);
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 16px 42px;
+            gap: 10px;
+            background: var(--green);
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 38px;
             border-radius: 100px;
-            border: 2px solid var(--green);
+            border: none;
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             font-family: var(--font);
-            position: relative;
-            overflow: hidden;
-            text-shadow: 0 0 10px rgba(100, 255, 58, 0.3);
-            box-shadow: 0 0 20px rgba(100, 255, 58, 0.1), inset 0 0 20px rgba(100, 255, 58, 0.05);
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.15);
         }
-
-        .btn-neon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(100, 255, 58, 0.1),
-                transparent,
-                rgba(100, 255, 58, 0.3),
-                transparent,
-                rgba(100, 255, 58, 0.1),
-                transparent
-            );
-            animation: neon-sweep 4s linear infinite;
-            pointer-events: none;
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 60px rgba(100, 255, 58, 0.30);
         }
-
-        @keyframes neon-sweep {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .btn-neon::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            border-radius: 100px;
-            background: var(--bg);
-            z-index: 0;
-        }
-
-        .btn-neon span {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-neon:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(100, 255, 58, 0.3), 0 0 80px rgba(100, 255, 58, 0.1), inset 0 0 40px rgba(100, 255, 58, 0.1);
-            border-color: var(--green);
-        }
-
-        .btn-neon svg {
-            width: 22px;
-            height: 22px;
-            fill: none;
-            stroke: var(--green);
-            stroke-width: 2.5;
-            position: relative;
-            z-index: 1;
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
         }
 
         .btn-ghost {
@@ -658,165 +596,36 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS ===== */
+        /* ===== COMMENTS (Google Form) ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
         }
 
-        .comments .section-title {
-            text-align: center;
-        }
         .comments .section-sub {
             text-align: center;
             margin: 0 auto 40px;
         }
 
-        /* ===== هدر بخش نظرات با بنر ===== */
-        .comments-header {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            border: 1px solid var(--card-border);
-        }
-
-        .comments-header img {
-            width: 100%;
-            height: auto;
-            display: block;
-            aspect-ratio: 2527 / 380;
-            object-fit: cover;
-        }
-
-        .custom-form-wrapper {
-            max-width: 700px;
+        .google-form-wrapper {
+            max-width: 800px;
             margin: 0 auto;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: var(--radius);
-            padding: 40px 36px;
+            padding: 20px;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            overflow: hidden;
             box-shadow: var(--shadow-glow);
         }
 
-        .custom-form-wrapper .form-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: var(--text-primary);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .google-form-wrapper iframe {
             width: 100%;
-            padding: 12px 16px;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            font-family: var(--font);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--green);
-            background: rgba(255, 255, 255, 0.07);
-            box-shadow: 0 0 20px var(--input-focus);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-group select {
-            background-color: var(--input-bg);
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-        .form-group select option {
-            background: #1a1a1a;
-            color: #fff;
-        }
-
-        .btn-submit-form {
-            width: 100%;
-            padding: 14px 32px;
-            background: var(--green);
-            color: #000;
+            height: 764px;
             border: none;
-            border-radius: 100px;
-            font-family: var(--font);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 0 30px rgba(100, 255, 58, 0.05);
-            margin-top: 8px;
-        }
-
-        .btn-submit-form:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 40px rgba(100, 255, 58, 0.20);
-        }
-
-        .btn-submit-form:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .form-status {
-            margin-top: 16px;
-            padding: 12px 16px;
             border-radius: var(--radius-sm);
-            text-align: center;
-            font-size: 0.9rem;
-            display: none;
-            font-family: var(--font);
-        }
-
-        .form-status.success {
             display: block;
-            background: rgba(100, 255, 58, 0.08);
-            border: 1px solid rgba(100, 255, 58, 0.15);
-            color: var(--green);
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(255, 50, 50, 0.08);
-            border: 1px solid rgba(255, 50, 50, 0.15);
-            color: #ff6b6b;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -929,28 +738,6 @@
             letter-spacing: 0.02em;
         }
 
-        /* ===== TOAST ===== */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--green);
-            color: #000;
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-family: var(--font);
-            z-index: 9999;
-            box-shadow: 0 8px 40px rgba(100, 255, 58, 0.2);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -996,12 +783,6 @@
             }
             .why-logo img {
                 max-width: 200px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .custom-form-wrapper {
-                padding: 24px 18px;
             }
         }
 
@@ -1072,20 +853,19 @@
                 font-size: 0.8rem;
             }
 
-            .custom-form-wrapper {
-                padding: 18px 14px;
+            /* گوگل فرم در موبایل */
+            .google-form-wrapper {
+                padding: 10px;
                 border-radius: var(--radius-sm);
             }
-
-            .form-group input,
-            .form-group textarea {
-                font-size: 0.9rem;
-                padding: 10px 14px;
+            .google-form-wrapper iframe {
+                height: 700px;
             }
+        }
 
-            .btn-neon {
-                padding: 12px 28px;
-                font-size: 0.95rem;
+        @media (max-width: 480px) {
+            .google-form-wrapper iframe {
+                height: 650px;
             }
         }
 
@@ -1197,12 +977,9 @@
                 </div>
 
                 <div class="hero-actions fade-up fade-up-d4">
-                    <!-- دکمه نئونی با افکت نور -->
-                    <a href="#download" class="btn-neon">
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            دانلود رایگان
-                        </span>
+                    <a href="#download" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        دانلود کنید
                     </a>
                     <button class="btn-ghost" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
                         بیشتر بدانید
@@ -1328,7 +1105,7 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS ===== -->
+    <!-- ===== COMMENTS (Google Form) ===== -->
     <section class="comments" id="comments">
         <div class="container">
             <span class="section-label fade-up">نظرات</span>
@@ -1339,111 +1116,10 @@
                 تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
             </p>
 
-            <!-- ===== هدر با بنر ===== -->
-            <div class="comments-header fade-up fade-up-d3">
-                <img src="https://s34.picofile.com/file/8491003850/%DB%8C.png" alt="V2C Comments Banner" />
-            </div>
-
-            <div class="custom-form-wrapper fade-up fade-up-d3">
-                <div class="form-title">📝 فرم نظر</div>
-
-                <!-- 
-                    توجه: به دلیل محدودیت CORS، ارسال مستقیم به فرم گوگل از 
-                    دامنه‌های دیگر (مثل GitHub Pages) کار نمی‌کند.
-                    برای حل این مشکل، باید از Google Apps Script استفاده کنید.
-                    
-                    آموزش کامل در پایین صفحه قرار دارد.
-                -->
-                <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/formResponse" method="POST" target="hidden_iframe">
-                    <div class="form-group">
-                        <label>نام شما</label>
-                        <input type="text" name="entry.1234567890" placeholder="نام خود را وارد کنید" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>ایمیل</label>
-                        <input type="email" name="entry.1234567891" placeholder="ایمیل خود را وارد کنید" required />
-                    </div>
-
-                    <div class="form-group">
-                        <label>سیستم‌عامل</label>
-                        <select name="entry.1234567892">
-                            <option value="Windows">Windows</option>
-                            <option value="macOS">macOS</option>
-                            <option value="Android">Android</option>
-                            <option value="iOS">iOS</option>
-                            <option value="Linux">Linux</option>
-                            <option value="Other">سایر</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>متن نظر</label>
-                        <textarea name="entry.1234567893" placeholder="تجربه شما از V2C..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit-form" id="submitBtn">ثبتش کنم؟</button>
-                </form>
-
-                <div class="form-status" id="formStatus"></div>
-
-                <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-                <!-- ===== راهنمای رفع مشکل CORS ===== -->
-                <div style="margin-top: 24px; padding: 16px 20px; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.04);">
-                    <details>
-                        <summary style="cursor:pointer; color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; font-family: var(--font);">
-                            🔧 اگر نظرات ثبت نمی‌شوند، این راهنما را بخوانید
-                        </summary>
-                        <div style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8; font-family: var(--font);">
-                            <p><strong>❌ مشکل:</strong> به دلیل سیاست‌های امنیتی مرورگر (CORS)، ارسال مستقیم داده به فرم گوگل از دامنه‌های دیگر (مثل GitHub Pages) مسدود می‌شود[reference:2].</p>
-                            <br />
-                            <p><strong>✅ راه‌حل:</strong> از <strong>Google Apps Script</strong> به عنوان واسط استفاده کنید:</p>
-                            <ol style="padding-right: 20px; margin-top: 8px;">
-                                <li>به <a href="https://script.google.com" target="_blank" style="color: var(--green);">script.google.com</a> بروید</li>
-                                <li>یک پروژه جدید بسازید</li>
-                                <li>کد زیر را در آن قرار دهید:</li>
-                            </ol>
-                            <pre style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 0.75rem; direction: ltr; text-align: left; margin-top: 8px; color: #aaa;">
-function doPost(e) {
-  var data = JSON.parse(e.postData.contents);
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  sheet.appendRow([data.name, data.email, data.os, data.text, new Date()]);
-  return ContentService.createTextOutput(JSON.stringify({success: true}))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-                            </pre>
-                            <ol style="padding-right: 20px; margin-top: 8px;" start="4">
-                                <li>یک <strong>Google Sheet</strong> بسازید و آن را به اسکریپت متصل کنید</li>
-                                <li>اسکریپت را به عنوان <strong>Web App</strong> منتشر کنید (با دسترسی <code>Anyone</code>)</li>
-                                <li>آدرس Web App را در کد زیر جایگزین <code>YOUR_SCRIPT_URL</code> کنید</li>
-                            </ol>
-                            <pre style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 0.75rem; direction: ltr; text-align: left; margin-top: 8px; color: #aaa;">
-// جایگزین فرم فعلی با این کد:
-const SCRIPT_URL = 'YOUR_SCRIPT_URL';
-
-document.getElementById('googleForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const data = {
-    name: formData.get('entry.1234567890'),
-    email: formData.get('entry.1234567891'),
-    os: formData.get('entry.1234567892'),
-    text: formData.get('entry.1234567893')
-  };
-  const response = await fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
-  });
-  // نمایش پیام موفقیت
-});
-                            </pre>
-                            <p style="margin-top: 12px; color: var(--green);">✅ با این روش، نظرات شما در Google Sheets ذخیره می‌شوند.</p>
-                        </div>
-                    </details>
-                </div>
+            <div class="google-form-wrapper fade-up fade-up-d3">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
+                    Loading…
+                </iframe>
             </div>
         </div>
     </section>
@@ -1499,9 +1175,6 @@ document.getElementById('googleForm').addEventListener('submit', async function(
         </div>
     </footer>
 
-    <!-- ===== TOAST ===== -->
-    <div class="toast" id="toast">✅ نظر شما با موفقیت ثبت شد!</div>
-
     <!-- ============================================================ -->
     <!-- ===== SCRIPT ===== -->
     <!-- ============================================================ -->
@@ -1546,97 +1219,15 @@ document.getElementById('googleForm').addEventListener('submit', async function(
             observer.observe(el);
         });
 
+        // بررسی اولیه
         fadeEls.forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight) {
                 el.style.animationPlayState = 'running';
             }
         });
 
-        // ===== FORM SUBMIT (با مشکل CORS) =====
-        // توجه: این کد به دلیل محدودیت CORS کار نمی‌کند.
-        // برای راه‌حل، بخش راهنما در پایین فرم را مطالعه کنید.
-        const form = document.getElementById('googleForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const statusDiv = document.getElementById('formStatus');
-        const toast = document.getElementById('toast');
-
-        const iframe = document.querySelector('iframe[name="hidden_iframe"]');
-
-        form.addEventListener('submit', function(e) {
-            // جلوگیری از ارسال واقعی (چون CORS داره)
-            e.preventDefault();
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ در حال ارسال...';
-            statusDiv.className = 'form-status';
-            statusDiv.style.display = 'none';
-
-            // شبیه‌سازی ارسال موفق (برای تست)
-            setTimeout(() => {
-                // بررسی اینکه آیا iframe بارگذاری شده است
-                iframe.onload = function() {
-                    showSuccess();
-                };
-            }, 500);
-
-            setTimeout(() => {
-                if (!submitBtn.disabled) return;
-                showSuccess();
-            }, 3000);
-        });
-
-        function showSuccess() {
-            statusDiv.className = 'form-status success';
-            statusDiv.textContent = '✅ نظر شما با موفقیت ثبت شد! متشکریم 🙏';
-            statusDiv.style.display = 'block';
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'ثبتش کنم؟';
-
-            setTimeout(() => {
-                form.reset();
-                statusDiv.style.display = 'none';
-            }, 5000);
-
-            showToast('✅ نظر شما با موفقیت ثبت شد!');
-        }
-
-        function showToast(message) {
-            toast.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toast._timeout);
-            toast._timeout = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
-
-        // ===== تشخیص سیستم‌عامل =====
-        function detectOS() {
-            const ua = navigator.userAgent;
-            if (ua.includes('Windows')) return 'Windows';
-            if (ua.includes('Mac')) return 'macOS';
-            if (ua.includes('Android')) return 'Android';
-            if (ua.includes('iOS') || ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
-            if (ua.includes('Linux')) return 'Linux';
-            return 'Other';
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const osSelect = document.querySelector('select[name="entry.1234567892"]');
-            if (osSelect) {
-                const detected = detectOS();
-                for (let option of osSelect.options) {
-                    if (option.value === detected) {
-                        option.selected = true;
-                        break;
-                    }
-                }
-            }
-        });
-
-        console.log('💬 سیستم نظرات با Google Forms');
-        console.log('⚠️ به دلیل محدودیت CORS، ارسال مستقیم به فرم گوگل از دامنه‌های دیگر کار نمی‌کند.');
-        console.log('📌 راه‌حل: از Google Apps Script استفاده کنید (راهنما در پایین فرم)');
+        console.log('💬 سیستم نظرات با Google Form فعال شد');
+        console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
     </script>
 
 </body>
