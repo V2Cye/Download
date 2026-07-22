@@ -362,7 +362,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* ===== GLOW به Free VPN ===== */
             text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 60px rgba(100, 255, 58, 0.1);
             animation: glowPulseText 2.5s ease-in-out infinite;
         }
@@ -376,7 +375,6 @@
             }
         }
 
-        /* ===== افکت تایپ‌رایتر با رنگ و گلو (سایز بزرگ‌تر) ===== */
         #typed-text {
             font-size: clamp(3.2rem, 7vw, 5.6rem);
             font-weight: 800;
@@ -386,17 +384,14 @@
         .typed-blue {
             color: #3b82f6;
             text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
-            transition: text-shadow 0.3s ease;
         }
         .typed-yellow {
             color: #facc15;
             text-shadow: 0 0 30px rgba(250, 204, 21, 0.8), 0 0 80px rgba(250, 204, 21, 0.4);
-            transition: text-shadow 0.3s ease;
         }
         .typed-red {
             color: #ef4444;
             text-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 80px rgba(239, 68, 68, 0.4);
-            transition: text-shadow 0.3s ease;
         }
 
         .hero p {
@@ -487,7 +482,7 @@
             border-color: rgba(100, 255, 58, 0.15);
         }
 
-        /* ===== لوگوی بزرگ با افکت متحرک + GLOW ===== */
+        /* ===== لوگوی بزرگ با سایز بسیار بزرگتر ===== */
         .hero-logo-wrapper {
             position: relative;
             display: flex;
@@ -501,8 +496,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 24px 32px;
+            gap: 12px;
+            padding: 30px 40px;
             background: rgba(9, 9, 9, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -512,8 +507,7 @@
             transition: var(--transition);
             position: relative;
             z-index: 2;
-            min-width: 200px;
-            /* ===== GLOW pulse ===== */
+            min-width: 240px;
             animation: glowPulseLogo 2.5s ease-in-out infinite;
         }
 
@@ -531,8 +525,10 @@
             transform: scale(1.02);
         }
 
+        /* ===== تغییر سایز لوگو به بسیار بزرگتر ===== */
         .hero-logo img {
-            max-width: 180px; /* بزرگتر در دسکتاپ */
+            max-width: 280px; /* از 180 به 280 */
+            width: 100%;
             height: auto;
             display: block;
             filter: drop-shadow(0 0 30px rgba(100, 255, 58, 0.06));
@@ -540,11 +536,11 @@
         }
 
         .hero-logo .badge-free-lg {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: 600;
             background: var(--green);
             color: #000;
-            padding: 4px 16px;
+            padding: 6px 20px;
             border-radius: 100px;
             letter-spacing: 0.04em;
             text-transform: uppercase;
@@ -553,8 +549,8 @@
         /* ===== نیم‌دایره بالایی با برچسب‌های متحرک ===== */
         .orbit-container {
             position: absolute;
-            width: 340px;
-            height: 340px;
+            width: 420px; /* بزرگتر برای هماهنگی با لوگو */
+            height: 420px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -562,59 +558,55 @@
             z-index: 1;
         }
 
-        /* حذف حلقه‌های اضافی (یا می‌توان نگه داشت ولی opacity کم) */
         .orbit-ring {
-            display: none; /* حلقه‌ها را مخفی می‌کنیم تا فقط برچسب‌ها باشند */
+            display: none;
         }
 
         .orbit-item {
             position: absolute;
             width: auto;
-            padding: 6px 14px;
+            padding: 8px 18px;
             background: rgba(9, 9, 9, 0.8);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(100, 255, 58, 0.2);
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--green);
             letter-spacing: 0.04em;
             white-space: nowrap;
             box-shadow: 0 0 20px rgba(100, 255, 58, 0.04);
             transform: translate(-50%, -50%);
-            /* ===== حرکت نوسانی ===== */
             animation: floatItem 3s ease-in-out infinite;
         }
 
-        /* هر آیتم با تاخیر متفاوت */
         .orbit-item:nth-child(4) {
-            top: 5%;
+            top: 2%;
             left: 50%;
             animation-delay: 0s;
         }
         .orbit-item:nth-child(5) {
-            top: 12%;
-            left: 15%;
+            top: 10%;
+            left: 12%;
             animation-delay: 0.4s;
         }
         .orbit-item:nth-child(6) {
-            top: 12%;
-            left: 85%;
+            top: 10%;
+            left: 88%;
             animation-delay: 0.8s;
         }
         .orbit-item:nth-child(7) {
-            top: 30%;
-            left: 4%;
+            top: 28%;
+            left: 2%;
             animation-delay: 1.2s;
         }
         .orbit-item:nth-child(8) {
-            top: 30%;
-            left: 96%;
+            top: 28%;
+            left: 98%;
             animation-delay: 1.6s;
         }
 
-        /* آیتم‌های ۹ و ۱۰ و ۱۱ را حذف یا مخفی می‌کنیم (چون فقط ۵ تا می‌خواهیم) */
         .orbit-item:nth-child(9),
         .orbit-item:nth-child(10),
         .orbit-item:nth-child(11) {
@@ -626,7 +618,7 @@
                 transform: translate(-50%, -50%) translateY(0px);
             }
             50% {
-                transform: translate(-50%, -50%) translateY(-8px);
+                transform: translate(-50%, -50%) translateY(-10px);
             }
         }
 
@@ -820,7 +812,7 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS (Google Form - بدون کادر) ===== */
+        /* ===== COMMENTS ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
@@ -854,7 +846,6 @@
             aspect-ratio: 2527 / 380;
         }
 
-        /* ===== iframe بدون کادر و هم‌عرض با بنر ===== */
         .google-form-iframe {
             width: 100%;
             max-width: 1200px;
@@ -867,7 +858,6 @@
             height: 816px;
             border: none;
             display: block;
-            /* ===== تم تاریک با فیلتر ===== */
             filter: invert(1) hue-rotate(180deg);
             background: #fff;
         }
@@ -988,15 +978,15 @@
 
         @media (max-width: 1200px) {
             .orbit-container {
-                width: 300px;
-                height: 300px;
+                width: 380px;
+                height: 380px;
             }
             .hero-logo {
-                padding: 18px 24px;
-                min-width: 170px;
+                padding: 24px 32px;
+                min-width: 200px;
             }
             .hero-logo img {
-                max-width: 160px;
+                max-width: 240px;
             }
         }
 
@@ -1027,22 +1017,22 @@
             .hero-logo {
                 flex-direction: row;
                 gap: 20px;
-                padding: 16px 28px;
+                padding: 20px 32px;
                 width: fit-content;
                 margin: 0 auto;
                 min-width: auto;
             }
             .hero-logo img {
-                max-width: 150px;
+                max-width: 200px;
             }
 
             .orbit-container {
-                width: 280px;
-                height: 280px;
+                width: 320px;
+                height: 320px;
             }
             .orbit-item {
-                font-size: 0.65rem;
-                padding: 4px 12px;
+                font-size: 0.75rem;
+                padding: 6px 14px;
             }
 
             .features-grid {
@@ -1068,22 +1058,22 @@
 
         @media (max-width: 768px) {
             .orbit-container {
-                width: 480px;
-                height: 480px;
+                width: 280px;
+                height: 280px;
             }
             .orbit-item {
-                font-size: 0.6rem;
-                padding: 3px 10px;
+                font-size: 0.7rem;
+                padding: 5px 12px;
             }
             .hero-logo {
-                padding: 12px 20px;
+                padding: 16px 24px;
             }
             .hero-logo img {
-                max-width: 120px; /* بزرگتر در موبایل */
+                max-width: 160px;
             }
             .hero-logo .badge-free-lg {
-                font-size: 0.6rem;
-                padding: 3px 12px;
+                font-size: 0.65rem;
+                padding: 4px 14px;
             }
             .google-form-iframe iframe {
                 height: 680px;
@@ -1106,48 +1096,46 @@
             }
             .hero-logo {
                 flex-direction: column;
-                padding: 12px 16px;
-                gap: 8px;
+                padding: 16px 20px;
+                gap: 10px;
                 width: 100%;
-                max-width: 160px;
+                max-width: 200px;
             }
             .hero-logo img {
-                max-width: 200px; /* بزرگتر در موبایل کوچک */
+                max-width: 140px;
             }
             .hero-logo .badge-free-lg {
-                font-size: 0.55rem;
-                padding: 2px 10px;
+                font-size: 0.6rem;
+                padding: 3px 12px;
             }
 
             .orbit-container {
-                width: 200px;
-                height: 200px;
+                width: 240px;
+                height: 240px;
             }
             .orbit-item {
-                font-size: 0.5rem;
-                padding: 2px 8px;
-                border-width: 0.5px;
+                font-size: 0.6rem;
+                padding: 4px 10px;
             }
-            /* تنظیم موقعیت‌ها برای سایز کوچک‌تر */
             .orbit-item:nth-child(4) {
-                top: 2%;
+                top: 1%;
                 left: 50%;
             }
             .orbit-item:nth-child(5) {
                 top: 8%;
-                left: 12%;
+                left: 10%;
             }
             .orbit-item:nth-child(6) {
                 top: 8%;
-                left: 88%;
+                left: 90%;
             }
             .orbit-item:nth-child(7) {
                 top: 22%;
-                left: 2%;
+                left: 1%;
             }
             .orbit-item:nth-child(8) {
                 top: 22%;
-                left: 98%;
+                left: 99%;
             }
 
             .features-grid {
@@ -1209,7 +1197,6 @@
                 height: 620px;
             }
 
-            /* ===== هدر در موبایل ===== */
             .header-inner {
                 flex-wrap: nowrap;
                 justify-content: space-between;
@@ -1237,19 +1224,19 @@
             }
 
             .orbit-container {
-                width: 170px;
-                height: 170px;
+                width: 200px;
+                height: 200px;
             }
             .orbit-item {
-                font-size: 0.4rem;
-                padding: 1px 6px;
+                font-size: 0.5rem;
+                padding: 2px 8px;
             }
             .hero-logo {
-                max-width: 130px;
-                padding: 10px 12px;
+                max-width: 160px;
+                padding: 12px 16px;
             }
             .hero-logo img {
-                max-width: 80px; /* بزرگتر در نمایشگرهای خیلی کوچک */
+                max-width: 110px;
             }
 
             .google-form-iframe iframe {
@@ -1266,7 +1253,6 @@
             }
         }
 
-        /* ===== نمایش بج هدر در نسخه دسکتاپ و تبلت ===== */
         @media (min-width: 641px) {
             .header-badge {
                 display: flex;
@@ -1342,7 +1328,6 @@
                 <span class="badge-free">رایگان</span>
             </a>
 
-            <!-- ===== بج وسط هدر ===== -->
             <div class="header-badge">
                 <span class="dot"></span>
                 نسخه جدید · کاملاً رایگان
@@ -1396,10 +1381,9 @@
                 </div>
             </div>
 
-            <!-- ===== لوگوی بزرگ با افکت متحرک + GLOW ===== -->
+            <!-- ===== لوگوی بزرگ با سایز بسیار بزرگتر ===== -->
             <div class="hero-logo-wrapper fade-up fade-up-d5">
                 <div class="orbit-container">
-                    <!-- حلقه‌ها مخفی شدند (display:none) -->
                     <div class="orbit-ring"></div>
                     <div class="orbit-ring"></div>
                     <div class="orbit-ring"></div>
@@ -1527,11 +1511,10 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS (Google Form - بدون کادر) ===== -->
+    <!-- ===== COMMENTS ===== -->
     <section class="comments" id="comments">
         <div class="container">
 
-            <!-- بنر -->
             <div class="comments-banner fade-up">
                 <img src="https://s34.picofile.com/file/8491003850/%DB%8C.png" alt="V2C Comments Banner" />
             </div>
@@ -1544,7 +1527,6 @@
                 تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
             </p>
 
-            <!-- iframe بدون کادر اضافی و هم‌عرض با بنر -->
             <div class="google-form-iframe fade-up fade-up-d3">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
                     Loading…
@@ -1655,7 +1637,7 @@
             }
         });
 
-        // ===== TYPED.JS (سریع‌تر و بزرگ‌تر) =====
+        // ===== TYPED.JS =====
         document.addEventListener('DOMContentLoaded', function() {
             const typed = new Typed('#typed-text', {
                 strings: [
@@ -1672,10 +1654,6 @@
                 contentType: 'html'
             });
         });
-
-        // ============================================================
-        // ===== SERVICE WORKER (اختیاری) =====
-        // ============================================================
 
         try {
             if ('serviceWorker' in navigator) {
