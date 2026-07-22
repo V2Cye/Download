@@ -170,21 +170,75 @@
             color: var(--green);
         }
 
-        .btn-download-nav {
-            background: var(--green);
-            color: #000 !important;
-            padding: 8px 22px;
-            border-radius: 100px;
-            font-weight: 600 !important;
-            font-size: 0.85rem !important;
-            transition: var(--transition);
-            border: none;
+        /* ===== دکمه نئونی دانلود در هدر ===== */
+        .btn-neon-download {
+            position: relative;
+            display: inline-block;
+            padding: 8px 28px;
+            background: transparent;
+            color: var(--green);
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid var(--green);
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+            overflow: hidden;
             cursor: pointer;
+            box-shadow: 0 0 20px rgba(100, 255, 58, 0.1);
+            z-index: 1;
         }
-        .btn-download-nav:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 30px rgba(100, 255, 58, 0.25);
-            color: #000 !important;
+
+        .btn-neon-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 58, 0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-neon-download:hover::before {
+            left: 100%;
+        }
+
+        .btn-neon-download:hover {
+            background: var(--green);
+            color: #000;
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.4), 0 0 80px rgba(100, 255, 58, 0.2);
+            transform: scale(1.05);
+        }
+
+        .btn-neon-download .neon-line {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--green), transparent, var(--green), transparent);
+            animation: rotateNeon 4s linear infinite;
+            opacity: 0.3;
+            z-index: -2;
+            filter: blur(10px);
+        }
+
+        @keyframes rotateNeon {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-neon-download:hover .neon-line {
+            opacity: 0.6;
         }
 
         /* ===== HERO ===== */
@@ -602,11 +656,36 @@
             background: rgba(255, 255, 255, 0.01);
         }
 
+        .comments .section-label,
+        .comments .section-title,
         .comments .section-sub {
             text-align: center;
+        }
+
+        .comments .section-sub {
             margin: 0 auto 40px;
         }
 
+        /* ===== بنر بالای بخش کامنت ===== */
+        .comments-banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+            border: 1px solid rgba(100, 255, 58, 0.06);
+        }
+
+        .comments-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 2527 / 380;
+        }
+
+        /* ===== فرم گوگل با حذف متن پایین ===== */
         .google-form-wrapper {
             max-width: 800px;
             margin: 0 auto;
@@ -618,14 +697,19 @@
             -webkit-backdrop-filter: blur(4px);
             overflow: hidden;
             box-shadow: var(--shadow-glow);
+            position: relative;
+            height: 750px;
         }
 
         .google-form-wrapper iframe {
             width: 100%;
-            height: 764px;
+            height: 800px;
             border: none;
             border-radius: var(--radius-sm);
             display: block;
+            margin-top: -50px;
+            /* بالا کشیدن iframe برای مخفی کردن متن پایین */
+            pointer-events: auto;
         }
 
         /* ===== DOWNLOAD ===== */
@@ -784,6 +868,14 @@
             .why-logo img {
                 max-width: 200px;
             }
+            .google-form-wrapper {
+                height: 700px;
+                padding: 16px;
+            }
+            .google-form-wrapper iframe {
+                height: 750px;
+                margin-top: -40px;
+            }
         }
 
         @media (max-width: 640px) {
@@ -832,7 +924,7 @@
             .footer-links {
                 justify-content: center;
             }
-            .header-inner .nav-actions a:not(.btn-download-nav) {
+            .header-inner .nav-actions a:not(.btn-neon-download) {
                 display: none;
             }
             .logo img {
@@ -842,9 +934,9 @@
                 font-size: 0.5rem;
                 padding: 1px 8px;
             }
-            .btn-download-nav {
+            .btn-neon-download {
                 padding: 6px 16px;
-                font-size: 0.75rem !important;
+                font-size: 0.7rem !important;
             }
             .hero-features {
                 gap: 12px 20px;
@@ -853,19 +945,28 @@
                 font-size: 0.8rem;
             }
 
-            /* گوگل فرم در موبایل */
             .google-form-wrapper {
+                height: 620px;
                 padding: 10px;
                 border-radius: var(--radius-sm);
             }
             .google-form-wrapper iframe {
-                height: 700px;
+                height: 670px;
+                margin-top: -30px;
+            }
+
+            .comments-banner {
+                border-radius: var(--radius-sm);
             }
         }
 
         @media (max-width: 480px) {
+            .google-form-wrapper {
+                height: 580px;
+            }
             .google-form-wrapper iframe {
-                height: 650px;
+                height: 630px;
+                margin-top: -25px;
             }
         }
 
@@ -941,7 +1042,11 @@
                 <a href="#features">ویژگی‌ها</a>
                 <a href="#why">چرا V2C</a>
                 <a href="#comments">نظرات</a>
-                <a href="#download" class="btn-download-nav">دانلود</a>
+                <!-- دکمه نئونی دانلود -->
+                <a href="#download" class="btn-neon-download">
+                    <span class="neon-line"></span>
+                    دانلود
+                </a>
             </div>
         </div>
     </header>
@@ -1108,6 +1213,12 @@
     <!-- ===== COMMENTS (Google Form) ===== -->
     <section class="comments" id="comments">
         <div class="container">
+
+            <!-- بنر بالای بخش کامنت -->
+            <div class="comments-banner fade-up">
+                <img src="https://s34.picofile.com/file/8491003850/%DB%8C.png" alt="V2C Comments Banner" />
+            </div>
+
             <span class="section-label fade-up">نظرات</span>
             <h2 class="section-title fade-up fade-up-d1">
                 نظر خود را <span>بنویسید</span>
@@ -1228,6 +1339,8 @@
 
         console.log('💬 سیستم نظرات با Google Form فعال شد');
         console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
+        console.log('✨ دکمه نئونی دانلود در هدر فعال شد');
+        console.log('🖼️ بنر بخش کامنت با عرض کامل قرار گرفت');
     </script>
 
 </body>
