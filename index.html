@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
 
     <style>
-        /* ===== تمام استایل‌های قبلی ===== */
+        /* ===== RESET & BASE ===== */
         *,
         *::before,
         *::after {
@@ -1118,7 +1118,7 @@
             background: rgba(100, 255, 58, 0.02);
         }
 
-        /* ===== SETTINGS PANEL ===== */
+        /* ===== JSONBin Settings ===== */
         .settings-panel {
             position: fixed;
             bottom: 20px;
@@ -1197,6 +1197,11 @@
             opacity: 0.5;
             margin-top: 8px;
             text-align: center;
+        }
+
+        .settings-panel .status.connected {
+            color: var(--green);
+            opacity: 1;
         }
     </style>
 </head>
@@ -1430,7 +1435,7 @@
                         <button type="submit" class="btn-submit" id="submitBtn">ارسال نظر</button>
                     </form>
                     <div style="margin-top:12px;font-size:0.75rem;color:var(--text-secondary);opacity:0.4;text-align:center;">
-                        نظرات در GitHub ذخیره می‌شوند
+                        نظرات در JSONBin.io ذخیره می‌شوند 🔒
                     </div>
                 </div>
 
@@ -1493,23 +1498,19 @@
         </div>
     </footer>
 
-    <!-- ===== SETTINGS PANEL (برای تنظیم GitHub Token) ===== -->
+    <!-- ===== JSONBin SETTINGS PANEL ===== -->
     <details class="settings-panel">
-        <summary>⚙️ تنظیمات GitHub</summary>
+        <summary>⚙️ تنظیمات JSONBin</summary>
         <div class="setting-group">
-            <label>GitHub Token</label>
-            <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx" />
+            <label>Bin ID</label>
+            <input type="text" id="binId" placeholder="مثلاً: 5f8f8f8f8f8f8f" />
         </div>
         <div class="setting-group">
-            <label>نام مخزن (مثال: username/repo)</label>
-            <input type="text" id="githubRepo" placeholder="username/repo" />
-        </div>
-        <div class="setting-group">
-            <label>مسیر فایل (مثال: comments.json)</label>
-            <input type="text" id="githubPath" value="comments.json" />
+            <label>API Key (اختیاری)</label>
+            <input type="password" id="apiKey" placeholder="برای نوشتن نیاز است" />
         </div>
         <button class="btn-save-settings" id="saveSettings">ذخیره تنظیمات</button>
-        <div class="status" id="githubStatus">⚪ غیرفعال</div>
+        <div class="status" id="binStatus">⚪ غیرفعال</div>
     </details>
 
     <!-- ===== TOAST ===== -->
@@ -1520,142 +1521,134 @@
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // ===== CONFIGURATION =====
+        // ===== JSONBin CONFIGURATION =====
         // ============================================================
 
-        // تنظیمات پیش‌فرض (از localStorage خوانده می‌شود)
         let CONFIG = {
-            token: '',
-            repo: '',
-            path: 'comments.json'
+            binId: '',
+            apiKey: ''
         };
 
         // بارگذاری تنظیمات از localStorage
         function loadConfig() {
             try {
-                const saved = localStorage.getItem('v2c_github_config');
+                const saved = localStorage.getItem('v2c_jsonbin_config');
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     CONFIG = { ...CONFIG, ...parsed };
-                    document.getElementById('githubToken').value = CONFIG.token || '';
-                    document.getElementById('githubRepo').value = CONFIG.repo || '';
-                    document.getElementById('githubPath').value = CONFIG.path || 'comments.json';
+                    document.getElementById('binId').value = CONFIG.binId || '';
+                    document.getElementById('apiKey').value = CONFIG.apiKey || '';
                 }
             } catch (e) {
                 console.warn('خطا در بارگذاری تنظیمات:', e);
             }
-            updateGitHubStatus();
+            updateStatus();
         }
 
         // ذخیره تنظیمات
         function saveConfig() {
-            CONFIG.token = document.getElementById('githubToken').value.trim();
-            CONFIG.repo = document.getElementById('githubRepo').value.trim();
-            CONFIG.path = document.getElementById('githubPath').value.trim() || 'comments.json';
-            localStorage.setItem('v2c_github_config', JSON.stringify(CONFIG));
-            updateGitHubStatus();
+            CONFIG.binId = document.getElementById('binId').value.trim();
+            CONFIG.apiKey = document.getElementById('apiKey').value.trim();
+            localStorage.setItem('v2c_jsonbin_config', JSON.stringify(CONFIG));
+            updateStatus();
             showToast('✅ تنظیمات ذخیره شد');
+            loadComments(); // بارگذاری مجدد نظرات
         }
 
-        function updateGitHubStatus() {
-            const status = document.getElementById('githubStatus');
-            if (CONFIG.token && CONFIG.repo) {
-                status.textContent = '✅ متصل به GitHub';
-                status.style.color = 'var(--green)';
+        function updateStatus() {
+            const status = document.getElementById('binStatus');
+            if (CONFIG.binId) {
+                status.textContent = '✅ متصل به JSONBin';
+                status.className = 'status connected';
             } else {
-                status.textContent = '⚪ غیرفعال (تنظیمات را وارد کنید)';
-                status.style.color = 'var(--text-secondary)';
+                status.textContent = '⚪ غیرفعال (Bin ID را وارد کنید)';
+                status.className = 'status';
             }
         }
 
         // ============================================================
-        // ===== GITHUB API =====
+        // ===== JSONBin API =====
         // ============================================================
 
-        async function fetchCommentsFromGitHub() {
-            if (!CONFIG.token || !CONFIG.repo) {
+        const JSONBIN_API = 'https://api.jsonbin.io/v3';
+
+        // دریافت نظرات از JSONBin
+        async function fetchCommentsFromJSONBin() {
+            if (!CONFIG.binId) {
                 return null;
             }
 
             try {
-                const url = `https://api.github.com/repos/${CONFIG.repo}/contents/${CONFIG.path}`;
-                const response = await fetch(url, {
-                    headers: {
-                        'Authorization': `token ${CONFIG.token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                if (CONFIG.apiKey) {
+                    headers['X-Master-Key'] = CONFIG.apiKey;
+                }
+
+                const response = await fetch(`${JSONBIN_API}/b/${CONFIG.binId}/latest`, {
+                    headers: headers
                 });
 
                 if (!response.ok) {
                     if (response.status === 404) {
-                        // فایل وجود ندارد → بازگشت آرایه خالی
-                        return [];
+                        return []; // Bin وجود ندارد
                     }
-                    throw new Error(`GitHub API Error: ${response.status}`);
+                    throw new Error(`JSONBin API Error: ${response.status}`);
                 }
 
                 const data = await response.json();
-                const content = atob(data.content);
-                const comments = JSON.parse(content);
-                return Array.isArray(comments) ? comments : [];
+                const record = data.record;
+
+                // اگر record آرایه باشد، همان را برمی‌گردانیم
+                if (Array.isArray(record)) {
+                    return record;
+                }
+                // اگر record یک شیء با کلید comments باشد
+                if (record && record.comments && Array.isArray(record.comments)) {
+                    return record.comments;
+                }
+                // در غیر این صورت، یک آرایه خالی برمی‌گردانیم
+                return [];
             } catch (error) {
-                console.error('خطا در دریافت نظرات از GitHub:', error);
+                console.error('خطا در دریافت نظرات از JSONBin:', error);
                 return null;
             }
         }
 
-        async function saveCommentsToGitHub(comments) {
-            if (!CONFIG.token || !CONFIG.repo) {
-                throw new Error('تنظیمات GitHub کامل نیست');
+        // ذخیره نظرات در JSONBin
+        async function saveCommentsToJSONBin(comments) {
+            if (!CONFIG.binId) {
+                throw new Error('Bin ID تنظیم نشده است');
+            }
+
+            if (!CONFIG.apiKey) {
+                throw new Error('API Key برای نوشتن در JSONBin نیاز است');
             }
 
             try {
-                // ابتدا SHA فایل را دریافت می‌کنیم (برای آپدیت)
-                const url = `https://api.github.com/repos/${CONFIG.repo}/contents/${CONFIG.path}`;
-                let sha = null;
-
-                try {
-                    const getResponse = await fetch(url, {
-                        headers: {
-                            'Authorization': `token ${CONFIG.token}`,
-                            'Accept': 'application/vnd.github.v3+json'
-                        }
-                    });
-
-                    if (getResponse.ok) {
-                        const data = await getResponse.json();
-                        sha = data.sha;
-                    }
-                } catch (e) {
-                    // فایل وجود ندارد → ایجاد جدید
-                }
-
-                const content = btoa(JSON.stringify(comments, null, 2));
-
-                const body = {
-                    message: `Update comments - ${new Date().toISOString()}`,
-                    content: content,
-                    sha: sha || undefined
+                // ساختار داده: یک شیء با کلید comments
+                const data = {
+                    comments: comments
                 };
 
-                const response = await fetch(url, {
+                const response = await fetch(`${JSONBIN_API}/b/${CONFIG.binId}`, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${CONFIG.token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': CONFIG.apiKey
                     },
-                    body: JSON.stringify(body)
+                    body: JSON.stringify(data)
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    throw new Error(errorData.message || `GitHub API Error: ${response.status}`);
+                    throw new Error(errorData.message || `JSONBin API Error: ${response.status}`);
                 }
 
                 return await response.json();
             } catch (error) {
-                console.error('خطا در ذخیره نظرات در GitHub:', error);
+                console.error('خطا در ذخیره نظرات در JSONBin:', error);
                 throw error;
             }
         }
@@ -1675,17 +1668,23 @@
                 isLoading = true;
                 list.innerHTML = `<div class="no-comments">⏳ در حال بارگذاری نظرات...</div>`;
 
-                const data = await fetchCommentsFromGitHub();
-
-                if (data === null) {
-                    // خطا در دریافت یا تنظیمات ناقص
+                if (!CONFIG.binId) {
                     list.innerHTML =
-                        `<div class="no-comments">⚠️ لطفاً تنظیمات GitHub را در پنل پایین سمت چپ تکمیل کنید.</div>`;
+                        `<div class="no-comments">⚙️ لطفاً Bin ID را در پنل تنظیمات وارد کنید.</div>`;
                     comments = [];
                     return;
                 }
 
-                comments = data;
+                const data = await fetchCommentsFromJSONBin();
+
+                if (data === null) {
+                    list.innerHTML =
+                        `<div class="no-comments">❌ خطا در ارتباط با JSONBin. لطفاً تنظیمات را بررسی کنید.</div>`;
+                    comments = [];
+                    return;
+                }
+
+                comments = Array.isArray(data) ? data : [];
                 renderComments();
 
             } catch (error) {
@@ -1817,8 +1816,13 @@
                 return;
             }
 
-            if (!CONFIG.token || !CONFIG.repo) {
-                showToast('⚠️ لطفاً ابتدا تنظیمات GitHub را در پنل پایین سمت چپ تکمیل کنید.');
+            if (!CONFIG.binId) {
+                showToast('⚠️ لطفاً Bin ID را در پنل تنظیمات وارد کنید.');
+                return;
+            }
+
+            if (!CONFIG.apiKey) {
+                showToast('⚠️ برای ثبت نظر، API Key را در پنل تنظیمات وارد کنید.');
                 return;
             }
 
@@ -1839,7 +1843,7 @@
                 const allComments = comments || [];
                 allComments.push(newComment);
 
-                await saveCommentsToGitHub(allComments);
+                await saveCommentsToJSONBin(allComments);
 
                 comments = allComments;
                 renderComments();
@@ -1855,7 +1859,7 @@
                     s.style.color = 'rgba(255,255,255,0.2)';
                 });
 
-                showToast('✅ نظر شما با موفقیت در GitHub ثبت شد!');
+                showToast('✅ نظر شما با موفقیت در JSONBin ثبت شد!');
 
             } catch (error) {
                 showToast(`❌ خطا: ${error.message}`);
@@ -1938,20 +1942,19 @@
 
         document.getElementById('saveSettings').addEventListener('click', () => {
             saveConfig();
-            // بارگذاری مجدد نظرات با تنظیمات جدید
-            loadComments();
         });
 
         // بارگذاری اولیه
         loadConfig();
         loadComments();
 
-        console.log('💬 سیستم نظرات V2C با GitHub API فعال شد');
+        console.log('💬 سیستم نظرات V2C با JSONBin.io فعال شد');
         console.log('📌 برای استفاده:');
-        console.log('1. یک GitHub Token با دسترسی repo ایجاد کنید');
-        console.log('2. نام مخزن را وارد کنید (مثلاً: username/repo)');
-        console.log('3. روی "ذخیره تنظیمات" کلیک کنید');
-        console.log('4. نظرات به صورت خودکار در فایل comments.json ذخیره می‌شوند');
+        console.log('1. به سایت jsonbin.io بروید');
+        console.log('2. یک Bin جدید بسازید');
+        console.log('3. Bin ID را در پنل تنظیمات وارد کنید');
+        console.log('4. برای نوشتن نظر، API Key را نیز وارد کنید');
+        console.log('5. روی "ذخیره تنظیمات" کلیک کنید');
     </script>
 
 </body>
