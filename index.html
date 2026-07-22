@@ -1739,34 +1739,7 @@
         });
         `;
 
-        // ایجاد فایل sw.js در کنسول (برای راهنمایی)
-        console.log('📝 برای ایجاد فایل sw.js، کد زیر را در فایل sw.js در روت پروژه قرار دهید:');
-        console.log(swCode);
-
-        // همچنین اگر امکان ذخیره فایل وجود داشته باشد
-        try {
-            const blob = new Blob([swCode], { type: 'application/javascript' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'sw.js';
-            link.textContent = '📥 دانلود فایل sw.js';
-            link.style.display = 'block';
-            link.style.margin = '20px auto';
-            link.style.padding = '12px 24px';
-            link.style.background = '#64FF3A';
-            link.style.color = '#000';
-            link.style.borderRadius = '50px';
-            link.style.textDecoration = 'none';
-            link.style.textAlign = 'center';
-            link.style.maxWidth = '300px';
-            link.style.fontWeight = '600';
-            link.style.fontFamily = 'IRANYekanWeb, sans-serif';
-            // اضافه کردن به پایین صفحه برای دانلود آسان
-            document.querySelector('footer').after(link);
-        } catch (e) {
-            console.log('برای دانلود sw.js از کد بالا استفاده کنید');
-        }
-    </script>
+ 
 
 </body>
 </html>
