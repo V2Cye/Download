@@ -33,7 +33,7 @@
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* ===== فونت Vazirmatn (جایگزین مطمئن) ===== */
+        /* ===== فونت Vazirmatn ===== */
         @font-face {
             font-family: 'Vazirmatn';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css') format('css');
@@ -777,7 +777,7 @@
             font-weight: 400;
         }
 
-        /* ===== COMMENTS (Google Form - بدون باکس اضافی) ===== */
+        /* ===== COMMENTS (Google Form - بدون کادر) ===== */
         .comments {
             padding: 60px 0 100px;
             background: rgba(255, 255, 255, 0.01);
@@ -811,31 +811,22 @@
             aspect-ratio: 2527 / 380;
         }
 
-        /* ===== iframe بدون باکس و هم‌عرض با بنر ===== */
+        /* ===== iframe بدون کادر و هم‌عرض با بنر ===== */
         .google-form-iframe {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             display: block;
-            height: 820px;
-            border: 1px solid rgba(100, 255, 58, 0.06);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            background: #1a1a1a;
-            /* پس‌زمینه تیره برای iframe */
         }
 
         .google-form-iframe iframe {
             width: 100%;
-            height: 100%;
+            height: 816px;
             border: none;
             display: block;
             /* ===== تم تاریک با فیلتر ===== */
             filter: invert(1) hue-rotate(180deg);
-            /* معکوس کردن رنگ‌ها برای تم تاریک */
             background: #fff;
-            /* پس‌زمینه سفید برای اعمال فیلتر به سیاه تبدیل می‌شود */
         }
 
         /* ===== DOWNLOAD ===== */
@@ -1027,7 +1018,7 @@
             .why-logo img {
                 max-width: 200px;
             }
-            .google-form-iframe {
+            .google-form-iframe iframe {
                 height: 750px;
             }
         }
@@ -1057,7 +1048,7 @@
                 font-size: 0.55rem;
                 padding: 3px 12px;
             }
-            .google-form-iframe {
+            .google-form-iframe iframe {
                 height: 680px;
             }
         }
@@ -1181,9 +1172,8 @@
                 border-radius: var(--radius-sm);
             }
 
-            .google-form-iframe {
+            .google-form-iframe iframe {
                 height: 620px;
-                border-radius: var(--radius-sm);
             }
         }
 
@@ -1214,7 +1204,7 @@
                 max-width: 60px;
             }
 
-            .google-form-iframe {
+            .google-form-iframe iframe {
                 height: 570px;
             }
 
@@ -1482,7 +1472,7 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS (Google Form - بدون باکس) ===== -->
+    <!-- ===== COMMENTS (Google Form - بدون کادر) ===== -->
     <section class="comments" id="comments">
         <div class="container">
 
@@ -1499,7 +1489,7 @@
                 تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
             </p>
 
-            <!-- iframe بدون باکس اضافی و هم‌عرض با بنر -->
+            <!-- iframe بدون کادر اضافی و هم‌عرض با بنر -->
             <div class="google-form-iframe fade-up fade-up-d3">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
                     Loading…
