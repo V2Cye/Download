@@ -19,15 +19,17 @@
         }
 
         :root {
-            --bg: #090909;
+            --bg: #121212;
+            /* روشن‌تر از قبل */
             --green: #64FF3A;
             --green-glow: rgba(100, 255, 58, 0.15);
             --green-soft: rgba(100, 255, 58, 0.06);
             --green-gradient: linear-gradient(135deg, #5DFF73, #2DFF8F);
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --red-gradient: linear-gradient(135deg, #ff3a3a, #cc0f0f);
+            --card-bg: rgba(255, 255, 255, 0.04);
             --card-border: rgba(100, 255, 58, 0.25);
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.75);
+            --text-secondary: rgba(255, 255, 255, 0.78);
             --radius: 24px;
             --radius-sm: 16px;
             --font: 'Vazirmatn', 'IRANYekanWeb', 'Iran Yekan', Tahoma, Arial, sans-serif;
@@ -112,8 +114,6 @@
             line-height: 1.1;
             margin-bottom: 16px;
             text-shadow: 0 0 30px rgba(100, 255, 58, 0.25), 0 0 8px rgba(100, 255, 58, 0.1);
-            -webkit-text-stroke: 0.5px rgba(100, 255, 58, 0.2);
-            text-stroke: 0.5px rgba(100, 255, 58, 0.2);
         }
         .section-title span {
             background: var(--green-gradient);
@@ -121,8 +121,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-shadow: none;
-            -webkit-text-stroke: 0;
-            text-stroke: 0;
         }
 
         .section-sub {
@@ -132,14 +130,11 @@
             line-height: 1.7;
         }
 
+        /* ===== حذف مات و بلور ===== */
         .glass {
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.10);
             border-radius: 16px;
-            transform: translateZ(0);
-            will-change: backdrop-filter;
         }
 
         /* ===== HEADER ===== */
@@ -150,15 +145,12 @@
             right: 0;
             z-index: 1000;
             padding: 12px 0;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(9, 9, 9, 0.50);
-            /* خط منو با رنگ تیره‌تر (شفافیت کمتر) */
+            background: rgba(18, 18, 18, 0.85);
             border-bottom: 2px solid rgba(100, 255, 58, 0.15);
             transition: var(--transition);
         }
         header.scrolled {
-            background: rgba(9, 9, 9, 0.85);
+            background: rgba(18, 18, 18, 0.92);
             border-bottom-color: rgba(100, 255, 58, 0.08);
         }
 
@@ -209,8 +201,6 @@
             color: var(--green);
             letter-spacing: 0.02em;
             white-space: nowrap;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
         }
         .header-badge .dot {
             width: 5px;
@@ -236,11 +226,12 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex-wrap: wrap;
         }
         .nav-actions a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
         }
@@ -251,7 +242,56 @@
             color: rgba(100, 255, 58, 0.45);
         }
 
-        /* ===== دکمه دانلود هدر (گرادیانت تیره‌تر و سریع‌تر) ===== */
+        /* ===== منوی Terms در هدر ===== */
+        .terms-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .terms-dropdown>a {
+            cursor: pointer;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .terms-dropdown>a:hover {
+            color: var(--green);
+        }
+        .terms-dropdown-content {
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            background: rgba(18, 18, 18, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+            min-width: 200px;
+            box-shadow: 0 12px 60px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: var(--transition);
+            z-index: 100;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .terms-dropdown-content a {
+            color: #ff3a3a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .terms-dropdown-content a:hover {
+            text-decoration: underline;
+        }
+        .terms-dropdown:hover .terms-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ===== دکمه دانلود هدر ===== */
         .btn-neon-download {
             position: relative;
             display: inline-flex;
@@ -270,7 +310,6 @@
             overflow: hidden;
             cursor: pointer;
             z-index: 1;
-            /* گرادیانت تیره‌تر با سرعت بیشتر (2s) */
             background: linear-gradient(124deg, #4a0e0e, #3d0f0f, #4a3a0e, #2a3a0e, #0e3a1a, #0e2a3a, #1a0e3a, #3a0e3a, #4a0e0e);
             background-size: 1800% 1800%;
             animation: rainbowGlow 2s ease infinite;
@@ -328,7 +367,6 @@
             min-height: 600px;
         }
 
-        /* ویدیوی پس‌زمینه با تیرگی و مات */
         .hero-bg-video {
             position: absolute;
             inset: 0;
@@ -337,18 +375,14 @@
             object-fit: cover;
             object-position: center;
             z-index: 0;
-            filter: brightness(0.4) blur(4px);
-            /* تیره و مات */;
+            filter: brightness(0.45) blur(2px);
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(9, 9, 9, 0.5);
-            /* لایه تیره روی ویدیو */
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background: rgba(18, 18, 18, 0.55);
         }
 
         .hero-grid {
@@ -359,35 +393,86 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+            gap: 6px;
+            /* فاصله بین V2C و زیرمتن */
         }
 
+        /* ===== V2C با افکت پالس روی "2" ===== */
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            /* بزرگ‌تر در موبایل و تبلت */
-            font-weight: 800;
-            line-height: 1.1;
+            font-size: clamp(3.6rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.05;
             letter-spacing: -0.03em;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: -6px;
+            justify-content: center;
+            gap: 0.04em;
+            position: relative;
         }
 
-        /* افکت حرکتی جدید برای V2C (محو-ظاهر و حرکت نور) */
         .hero h1 .highlight {
             display: inline-block;
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 1em;
             font-weight: 900;
+            font-size: 1em;
             text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 40px rgba(100, 255, 58, 0.1);
-            animation: glowPulseText 2.5s ease-in-out infinite, slideFadeIn 1s ease-out forwards;
+            animation: slideFadeIn 1s ease-out forwards;
             opacity: 0;
             transform: translateY(10px);
             animation-delay: 0.1s;
+            position: relative;
+        }
+
+        /* ===== پالس روی "2" + هاله نور ===== */
+        .hero h1 .highlight .char-2 {
+            display: inline-block;
+            animation: pulseTwo 2s ease-in-out infinite;
+            position: relative;
+        }
+        .hero h1 .highlight .char-2::after {
+            content: '';
+            position: absolute;
+            inset: -30px -10px;
+            background: radial-gradient(ellipse at center, rgba(100, 255, 58, 0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0;
+            animation: haloPass 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes pulseTwo {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.35);
+            }
+        }
+
+        @keyframes haloPass {
+            0% {
+                opacity: 0;
+                transform: scale(0.6) translateX(-20px);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1.2) translateX(0);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.2) translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.6) translateX(20px);
+            }
         }
 
         @keyframes slideFadeIn {
@@ -401,75 +486,76 @@
             }
         }
 
-        @keyframes glowPulseText {
-            0%,
-            100% {
-                text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 60px rgba(100, 255, 58, 0.1);
-            }
-            50% {
-                text-shadow: 0 0 35px rgba(100, 255, 58, 0.7), 0 0 70px rgba(100, 255, 58, 0.3);
-            }
-        }
-
-        #typed-text {
-            font-size: clamp(2rem, 4.5vw, 3.8rem);
-            font-weight: 800;
+        /* ===== کادر قرمز شیشه‌ای برای زیرمتن ===== */
+        .hero-sub-box {
             display: inline-block;
-            line-height: 1.1;
-            margin-top: -18px;
-            animation: slideFadeIn 1s ease-out forwards;
-            animation-delay: 0.3s;
-            opacity: 0;
-        }
-        .typed-blue {
-            color: #3b82f6;
-            text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
-        }
-        .typed-yellow {
-            color: #facc15;
-            text-shadow: 0 0 30px rgba(250, 204, 21, 0.8), 0 0 80px rgba(250, 204, 21, 0.4);
-        }
-        .typed-red {
-            color: #ef4444;
-            text-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 80px rgba(239, 68, 68, 0.4);
-        }
-        .typed-purple {
-            color: #a855f7;
-            text-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
-        }
-        .typed-cyan {
-            color: #22d3ee;
-            text-shadow: 0 0 30px rgba(34, 211, 238, 0.8);
-        }
-
-        .hero-sub {
-            font-size: 1rem;
-            color: #fff;
-            max-width: 460px;
-            line-height: 1.7;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            padding: 10px 24px;
-            display: inline-block;
-            border: 2px solid transparent;
+            background: rgba(255, 40, 40, 0.12);
+            border: 2px solid rgba(255, 40, 40, 0.30);
             border-radius: 50px;
-            background: linear-gradient(#090909, #090909) padding-box,
-                linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3) border-box;
-            background-size: 200% 200%;
-            animation: borderRainbow 6s ease infinite;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            margin-bottom: 12px;
+            padding: 6px 28px;
+            margin-top: 0px;
+            /* فاصله با V2C */
+            box-shadow: 0 0 40px rgba(255, 40, 40, 0.08);
+            transition: var(--transition);
+            max-width: 92%;
         }
-        @keyframes borderRainbow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        .hero-sub-box:hover {
+            border-color: rgba(255, 40, 40, 0.50);
+            box-shadow: 0 0 60px rgba(255, 40, 40, 0.15);
+        }
+        .hero-sub-box .sub-text {
+            font-size: clamp(1rem, 1.8vw, 1.5rem);
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, #ff6b6b, #ff3a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        .hero-sub-box .sub-text .heart {
+            -webkit-text-fill-color: #ff3a3a;
+        }
+        .hero-sub-box .sub-text .typed-sub {
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.85);
+            font-weight: 400;
+            font-size: 0.7em;
+            opacity: 0.9;
+        }
+
+        /* ===== کادر شیشه‌ای بالای سایت (راهنمای نصب) ===== */
+        .install-guide-glass {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto 20px;
+            background: rgba(0, 0, 0, 0.40);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm);
+            padding: 18px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+        .install-guide-glass p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
+        }
+        .install-guide-glass p strong {
+            color: var(--green);
+            font-weight: 600;
+        }
+        .install-guide-glass .step-highlight {
+            color: #fff;
+            font-weight: 500;
         }
 
         .hero-features {
@@ -477,6 +563,7 @@
             flex-wrap: wrap;
             gap: 12px 24px;
             justify-content: center;
+            margin-top: 8px;
         }
         .hero-features span {
             display: inline-flex;
@@ -488,6 +575,8 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
             padding: 8px 16px;
             border-radius: 50px;
+            background: rgba(0, 0, 0, 0.30);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .hero-features span svg {
             color: var(--green);
@@ -510,8 +599,6 @@
             align-items: center;
             gap: 10px;
             background: rgba(100, 255, 58, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             color: var(--green);
             font-weight: 600;
             font-size: 1rem;
@@ -530,8 +617,6 @@
             color: #000;
             border-color: var(--green);
             box-shadow: 0 0 60px rgba(100, 255, 58, 0.30);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
         }
         .btn-primary svg {
             width: 20px;
@@ -549,16 +634,48 @@
             transition: var(--transition);
             font-family: var(--font);
             background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             padding: 10px 22px;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.10);
         }
         .btn-ghost:hover {
             color: var(--green);
             background: rgba(100, 255, 58, 0.1);
             border-color: rgba(100, 255, 58, 0.35);
+        }
+
+        /* ===== گرادیانت سبز برای بقیه سایت ===== */
+        .features,
+        .stats,
+        .why,
+        .comments,
+        .download,
+        footer {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(10, 30, 10, 0.92), rgba(18, 18, 18, 0.95));
+            position: relative;
+        }
+        .features::before,
+        .stats::before,
+        .why::before,
+        .comments::before,
+        .download::before,
+        footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(100, 255, 58, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse at 70% 80%, rgba(100, 255, 58, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .features .container,
+        .stats .container,
+        .why .container,
+        .comments .container,
+        .download .container,
+        footer .container {
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== FEATURES ===== */
@@ -581,50 +698,24 @@
 
         .feature-card {
             position: relative;
-            background: radial-gradient(circle at 30% 50%, rgba(100, 255, 58, 0.08) 0%, transparent 70%);
-            border: 1px solid var(--card-border);
+            background: rgba(100, 255, 58, 0.04);
+            border: 1px solid rgba(100, 255, 58, 0.15);
             border-radius: var(--radius);
             padding: 32px 28px;
             transition: var(--transition);
             text-align: center;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             overflow: hidden;
-            animation: cardGradient 5s ease-in-out infinite alternate;
         }
-        .feature-card:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-        .feature-card:nth-child(3) {
-            animation-delay: 1.2s;
-        }
-        .feature-card:nth-child(4) {
-            animation-delay: 1.8s;
-        }
-
-        @keyframes cardGradient {
-            0% {
-                background: radial-gradient(circle at 20% 30%, rgba(100, 255, 58, 0.05) 0%, transparent 70%);
-            }
-            50% {
-                background: radial-gradient(circle at 80% 70%, rgba(100, 255, 58, 0.12) 0%, transparent 70%);
-            }
-            100% {
-                background: radial-gradient(circle at 40% 80%, rgba(100, 255, 58, 0.07) 0%, transparent 70%);
-            }
-        }
-
         .feature-card:hover {
             transform: translateY(-6px);
             border-color: var(--green);
-            box-shadow: var(--shadow-glow), 0 0 40px rgba(100, 255, 58, 0.08);
-            animation-play-state: paused;
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.08);
         }
         .feature-card .icon {
             width: 52px;
             height: 52px;
             border-radius: 16px;
-            background: var(--green-soft);
+            background: rgba(100, 255, 58, 0.08);
             border: 1px solid rgba(100, 255, 58, 0.08);
             display: flex;
             align-items: center;
@@ -665,7 +756,7 @@
             text-align: center;
             padding: 28px 16px;
             border-radius: var(--radius-sm);
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.03);
             transition: var(--transition);
         }
@@ -704,8 +795,6 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: var(--radius);
             padding: 44px 40px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             box-shadow: var(--shadow-glow);
             transition: var(--transition);
         }
@@ -777,7 +866,6 @@
         /* ===== COMMENTS ===== */
         .comments {
             padding: 60px 0 100px;
-            background: rgba(255, 255, 255, 0.01);
         }
         .comments .section-label,
         .comments .section-title,
@@ -843,9 +931,9 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 16px;
+            margin-bottom: 16px;
         }
 
-        /* دکمه‌های دانلود با گرادیانت تیره‌تر و سریع‌تر (2s) */
         .btn-store {
             display: inline-flex;
             align-items: center;
@@ -861,8 +949,6 @@
             transition: var(--transition);
             font-family: var(--font);
             min-width: 200px;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
             box-shadow: 0 0 30px rgba(0, 255, 50, 0.15);
         }
         .btn-store:hover {
@@ -883,6 +969,229 @@
             font-weight: 600;
             display: block;
             margin-top: 1px;
+        }
+
+        /* ===== دکمه گوگل پلی کمرنگ ===== */
+        .btn-store.dim {
+            opacity: 0.45;
+            filter: grayscale(0.7);
+            animation: none;
+            background: linear-gradient(124deg, #2a1a1a, #1a1a1a, #2a2a1a, #1a2a1a, #1a1a2a, #2a1a2a);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            cursor: default;
+        }
+        .btn-store.dim:hover {
+            transform: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            border-color: transparent;
+        }
+
+        /* ===== دستگاه‌های پشتیبانی‌شده ===== */
+        .supported-devices {
+            margin-top: 40px;
+            padding: 24px 32px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .supported-devices .title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .supported-devices .list {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .supported-devices .list .check {
+            color: var(--green);
+        }
+        .supported-devices .list .coming {
+            color: rgba(255, 255, 255, 0.30);
+            font-size: 0.8rem;
+        }
+
+        /* ===== کادر اطلاعات APK (گرادیانت قرمز + هشدار) ===== */
+        .apk-info-box {
+            margin-top: 40px;
+            padding: 28px 32px;
+            background: linear-gradient(135deg, rgba(180, 20, 20, 0.20), rgba(120, 10, 10, 0.25));
+            border: 2px solid rgba(255, 40, 40, 0.35);
+            border-radius: var(--radius-sm);
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 40, 40, 0.08), inset 0 0 60px rgba(255, 40, 40, 0.03);
+            animation: warningPulse 2.5s ease-in-out infinite;
+            text-align: left;
+        }
+        @keyframes warningPulse {
+            0%,
+            100% {
+                border-color: rgba(255, 40, 40, 0.35);
+                box-shadow: 0 0 50px rgba(255, 40, 40, 0.08);
+            }
+            50% {
+                border-color: rgba(255, 60, 60, 0.60);
+                box-shadow: 0 0 70px rgba(255, 40, 40, 0.20);
+            }
+        }
+        .apk-info-box::before {
+            content: '⚠';
+            position: absolute;
+            top: -10px;
+            left: -8px;
+            font-size: 4.5rem;
+            opacity: 0.08;
+            transform: rotate(-12deg);
+            pointer-events: none;
+        }
+        .apk-info-box .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.80);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.02em;
+        }
+        .apk-info-box .info-row:last-child {
+            border-bottom: none;
+        }
+        .apk-info-box .info-row .label {
+            color: rgba(255, 255, 255, 0.50);
+            font-weight: 400;
+        }
+        .apk-info-box .info-row .value {
+            color: #fff;
+            font-weight: 500;
+            direction: ltr;
+            text-align: right;
+            font-size: 0.7rem;
+            word-break: break-all;
+            max-width: 60%;
+        }
+        .apk-info-box .warning-icon {
+            display: inline-block;
+            color: #ff3a3a;
+            font-weight: 700;
+            margin-left: 8px;
+            animation: warningIcon 1.2s ease-in-out infinite;
+        }
+        @keyframes warningIcon {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.85);
+            }
+        }
+
+        /* ===== Terms Modal ===== */
+        .terms-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.70);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .terms-modal-overlay.open {
+            display: flex;
+        }
+        .terms-modal {
+            background: rgba(18, 18, 18, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            max-width: 720px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 32px 36px;
+            position: relative;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+            direction: rtl;
+            text-align: right;
+        }
+        .terms-modal::-webkit-scrollbar {
+            width: 4px;
+        }
+        .terms-modal::-webkit-scrollbar-thumb {
+            background: var(--green);
+            border-radius: 10px;
+        }
+        .terms-modal .close-btn {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.50);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+        .terms-modal .close-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .terms-modal h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff3a3a;
+            border-bottom: 1px solid rgba(255, 40, 40, 0.15);
+            padding-bottom: 12px;
+        }
+        .terms-modal .term-section {
+            margin-bottom: 16px;
+        }
+        .terms-modal .term-section .term-title {
+            font-weight: 600;
+            color: var(--green);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        .terms-modal .term-section .term-body {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-right: 8px;
+        }
+        .terms-modal .term-section .term-body strong {
+            color: #fff;
+        }
+
+        /* ===== لینک قوانین (قرمز) ===== */
+        .terms-link {
+            color: #ff3a3a !important;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .terms-link:hover {
+            text-decoration: underline;
+            color: #ff6666 !important;
         }
 
         /* ===== FOOTER ===== */
@@ -944,11 +1253,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: clamp(2.8rem, 6vw, 4.2rem);
-            }
-            #typed-text {
-                font-size: clamp(1.8rem, 4.5vw, 3rem);
-                margin-top: -14px;
+                font-size: clamp(3rem, 6vw, 4.8rem);
             }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -969,6 +1274,22 @@
             .google-form-iframe iframe {
                 height: 750px;
             }
+            .install-guide-glass {
+                max-width: 90%;
+                padding: 14px 18px;
+            }
+            .install-guide-glass p {
+                font-size: 0.75rem;
+            }
+            .terms-dropdown-content {
+                min-width: 160px;
+                font-size: 0.75rem;
+                padding: 12px 16px;
+            }
+            .apk-info-box .info-row .value {
+                font-size: 0.6rem;
+                max-width: 50%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -980,12 +1301,52 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
-            #typed-text {
-                font-size: 2rem !important;
-                margin-top: -12px;
+            .hero-sub-box {
+                padding: 4px 16px;
+            }
+            .hero-sub-box .sub-text {
+                font-size: 0.9rem;
             }
             .google-form-iframe iframe {
                 height: 680px;
+            }
+            .install-guide-glass {
+                padding: 12px 14px;
+                border-radius: 12px;
+            }
+            .install-guide-glass p {
+                font-size: 0.7rem;
+                line-height: 1.6;
+            }
+            .apk-info-box {
+                padding: 20px;
+                margin-top: 28px;
+            }
+            .apk-info-box .info-row {
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+            .apk-info-box .info-row .value {
+                max-width: 100%;
+                font-size: 0.6rem;
+            }
+            .supported-devices {
+                padding: 18px 20px;
+            }
+            .terms-modal {
+                padding: 24px 20px;
+            }
+            .terms-modal .term-section .term-body {
+                font-size: 0.75rem;
+            }
+            .terms-dropdown-content {
+                position: fixed;
+                top: 60px;
+                right: 12px;
+                left: 12px;
+                min-width: auto;
+                border-radius: 12px;
             }
         }
 
@@ -996,16 +1357,15 @@
             .hero h1 {
                 font-size: 2.4rem;
             }
-            #typed-text {
-                font-size: 1.8rem !important;
-                margin-top: -8px;
+            .hero-sub-box .sub-text {
+                font-size: 0.8rem;
             }
             .hero-features {
-                gap: 8px 16px;
+                gap: 8px 12px;
             }
             .hero-features span {
-                font-size: 0.75rem;
-                padding: 6px 12px;
+                font-size: 0.7rem;
+                padding: 4px 10px;
             }
             .btn-primary {
                 padding: 10px 24px;
@@ -1051,7 +1411,7 @@
             .header-badge {
                 display: none;
             }
-            .nav-actions a:not(.btn-neon-download):not(.social-icon) {
+            .nav-actions a:not(.btn-neon-download):not(.social-icon):not(.terms-dropdown) {
                 display: none;
             }
             .logo img {
@@ -1074,24 +1434,86 @@
             .hero-actions {
                 gap: 12px;
             }
+            .install-guide-glass {
+                padding: 10px 12px;
+                border-radius: 10px;
+            }
+            .install-guide-glass p {
+                font-size: 0.65rem;
+            }
+            .apk-info-box {
+                padding: 16px;
+                margin-top: 20px;
+            }
+            .apk-info-box .info-row {
+                font-size: 0.6rem;
+                padding: 3px 0;
+            }
+            .apk-info-box .info-row .value {
+                font-size: 0.5rem;
+            }
+            .supported-devices {
+                padding: 14px 16px;
+            }
+            .supported-devices .title {
+                font-size: 0.85rem;
+            }
+            .supported-devices .list {
+                font-size: 0.75rem;
+            }
+            .terms-modal {
+                padding: 18px 14px;
+                max-height: 80vh;
+            }
+            .terms-modal h2 {
+                font-size: 1.1rem;
+            }
+            .terms-modal .term-section .term-body {
+                font-size: 0.7rem;
+            }
+            .terms-dropdown-content {
+                top: 56px;
+                padding: 12px 14px;
+                font-size: 0.7rem;
+            }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2rem;
             }
-            #typed-text {
-                font-size: 1.6rem !important;
-                margin-top: -4px;
+            .hero-sub-box .sub-text {
+                font-size: 0.7rem;
             }
             .hero-features span {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
+                padding: 3px 8px;
             }
             .google-form-iframe iframe {
                 height: 570px;
             }
             .hero-actions {
                 gap: 10px;
+            }
+            .btn-primary {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+            .btn-ghost {
+                padding: 6px 14px;
+                font-size: 0.75rem;
+            }
+            .apk-info-box .info-row {
+                font-size: 0.5rem;
+            }
+            .apk-info-box .info-row .value {
+                font-size: 0.45rem;
+            }
+            .terms-modal h2 {
+                font-size: 1rem;
+            }
+            .terms-modal .term-section .term-body {
+                font-size: 0.65rem;
             }
         }
 
@@ -1169,6 +1591,18 @@
                 <a href="#features">ویژگی‌ها</a>
                 <a href="#why">چرا <span class="v2c-dim">V2C</span></a>
                 <a href="#comments">نظرات</a>
+                <!-- Terms of Service Dropdown -->
+                <div class="terms-dropdown">
+                    <a href="#">قوانین</a>
+                    <div class="terms-dropdown-content">
+                        <div style="margin-bottom:6px;font-weight:600;color:#fff;">Terms of Service</div>
+                        <div style="font-size:0.75rem;line-height:1.6;">
+                            با دانلود، نصب یا استفاده از V2C، شما با
+                            <a href="#" id="termsModalTrigger">قوانین</a>
+                            آن موافقت می‌کنید.
+                        </div>
+                    </div>
+                </div>
                 <a href="#download" class="btn-neon-download">
                     دانلود
                 </a>
@@ -1188,19 +1622,45 @@
             <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/vid.webm" type="video/webm">
         </video>
         <div class="hero-overlay"></div>
+
         <div class="hero-grid">
-            <h1 class="fade-up fade-up-d1">
-                <span class="highlight">V2C</span>
-                <span id="typed-text"> </span>
+
+            <!-- کادر شیشه‌ای راهنمای نصب (بالای سایت) -->
+            <div class="install-guide-glass fade-up fade-up-d1">
+                <p>
+                    <strong>برنامه را نصب کنید.</strong>
+                    <span class="step-highlight">روی اتصال بزنید.</span>
+                    V2C بهترین سرور موجود را انتخاب می‌کند.
+                    در صورت قطع یا کند شدن اتصال، برنامه سرور دیگری را امتحان می‌کند.
+                    پس از اتصال، می‌توانید مانند همیشه از اینترنت استفاده کنید.
+                    <br /><span style="color:rgba(255,255,255,0.3);font-size:0.7rem;">تمام این مراحل تنها در چند ثانیه انجام می‌شود.</span>
+                </p>
+            </div>
+
+            <h1 class="fade-up fade-up-d2">
+                <span class="highlight">
+                    V<span class="char-2">2</span>C
+                </span>
             </h1>
-            <p class="fade-up fade-up-d2 hero-sub">ســاخته شده با ❤️ برای ایرانیان</p>
-            <div class="hero-features fade-up fade-up-d3">
+
+            <!-- کادر قرمز شیشه‌ای با تایپ‌رایتر -->
+            <div class="hero-sub-box fade-up fade-up-d3">
+                <span class="sub-text">
+                    <span class="heart">❤️</span>
+                    ســاخته شده با
+                    <span class="heart">❤️</span>
+                    برای ایرانیان
+                    <span class="typed-sub" id="typed-sub-wrapper"></span>
+                </span>
+            </div>
+
+            <div class="hero-features fade-up fade-up-d4">
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
             </div>
-            <div class="hero-actions fade-up fade-up-d4">
+            <div class="hero-actions fade-up fade-up-d5">
                 <a href="#download" class="btn-primary glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     دانلود کنید
@@ -1234,7 +1694,7 @@
             <div class="stats-grid">
                 <div class="stat-item fade-up"><div class="number"><span class="count" data-target="100">0</span>K+</div><div class="label">کاربران</div></div>
                 <div class="stat-item fade-up fade-up-d1"><div class="number"><span class="count" data-target="99.99">0</span>%</div><div class="label">در دسترس بودن</div></div>
-                <div class="stat-item fade-up fade-up-d2"><div class="number"><span class="count" data-target="100">0</span>%</div><div class="label">رایگان</div></div>
+                <div class="stat-item fade-up fade-up-d2"><div class="number">همیشه</div><div class="label">رایگان</div></div>
                 <div class="stat-item fade-up fade-up-d3"><div class="number">۲۴/۷</div><div class="label">آنلاین</div></div>
             </div>
         </div>
@@ -1283,9 +1743,44 @@
             <span class="section-label fade-up">دانلود</span>
             <h2 class="section-title fade-up fade-up-d1">همین حالا <span>شروع کن</span></h2>
             <p class="section-sub fade-up fade-up-d2">V2C را روی دستگاه خود نصب کن و از اینترنت آزاد لذت ببر.</p>
+
             <div class="download-buttons fade-up fade-up-d3">
                 <a href="#" class="btn-store"><span style="font-size:1.6rem;">⤵</span><span class="text"><span class="small">دریافت مستقیم</span><span class="big">APK</span></span></a>
-                <a href="#" class="btn-store"><span style="font-size:1.6rem;">▶</span><span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span></a>
+                <a href="#" class="btn-store dim"><span style="font-size:1.6rem;">▶</span><span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span></a>
+            </div>
+
+            <!-- کادر اطلاعات APK با گرادیانت قرمز و هشدار -->
+            <div class="apk-info-box fade-up fade-up-d4">
+                <div class="info-row">
+                    <span class="label"><span class="warning-icon">⚠</span> نسخه</span>
+                    <span class="value">1.2.0</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">حجم</span>
+                    <span class="value">18.7 MB</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">SHA-256</span>
+                    <span class="value">4C3D2D1C8F9A6B27C6F8A2B97D5D31D4F4C17D54D1C5A3C7D9F3E6B8A1D4E2F9</span>
+                </div>
+            </div>
+
+            <!-- دستگاه‌های پشتیبانی‌شده -->
+            <div class="supported-devices fade-up fade-up-d5">
+                <div class="title">📱 دستگاه‌های پشتیبانی‌شده</div>
+                <div class="list">
+                    <span class="check">✅</span> Android 8.0 و بالاتر
+                    <br />
+                    <span class="coming">به‌زودی:</span>
+                    <span class="coming">Windows · Linux · macOS</span>
+                </div>
+            </div>
+
+            <!-- لینک قوانین -->
+            <div style="margin-top:28px;font-size:0.8rem;color:rgba(255,255,255,0.50);">
+                با دانلود، نصب یا استفاده از V2C، شما با
+                <a href="#" id="termsModalTrigger2" class="terms-link">قوانین</a>
+                زیر موافقت می‌کنید.
             </div>
         </div>
     </section>
@@ -1303,11 +1798,62 @@
                 <a href="#why">چـرا V2C</a>
                 <a href="#comments">نظرات</a>
                 <a href="#download">دانلود</a>
-                <a href="#">حریم خصوصی</a>
+                <a href="#" id="termsModalTrigger3">قوانین</a>
             </div>
             <div class="footer-copy">&copy; 2026 V2C VPN — تمامی حقوق محفوظ است.</div>
         </div>
     </footer>
+
+    <!-- ===== TERMS MODAL ===== -->
+    <div class="terms-modal-overlay" id="termsModal">
+        <div class="terms-modal">
+            <button class="close-btn" id="termsModalClose">✕</button>
+            <h2>📜 قوانین استفاده از V2C</h2>
+
+            <div class="term-section">
+                <div class="term-title">۱. هدف سرویس</div>
+                <div class="term-body">V2C ابزاری برای ایجاد ارتباط رمزنگاری‌شده و افزایش امنیت اتصال اینترنت است. مسئولیت نحوه استفاده از سرویس بر عهده کاربر است.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۲. استفاده مجاز</div>
+                <div class="term-body">استفاده از V2C برای فعالیت‌های قانونی و مطابق قوانین محل زندگی کاربر مجاز است.<br />
+                    کاربران متعهد می‌شوند از سرویس برای موارد زیر استفاده نکنند:<br />
+                    حملات سایبری · ارسال هرزنامه (Spam) · انتشار بدافزار یا ویروس · کلاهبرداری یا فیشینگ · نفوذ غیرمجاز به سامانه‌ها · هرگونه فعالیتی که موجب آسیب به دیگران یا زیرساخت‌های اینترنتی شود.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۳. حریم خصوصی</div>
+                <div class="term-body">V2C تا حد امکان اطلاعات شخصی کاربران را جمع‌آوری نمی‌کند. اطلاعاتی مانند محتوای ترافیک اینترنت، پیام‌ها، رمزهای عبور یا فایل‌های شخصی توسط برنامه مشاهده یا ذخیره نمی‌شوند. ممکن است برای بهبود کیفیت سرویس، اطلاعات فنی محدودی مانند: نسخه برنامه · نسخه سیستم‌عامل · گزارش خطا (Crash Report) به‌صورت ناشناس جمع‌آوری شوند.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۴. دسترس‌پذیری سرویس</div>
+                <div class="term-body">تلاش ما ارائه سرویسی پایدار و در دسترس است، اما امکان دارد به دلایل زیر اختلال ایجاد شود: تعمیرات · بروزرسانی سرورها · مشکلات شبکه · محدودیت‌های اینترنت. هیچ تضمینی برای دسترسی ۱۰۰٪ و بدون وقفه وجود ندارد.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۵. بروزرسانی‌ها</div>
+                <div class="term-body">برای افزایش امنیت و بهبود عملکرد، ممکن است برنامه یا سرورها بدون اطلاع قبلی بروزرسانی شوند. توصیه می‌شود همیشه از آخرین نسخه V2C استفاده کنید.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۶. مسئولیت کاربر</div>
+                <div class="term-body">کاربر مسئول حفظ امنیت دستگاه خود است. از دانلود نسخه‌های غیررسمی برنامه خودداری کنید و برنامه را تنها از منابع رسمی دریافت نمایید.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۷. محدودیت مسئولیت</div>
+                <div class="term-body">V2C در قبال خسارات مستقیم یا غیرمستقیم ناشی از استفاده یا عدم امکان استفاده از سرویس، تا حدی که قانون اجازه می‌دهد، مسئولیتی نخواهد داشت.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">۸. تغییر قوانین</div>
+                <div class="term-body">ممکن است این قوانین در آینده تغییر کنند. نسخه جدید از طریق وب‌سایت یا داخل برنامه منتشر خواهد شد و ادامه استفاده از سرویس به‌منزله پذیرش نسخه جدید قوانین است.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">دانلود امن</div>
+                <div class="term-body">برای اطمینان از اصالت برنامه: برنامه را فقط از وب‌سایت رسمی یا فروشگاه‌های معتبر دانلود کنید. قبل از نصب، در صورت انتشار، هش SHA-256 فایل را بررسی کنید. از نصب نسخه‌های تغییر یافته یا منتشرشده توسط منابع ناشناس خودداری کنید.</div>
+            </div>
+            <div class="term-section">
+                <div class="term-title">تماس با ما</div>
+                <div class="term-body">در صورت وجود سؤال، پیشنهاد یا گزارش مشکل، از طریق بخش پشتیبانی یا شبکه‌های اجتماعی رسمی V2C با ما در ارتباط باشید.</div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // header scroll
@@ -1342,8 +1888,23 @@
             'running';
         });
 
-        // typed.js
+        // typed.js برای زیرمتن (ثابت وایسته)
         document.addEventListener('DOMContentLoaded', () => {
+            // تایپ‌رایتر برای زیرمتن
+            const subWrapper = document.getElementById('typed-sub-wrapper');
+            if (subWrapper) {
+                new Typed(subWrapper, {
+                    strings: [
+                        ' — V2C با استفاده از هسته V2Ray و سرورهای به‌روزشونده، اتصال سریع و پایدار را برای مرور وب، پیام‌رسان‌ها و استفاده روزمره فراهم می‌کند.'
+                    ],
+                    typeSpeed: 18,
+                    startDelay: 400,
+                    showCursor: false,
+                    contentType: 'html'
+                });
+            }
+
+            // تایپ اصلی (عنوان)
             new Typed('#typed-text', {
                 strings: [
                     '<span class="typed-yellow">Unlimited</span>',
@@ -1384,6 +1945,38 @@
             });
         }, { threshold: 0.5 });
         counters.forEach(counter => counterObserver.observe(counter));
+
+        // ===== Terms Modal =====
+        const modal = document.getElementById('termsModal');
+        const closeBtn = document.getElementById('termsModalClose');
+        const triggers = document.querySelectorAll('#termsModalTrigger, #termsModalTrigger2, #termsModalTrigger3');
+
+        function openModal(e) {
+            if (e) e.preventDefault();
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', openModal);
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
     </script>
+
+    <!-- عنصر hidden برای تایپ اصلی (نیاز به وجود دارد) -->
+    <span id="typed-text" style="display:none;"></span>
 </body>
 </html>
