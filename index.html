@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>V2C VPN — Unlimited Free VPN</title>
     <link rel="icon" href="https://s34.picofile.com/file/8490997326/favicon.png" type="image/png" />
-
-    <!-- ===== CDN Typed.js ===== -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
     </script>
 
@@ -37,7 +35,6 @@
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* ===== فونت Vazirmatn ===== */
         @font-face {
             font-family: 'Vazirmatn';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
@@ -107,12 +104,19 @@
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 16px;
+            text-shadow: 0 0 30px rgba(100, 255, 58, 0.25), 0 0 8px rgba(100, 255, 58, 0.1);
+            /* glow + bevel soft */
+            -webkit-text-stroke: 0.5px rgba(100, 255, 58, 0.2);
+            text-stroke: 0.5px rgba(100, 255, 58, 0.2);
         }
         .section-title span {
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: none;
+            -webkit-text-stroke: 0;
+            text-stroke: 0;
         }
 
         .section-sub {
@@ -139,7 +143,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 0;
+            padding: 12px 0;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             background: rgba(9, 9, 9, 0.50);
@@ -147,8 +151,8 @@
             transition: var(--transition);
         }
         header.scrolled {
-            background: rgba(9, 9, 9, 0.82);
-            border-bottom-color: rgba(100, 255, 58, 0.06);
+            background: rgba(9, 9, 9, 0.85);
+            border-bottom-color: rgba(100, 255, 58, 0.08);
         }
 
         .header-inner {
@@ -280,12 +284,14 @@
 
         /* ===== HERO ===== */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 100px 0 60px;
+            padding: 80px 0 30px;
+            margin-top: 60px; /* فضای هدر */
+            min-height: 600px; /* fallback */
         }
 
         .hero-bg-video {
@@ -293,15 +299,16 @@
             inset: 0;
             width: 100%; height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: 0;
-            filter: brightness(0.7) saturate(1.1);
+            filter: brightness(0.65) saturate(1.2);
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(9, 9, 9, 0.35);
+            background: rgba(9, 9, 9, 0.3);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
         }
@@ -309,43 +316,44 @@
         .hero-grid {
             position: relative;
             z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100%;
         }
 
         .hero-content {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
             align-items: center;
+            gap: 14px;
+            max-width: 800px;
+            text-align: center;
         }
 
         .hero-logo-video {
-            max-width: 200px;
+            max-width: 160px;
             width: 100%;
             height: auto;
             background: transparent;
             border: none;
             outline: none;
             display: block;
-            filter: drop-shadow(0 0 40px rgba(100, 255, 58, 0.15));
-            margin-bottom: 10px;
+            filter: drop-shadow(0 0 40px #a0ce60);
+            margin-bottom: 5px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-            display: inline-block;
-            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
 
         .hero h1 .highlight {
@@ -353,19 +361,19 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 1.4em;
+            font-size: 0.95em;
             font-weight: 900;
-            text-shadow: 0 0 20px rgba(100, 255, 58, 0.4), 0 0 60px rgba(100, 255, 58, 0.2);
+            text-shadow: 0 0 20px rgba(100, 255, 58, 0.4), 0 0 40px rgba(100, 255, 58, 0.2);
             animation: glowPulseText 2.5s ease-in-out infinite;
         }
 
         @keyframes glowPulseText {
             0%,100% { text-shadow: 0 0 20px rgba(100,255,58,0.3), 0 0 60px rgba(100,255,58,0.1); }
-            50% { text-shadow: 0 0 40px rgba(100,255,58,0.8), 0 0 80px rgba(100,255,58,0.4), 0 0 120px rgba(100,255,58,0.2); }
+            50% { text-shadow: 0 0 35px rgba(100,255,58,0.8), 0 0 70px rgba(100,255,58,0.4); }
         }
 
         #typed-text {
-            font-size: clamp(3.2rem, 7vw, 5.6rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 800;
             display: inline-block;
             line-height: 1.1;
@@ -373,30 +381,30 @@
         .typed-blue { color: #3b82f6; text-shadow: 0 0 30px rgba(59,130,246,0.8), 0 0 80px rgba(59,130,246,0.4); }
         .typed-yellow { color: #facc15; text-shadow: 0 0 30px rgba(250,204,21,0.8), 0 0 80px rgba(250,204,21,0.4); }
         .typed-red { color: #ef4444; text-shadow: 0 0 30px rgba(239,68,68,0.8), 0 0 80px rgba(239,68,68,0.4); }
+        .typed-purple { color: #a855f7; text-shadow: 0 0 30px rgba(168,85,247,0.8); }
+        .typed-cyan { color: #22d3ee; text-shadow: 0 0 30px rgba(34,211,238,0.8); }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1rem;
             color: rgba(255,255,255,0.9);
             max-width: 460px;
             line-height: 1.7;
             text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-            padding: 12px 20px;
+            padding: 10px 18px;
             display: inline-block;
-            width: fit-content;
         }
 
         .hero-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px 32px;
-            margin-top: 4px;
+            gap: 12px 24px;
             justify-content: center;
         }
         .hero-features span {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: rgba(255,255,255,0.9);
             font-weight: 450;
             text-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -409,8 +417,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px;
-            margin-top: 8px;
+            gap: 14px;
             justify-content: center;
         }
 
@@ -424,7 +431,7 @@
             color: var(--green);
             font-weight: 600;
             font-size: 1rem;
-            padding: 14px 38px;
+            padding: 12px 32px;
             border-radius: 100px;
             border: 1px solid rgba(100,255,58,0.45);
             cursor: pointer;
@@ -432,7 +439,6 @@
             text-decoration: none;
             font-family: var(--font);
             box-shadow: 0 0 40px rgba(100,255,58,0.1);
-            will-change: backdrop-filter;
         }
         .btn-primary:hover {
             transform: scale(1.04);
@@ -457,11 +463,9 @@
             background: rgba(255,255,255,0.08);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 10px 24px;
+            padding: 10px 22px;
             border-radius: 100px;
             border: 1px solid rgba(255,255,255,0.15);
-            cursor: pointer;
-            will-change: backdrop-filter;
         }
         .btn-ghost:hover {
             color: var(--green);
@@ -469,7 +473,7 @@
             border-color: rgba(100,255,58,0.35);
         }
 
-        /* ===== FEATURES ===== */
+        /* ===== FEATURES with radial gradient animation ===== */
         .features { padding: 100px 0 80px; }
         .features .section-title { text-align: center; }
         .features .section-sub { text-align: center; margin: 0 auto 48px; }
@@ -481,7 +485,8 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
+            position: relative;
+            background: radial-gradient(circle at 30% 50%, rgba(100,255,58,0.08) 0%, transparent 70%);
             border: 1px solid var(--card-border);
             border-radius: var(--radius);
             padding: 32px 28px;
@@ -489,12 +494,24 @@
             text-align: center;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
+            overflow: hidden;
+            animation: cardGradient 5s ease-in-out infinite alternate;
         }
+        .feature-card:nth-child(2) { animation-delay: 0.6s; }
+        .feature-card:nth-child(3) { animation-delay: 1.2s; }
+        .feature-card:nth-child(4) { animation-delay: 1.8s; }
+
+        @keyframes cardGradient {
+            0% { background: radial-gradient(circle at 20% 30%, rgba(100,255,58,0.05) 0%, transparent 70%); }
+            50% { background: radial-gradient(circle at 80% 70%, rgba(100,255,58,0.12) 0%, transparent 70%); }
+            100% { background: radial-gradient(circle at 40% 80%, rgba(100,255,58,0.07) 0%, transparent 70%); }
+        }
+
         .feature-card:hover {
             transform: translateY(-6px);
             border-color: var(--green);
-            box-shadow: var(--shadow-glow), 0 0 30px rgba(100,255,58,0.03);
-            background: rgba(100,255,58,0.02);
+            box-shadow: var(--shadow-glow), 0 0 40px rgba(100,255,58,0.08);
+            animation-play-state: paused;
         }
         .feature-card .icon {
             width: 52px; height: 52px;
@@ -506,7 +523,7 @@
             transition: var(--transition);
         }
         .feature-card:hover .icon {
-            background: rgba(100,255,58,0.12);
+            background: rgba(100,255,58,0.15);
             transform: scale(1.04);
         }
         .feature-card .icon svg { width: 26px; height: 26px; }
@@ -610,8 +627,8 @@
             animation: bannerGlow 3s ease-in-out infinite;
         }
         @keyframes bannerGlow {
-            0%,100% { box-shadow: 0 0 20px rgba(100,255,58,0.1), 0 0 40px rgba(100,255,58,0.03); }
-            50% { box-shadow: 0 0 40px rgba(100,255,58,0.3), 0 0 80px rgba(100,255,58,0.08); }
+            0%,100% { box-shadow: 0 0 15px rgba(100,255,58,0.1), 0 0 30px rgba(100,255,58,0.03); }
+            50% { box-shadow: 0 0 30px rgba(100,255,58,0.3), 0 0 60px rgba(100,255,58,0.08); }
         }
 
         .comments-banner img {
@@ -625,42 +642,91 @@
             filter: invert(1) hue-rotate(180deg); background: #fff;
         }
 
-        /* ===== DOWNLOAD ===== */
+        /* ===== DOWNLOAD with animated gradient ===== */
         .download { padding: 60px 0 100px; text-align: center; }
         .download .section-sub { margin: 0 auto 40px; }
         .download-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+
         .btn-store {
-            display: inline-flex; align-items: center; gap: 14px;
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
-            border-radius: var(--radius-sm); padding: 14px 32px;
-            text-decoration: none; color: #fff; transition: var(--transition);
-            font-family: var(--font); min-width: 200px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: linear-gradient(45deg, rgba(100,255,58,0.05), rgba(100,255,58,0.15), rgba(100,255,58,0.05));
+            background-size: 200% 200%;
+            animation: btnGradient 4s ease infinite;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-sm);
+            padding: 14px 32px;
+            text-decoration: none;
+            color: #fff;
+            transition: var(--transition);
+            font-family: var(--font);
+            min-width: 200px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        @keyframes btnGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .btn-store:hover {
-            background: rgba(100,255,58,0.06); border-color: rgba(100,255,58,0.15);
-            transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            background: rgba(100,255,58,0.1);
+            border-color: rgba(100,255,58,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
-        .btn-store .text .small { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 450; display: block; }
-        .btn-store .text .big { font-size: 1.05rem; font-weight: 600; display: block; margin-top: 1px; }
+        .btn-store .text .small {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            font-weight: 450;
+            display: block;
+        }
+        .btn-store .text .big {
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 1px;
+        }
 
         /* ===== FOOTER ===== */
         footer { padding: 60px 0 40px; border-top: 1px solid rgba(255,255,255,0.03); }
-        .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
         .footer-brand { display: flex; align-items: center; gap: 12px; }
         .footer-brand img { height: 32px; width: auto; }
         .footer-brand .brand-text { font-weight: 700; font-size: 1.1rem; }
         .footer-brand .brand-text span { color: var(--green); }
         .footer-brand .tagline { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.4; letter-spacing: 0.02em; }
         .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 450; transition: var(--transition); }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 450;
+            transition: var(--transition);
+        }
         .footer-links a:hover { color: var(--green); }
-        .footer-copy { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.3; letter-spacing: 0.02em; }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            letter-spacing: 0.02em;
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-            .hero h1 .highlight { font-size: 1.2em; }
-            .hero-logo-video { max-width: 160px; }
+            .hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
+            .hero h1 .highlight { font-size: 0.85em; }
+            #typed-text { font-size: clamp(1.6rem, 5vw, 2.8rem); }
+            .hero-logo-video { max-width: 130px; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .why-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -670,18 +736,25 @@
         }
 
         @media (max-width: 768px) {
+            .hero { height: auto; min-height: 100vh; padding: 70px 0 30px; }
+            .hero h1 { font-size: 1.9rem; }
+            #typed-text { font-size: 2rem !important; }
+            .hero-logo-video { max-width: 110px; }
             .google-form-iframe iframe { height: 680px; }
-            .hero-logo-video { max-width: 140px; }
         }
 
         @media (max-width: 640px) {
-            .hero { padding: 80px 0 30px; }
-            .hero h1 { font-size: 2.2rem; }
-            #typed-text { font-size: 2.8rem !important; }
-            .hero h1 .highlight { font-size: 1.1em; }
-            .hero p { font-size: 0.95rem; }
-            .hero-features { gap: 12px 20px; }
-            .hero-features span { font-size: 0.8rem; }
+            .hero { padding: 60px 0 20px; }
+            .hero h1 { font-size: 1.7rem; }
+            .hero h1 .highlight { font-size: 0.8em; }
+            #typed-text { font-size: 1.8rem !important; }
+            .hero p { font-size: 0.9rem; padding: 8px 14px; }
+            .hero-features { gap: 8px 16px; }
+            .hero-features span { font-size: 0.75rem; padding: 6px 12px; }
+            .btn-primary { padding: 10px 24px; font-size: 0.9rem; }
+            .btn-ghost { padding: 8px 16px; font-size: 0.85rem; }
+            .hero-logo-video { max-width: 90px; }
+
             .features-grid { grid-template-columns: 1fr; gap: 16px; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
             .stat-item .number { font-size: 2rem; }
@@ -690,7 +763,7 @@
             .btn-store { width: 100%; max-width: 280px; justify-content: center; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
-            .header-inner { flex-wrap: nowrap; justify-content: space-between; }
+            .header-inner { flex-wrap: nowrap; }
             .header-badge { display: none; }
             .nav-actions a:not(.btn-neon-download):not(.social-icon) { display: none; }
             .logo img { height: 28px; }
@@ -698,22 +771,17 @@
             .btn-neon-download { padding: 6px 16px; font-size: 0.7rem !important; }
             .comments-banner { border-radius: var(--radius-sm); }
             .google-form-iframe iframe { height: 620px; }
-            .hero-logo-video { max-width: 110px; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
-            #typed-text { font-size: 2.2rem !important; }
-            .hero p { font-size: 0.95rem; }
+            .hero h1 { font-size: 1.6rem; }
+            #typed-text { font-size: 1.6rem !important; }
+            .hero p { font-size: 0.85rem; }
             .hero-features span { font-size: 0.7rem; }
             .google-form-iframe iframe { height: 570px; }
-            .btn-primary { padding: 12px 28px; font-size: 0.85rem; }
-            .btn-ghost { padding: 8px 18px; font-size: 0.8rem; }
         }
 
-        @media (min-width: 641px) { .header-badge { display: flex; } }
-
-        /* ===== ANIMATIONS ===== */
+        /* animations */
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -737,76 +805,60 @@
     </style>
 </head>
 <body>
-
     <div class="glow-orb-bg g1"></div>
     <div class="glow-orb-bg g2"></div>
 
-    <!-- ===== HEADER ===== -->
+    <!-- HEADER -->
     <header id="header">
         <div class="container header-inner">
             <a href="#" class="logo">
                 <img src="https://s34.picofile.com/file/8490997326/favicon.png" alt="V2C VPN" />
                 <span class="badge-free">رایگان</span>
             </a>
-
             <div class="header-badge">
                 <span class="dot"></span>
                 نسخه جدید · کاملاً رایگان
             </div>
-
             <div class="nav-actions">
                 <a href="#features">ویژگی‌ها</a>
-                <a href="#why">چرا V2C</a>
+                <a href="#why">چرا <span style="color: #64FF3A;">V2C</span></a>
                 <a href="#comments">نظرات</a>
                 <a href="#download" class="btn-neon-download">
                     <span class="neon-line"></span>
                     دانلود
                 </a>
                 <a href="https://instagram.com/example" target="_blank" class="social-icon" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </a>
                 <a href="https://t.me/iV2Ci" target="_blank" class="social-icon" aria-label="Telegram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="hero" id="hero">
         <video autoplay loop muted playsinline class="hero-bg-video">
             <source src="https://raw.githubusercontent.com/V2Cye/Download/main/vid.webm" type="video/webm">
         </video>
         <div class="hero-overlay"></div>
-
-        <div class="container hero-grid">
+        <div class="hero-grid">
             <div class="hero-content">
-                <video autoplay loop muted playsinline class="hero-logo-video fade-up fade-up-d1">
+                <video autoplay loop muted playsinline class="hero-logo-video fade-up">
                     <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
                 </video>
                 <h1 class="fade-up fade-up-d1">
-                    <span id="typed-text"></span> <br />
                     <span class="highlight">Free VPN</span>
+                    <span id="typed-text"></span>
                 </h1>
-
-                <p class="fade-up fade-up-d2 glass">
-                    اینترنت بدون مرز را با سرعت برق‌آسا تجربه کن.
-                </p>
-
+                <p class="fade-up fade-up-d2 glass">اینترنت بدون مرز را با سرعت برق‌آسا تجربه کن.</p>
                 <div class="hero-features fade-up fade-up-d3">
                     <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
                     <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
                     <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
                     <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
                 </div>
-
                 <div class="hero-actions fade-up fade-up-d4">
                     <a href="#download" class="btn-primary glass">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -821,63 +873,34 @@
         </div>
     </section>
 
-    <!-- ===== FEATURES ===== -->
+    <!-- FEATURES -->
     <section class="features" id="features">
         <div class="container">
             <span class="section-label fade-up">ویژگی‌ها</span>
             <h2 class="section-title fade-up fade-up-d1">همه‌چیز در <span>یکجا</span></h2>
             <p class="section-sub fade-up fade-up-d2">چهار ستون قدرت V2C — امنیت، سرعت، دسترسی جهانی و آزادی بی‌نهایت.</p>
-
             <div class="features-grid">
-                <div class="feature-card fade-up fade-up-d3">
-                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-                    <h3>رمزنگاری نظامی</h3>
-                    <p>امنیت AES-256 — استاندارد جهانی برای محافظت از داده‌های شما.</p>
-                </div>
-                <div class="feature-card fade-up fade-up-d4">
-                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-                    <h3>سرعت فوق‌العاده</h3>
-                    <p>سرورهای بهینه‌شده برای پخش 4K و بازی بدون تأخیر.</p>
-                </div>
-                <div class="feature-card fade-up fade-up-d5">
-                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                    <h3>سرورهای جهانی</h3>
-                    <p>دسترسی به بیش از ۵۰ کشور با یک کلیک.</p>
-                </div>
-                <div class="feature-card fade-up fade-up-d6">
-                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
-                    <h3>بی‌نهایت</h3>
-                    <p>بدون محدودیت در پهنای باند، ترافیک یا زمان استفاده.</p>
-                </div>
+                <div class="feature-card fade-up fade-up-d3"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>رمزنگاری نظامی</h3><p>امنیت AES-256 — استاندارد جهانی.</p></div>
+                <div class="feature-card fade-up fade-up-d4"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>سرعت فوق‌العاده</h3><p>بهینه‌شده برای 4K و بازی.</p></div>
+                <div class="feature-card fade-up fade-up-d5"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>سرورهای جهانی</h3><p>بیش از ۵۰ کشور در دسترس.</p></div>
+                <div class="feature-card fade-up fade-up-d6"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div><h3>بی‌نهایت</h3><p>بدون محدودیت پهنای باند.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== STATS (شمارنده افزایشی) ===== -->
+    <!-- STATS -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item fade-up">
-                    <div class="number"><span class="count" data-target="100">0</span>K+</div>
-                    <div class="label">کاربران</div>
-                </div>
-                <div class="stat-item fade-up fade-up-d1">
-                    <div class="number"><span class="count" data-target="99.99">0</span>%</div>
-                    <div class="label">در دسترس بودن</div>
-                </div>
-                <div class="stat-item fade-up fade-up-d2">
-                    <div class="number"><span class="count" data-target="100">0</span>%</div>
-                    <div class="label">رایگان</div>
-                </div>
-                <div class="stat-item fade-up fade-up-d3">
-                    <div class="number">۲۴/۷</div>
-                    <div class="label">آنلاین</div>
-                </div>
+                <div class="stat-item fade-up"><div class="number"><span class="count" data-target="100">0</span>K+</div><div class="label">کاربران</div></div>
+                <div class="stat-item fade-up fade-up-d1"><div class="number"><span class="count" data-target="99.99">0</span>%</div><div class="label">در دسترس بودن</div></div>
+                <div class="stat-item fade-up fade-up-d2"><div class="number"><span class="count" data-target="100">0</span>%</div><div class="label">رایگان</div></div>
+                <div class="stat-item fade-up fade-up-d3"><div class="number">۲۴/۷</div><div class="label">آنلاین</div></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== WHY ===== -->
+    <!-- WHY -->
     <section class="why" id="why">
         <div class="container why-grid">
             <div class="why-card fade-up">
@@ -899,44 +922,35 @@
         </div>
     </section>
 
-    <!-- ===== COMMENTS ===== -->
+    <!-- COMMENTS -->
     <section class="comments" id="comments">
         <div class="container">
             <div class="comments-banner fade-up">
-                <img src="https://github.com/V2Cye/Download/blob/main/%DB%8C.png?raw=true" alt="V2C Comments Banner" />
+                <img src="https://github.com/V2Cye/Download/blob/main/%DB%8C.png" alt="V2C Comments Banner" />
             </div>
-
             <span class="section-label fade-up">نظرات</span>
             <h2 class="section-title fade-up fade-up-d1">نظر خود را <span>بنویسید</span></h2>
             <p class="section-sub fade-up fade-up-d2">تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.</p>
-
             <div class="google-form-iframe fade-up fade-up-d3">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
         </div>
     </section>
 
-    <!-- ===== DOWNLOAD ===== -->
+    <!-- DOWNLOAD -->
     <section class="download" id="download">
         <div class="container">
             <span class="section-label fade-up">دانلود</span>
             <h2 class="section-title fade-up fade-up-d1">همین حالا <span>شروع کن</span></h2>
             <p class="section-sub fade-up fade-up-d2">V2C را روی دستگاه خود نصب کن و از اینترنت آزاد لذت ببر.</p>
-
             <div class="download-buttons fade-up fade-up-d3">
-                <a href="#" class="btn-store">
-                    <span style="font-size:1.6rem;line-height:1;">⤵</span>
-                    <span class="text"><span class="small">دریافت مستقیم </span><span class="big">APK</span></span>
-                </a>
-                <a href="#" class="btn-store">
-                    <span style="font-size:1.6rem;line-height:1;">▶</span>
-                    <span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span>
-                </a>
+                <a href="#" class="btn-store"><span style="font-size:1.6rem;">⤵</span><span class="text"><span class="small">دریافت مستقیم</span><span class="big">APK</span></span></a>
+                <a href="#" class="btn-store"><span style="font-size:1.6rem;">▶</span><span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span></a>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer>
         <div class="container footer-inner">
             <div class="footer-brand">
@@ -955,7 +969,6 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPT ===== -->
     <script>
         // header scroll
         const header = document.getElementById('header');
@@ -987,16 +1000,23 @@
         document.addEventListener('DOMContentLoaded', () => {
             new Typed('#typed-text', {
                 strings: [
-                    '<span class="typed-blue">Unlimited</span>',
-                    '<span class="typed-yellow">FAST</span>',
-                    '<span class="typed-red">secure</span>'
+                    '<span class="typed-yellow">Unlimited</span>',
+                    '<span class="typed-blue">Fast</span>',
+                    '<span class="typed-red">Secure</span>',
+                    '<span class="typed-purple">Private</span>',
+                    '<span class="typed-cyan">Free</span>'
                 ],
-                typeSpeed: 200, backSpeed: 150, backDelay: 1400, startDelay: 300,
-                loop: true, showCursor: false, contentType: 'html'
+                typeSpeed: 80,
+                backSpeed: 60,
+                backDelay: 1200,
+                startDelay: 300,
+                loop: true,
+                showCursor: false,
+                contentType: 'html'
             });
         });
 
-        // ===== Counter Animation =====
+        // counter animation
         const counters = document.querySelectorAll('.count');
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
