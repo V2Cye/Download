@@ -37,7 +37,7 @@
             --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* ===== فونت Vazirmatn با پشتیبانی کامل از موبایل ===== */
+        /* ===== فونت Vazirmatn ===== */
         @font-face {
             font-family: 'Vazirmatn';
             src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2');
@@ -77,16 +77,9 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--green);
-            border-radius: 10px;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
 
         .container {
             max-width: 1200px;
@@ -129,7 +122,6 @@
             line-height: 1.7;
         }
 
-        /* ===== GLASS EFFECT (روون و بدون هنگی) ===== */
         .glass {
             background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(12px);
@@ -176,11 +168,7 @@
             font-size: 1.3rem;
             color: #fff;
         }
-        .logo img {
-            height: 36px;
-            width: auto;
-            display: block;
-        }
+        .logo img { height: 36px; width: auto; display: block; }
         .logo .badge-free {
             font-size: 0.6rem;
             font-weight: 600;
@@ -217,17 +205,7 @@
             display: inline-block;
             animation: pulse-dot 2s ease-in-out infinite;
         }
-        @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
-        }
+        @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
 
         .nav-actions {
             display: flex;
@@ -241,11 +219,8 @@
             font-weight: 500;
             transition: var(--transition);
         }
-        .nav-actions a:hover {
-            color: var(--green);
-        }
+        .nav-actions a:hover { color: var(--green); }
 
-        /* ===== دکمه نئونی دانلود (سبزتر) ===== */
         .btn-neon-download {
             position: relative;
             display: inline-flex;
@@ -270,64 +245,37 @@
             box-shadow: 0 0 25px rgba(0, 255, 50, 0.25);
             z-index: 1;
         }
-
         .btn-neon-download::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(0, 255, 50, 0.6), transparent);
             transition: left 0.6s ease;
             z-index: -1;
         }
-
-        .btn-neon-download:hover::before {
-            left: 100%;
-        }
-
+        .btn-neon-download:hover::before { left: 100%; }
         .btn-neon-download:hover {
             background: #64FF3A;
             color: #000;
             box-shadow: 0 0 50px rgba(0, 255, 50, 0.6), 0 0 90px rgba(0, 255, 50, 0.3);
             transform: scale(1.05);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            backdrop-filter: none; -webkit-backdrop-filter: none;
         }
-
         .btn-neon-download .neon-line {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: conic-gradient(from 0deg, transparent, #64FF3A, transparent, #64FF3A, transparent);
             animation: rotateNeon 4s linear infinite;
-            opacity: 0.4;
-            z-index: -2;
-            filter: blur(10px);
+            opacity: 0.4; z-index: -2; filter: blur(10px);
         }
+        @keyframes rotateNeon { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+        .btn-neon-download:hover .neon-line { opacity: 0.7; }
 
-        @keyframes rotateNeon {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .btn-neon-download:hover .neon-line {
-            opacity: 0.7;
-        }
-
-        /* ===== آیکون‌های اجتماعی ===== */
         .social-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
+            width: 20px; height: 20px;
+            stroke: currentColor; fill: none;
         }
 
         /* ===== HERO ===== */
@@ -343,8 +291,7 @@
         .hero-bg-video {
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             z-index: 0;
             filter: brightness(0.7) saturate(1.1);
@@ -373,14 +320,26 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
             align-items: center;
         }
 
+        .hero-logo-video {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            background: transparent;
+            border: none;
+            outline: none;
+            display: block;
+            filter: drop-shadow(0 0 40px rgba(100, 255, 58, 0.15));
+            margin-bottom: 10px;
+        }
+
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -0.04em;
@@ -388,22 +347,21 @@
             display: inline-block;
             width: fit-content;
         }
+
         .hero h1 .highlight {
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 60px rgba(100, 255, 58, 0.1);
+            font-size: 1.4em;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(100, 255, 58, 0.4), 0 0 60px rgba(100, 255, 58, 0.2);
             animation: glowPulseText 2.5s ease-in-out infinite;
         }
 
         @keyframes glowPulseText {
-            0%, 100% {
-                text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 60px rgba(100, 255, 58, 0.1);
-            }
-            50% {
-                text-shadow: 0 0 40px rgba(100, 255, 58, 0.7), 0 0 80px rgba(100, 255, 58, 0.4), 0 0 120px rgba(100, 255, 58, 0.2);
-            }
+            0%,100% { text-shadow: 0 0 20px rgba(100,255,58,0.3), 0 0 60px rgba(100,255,58,0.1); }
+            50% { text-shadow: 0 0 40px rgba(100,255,58,0.8), 0 0 80px rgba(100,255,58,0.4), 0 0 120px rgba(100,255,58,0.2); }
         }
 
         #typed-text {
@@ -412,25 +370,16 @@
             display: inline-block;
             line-height: 1.1;
         }
-        .typed-blue {
-            color: #3b82f6;
-            text-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
-        }
-        .typed-yellow {
-            color: #facc15;
-            text-shadow: 0 0 30px rgba(250, 204, 21, 0.8), 0 0 80px rgba(250, 204, 21, 0.4);
-        }
-        .typed-red {
-            color: #ef4444;
-            text-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 80px rgba(239, 68, 68, 0.4);
-        }
+        .typed-blue { color: #3b82f6; text-shadow: 0 0 30px rgba(59,130,246,0.8), 0 0 80px rgba(59,130,246,0.4); }
+        .typed-yellow { color: #facc15; text-shadow: 0 0 30px rgba(250,204,21,0.8), 0 0 80px rgba(250,204,21,0.4); }
+        .typed-red { color: #ef4444; text-shadow: 0 0 30px rgba(239,68,68,0.8), 0 0 80px rgba(239,68,68,0.4); }
 
         .hero p {
             font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255,255,255,0.9);
             max-width: 460px;
             line-height: 1.7;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
             padding: 12px 20px;
             display: inline-block;
             width: fit-content;
@@ -448,18 +397,13 @@
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255,255,255,0.9);
             font-weight: 450;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             padding: 8px 16px;
             border-radius: 50px;
         }
-        .hero-features span svg {
-            color: var(--green);
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
+        .hero-features span svg { color: var(--green); width: 18px; height: 18px; flex-shrink: 0; }
 
         .hero-actions {
             display: flex;
@@ -470,12 +414,11 @@
             justify-content: center;
         }
 
-        /* دکمه اصلی با گلس سبز */
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(100, 255, 58, 0.15);
+            background: rgba(100,255,58,0.15);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: var(--green);
@@ -483,12 +426,12 @@
             font-size: 1rem;
             padding: 14px 38px;
             border-radius: 100px;
-            border: 1px solid rgba(100, 255, 58, 0.45);
+            border: 1px solid rgba(100,255,58,0.45);
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             font-family: var(--font);
-            box-shadow: 0 0 40px rgba(100, 255, 58, 0.1);
+            box-shadow: 0 0 40px rgba(100,255,58,0.1);
             will-change: backdrop-filter;
         }
         .btn-primary:hover {
@@ -496,52 +439,40 @@
             background: var(--green);
             color: #000;
             border-color: var(--green);
-            box-shadow: 0 0 60px rgba(100, 255, 58, 0.30);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            box-shadow: 0 0 60px rgba(100,255,58,0.30);
+            backdrop-filter: none; -webkit-backdrop-filter: none;
         }
-        .btn-primary svg {
-            width: 20px;
-            height: 20px;
-        }
+        .btn-primary svg { width: 20px; height: 20px; }
 
-        /* دکمه گوست با گلس سفید */
         .btn-ghost {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: var(--transition);
             font-family: var(--font);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.08);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 10px 24px;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.15);
             cursor: pointer;
             will-change: backdrop-filter;
         }
         .btn-ghost:hover {
             color: var(--green);
-            background: rgba(100, 255, 58, 0.1);
-            border-color: rgba(100, 255, 58, 0.35);
+            background: rgba(100,255,58,0.1);
+            border-color: rgba(100,255,58,0.35);
         }
 
         /* ===== FEATURES ===== */
-        .features {
-            padding: 100px 0 80px;
-        }
-        .features .section-title {
-            text-align: center;
-        }
-        .features .section-sub {
-            text-align: center;
-            margin: 0 auto 48px;
-        }
+        .features { padding: 100px 0 80px; }
+        .features .section-title { text-align: center; }
+        .features .section-sub { text-align: center; margin: 0 auto 48px; }
 
         .features-grid {
             display: grid;
@@ -562,64 +493,44 @@
         .feature-card:hover {
             transform: translateY(-6px);
             border-color: var(--green);
-            box-shadow: var(--shadow-glow), 0 0 30px rgba(100, 255, 58, 0.03);
-            background: rgba(100, 255, 58, 0.02);
+            box-shadow: var(--shadow-glow), 0 0 30px rgba(100,255,58,0.03);
+            background: rgba(100,255,58,0.02);
         }
-
         .feature-card .icon {
-            width: 52px;
-            height: 52px;
+            width: 52px; height: 52px;
             border-radius: 16px;
             background: var(--green-soft);
-            border: 1px solid rgba(100, 255, 58, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            color: var(--green);
+            border: 1px solid rgba(100,255,58,0.08);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px; color: var(--green);
             transition: var(--transition);
         }
         .feature-card:hover .icon {
-            background: rgba(100, 255, 58, 0.12);
+            background: rgba(100,255,58,0.12);
             transform: scale(1.04);
         }
-        .feature-card .icon svg {
-            width: 26px;
-            height: 26px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .feature-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
+        .feature-card .icon svg { width: 26px; height: 26px; }
+        .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+        .feature-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
 
         /* ===== STATS ===== */
-        .stats {
-            padding: 60px 0 80px;
-        }
+        .stats { padding: 60px 0 80px; }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
-
         .stat-item {
             text-align: center;
             padding: 28px 16px;
             border-radius: var(--radius-sm);
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,255,255,0.03);
             transition: var(--transition);
         }
         .stat-item:hover {
-            border-color: rgba(100, 255, 58, 0.10);
-            background: rgba(100, 255, 58, 0.01);
+            border-color: rgba(100,255,58,0.10);
+            background: rgba(100,255,58,0.01);
         }
         .stat-item .number {
             font-size: 2.6rem;
@@ -638,19 +549,16 @@
         }
 
         /* ===== WHY ===== */
-        .why {
-            padding: 80px 0 100px;
-        }
+        .why { padding: 80px 0 100px; }
         .why-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-
         .why-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
             border-radius: var(--radius);
             padding: 44px 40px;
             backdrop-filter: blur(8px);
@@ -658,90 +566,39 @@
             box-shadow: var(--shadow-glow);
             transition: var(--transition);
         }
-        .why-card:hover {
-            border-color: rgba(100, 255, 58, 0.10);
-        }
-
-        .why-card h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
+        .why-card:hover { border-color: rgba(100,255,58,0.10); }
+        .why-card h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.02em; }
         .why-card h2 span {
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .why-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+        .why-list { display: flex; flex-direction: column; gap: 16px; }
         .why-list .item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 1rem;
-            font-weight: 450;
-            color: var(--text-secondary);
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            display: flex; align-items: center; gap: 14px;
+            font-size: 1rem; font-weight: 450; color: var(--text-secondary);
+            padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02);
         }
-        .why-list .item:last-child {
-            border-bottom: none;
-        }
-        .why-list .item svg {
-            color: var(--green);
-            width: 22px;
-            height: 22px;
-            flex-shrink: 0;
-        }
+        .why-list .item:last-child { border-bottom: none; }
+        .why-list .item svg { color: var(--green); width: 22px; height: 22px; flex-shrink: 0; }
 
-        .why-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 12px;
-        }
-
+        .why-logo { display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 12px; }
         .why-video {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
-            background: transparent;
-            display: block;
-            filter: drop-shadow(0 0 60px rgba(100, 255, 58, 0.06));
-            border: none;
-            outline: none;
+            max-width: 280px; width: 100%; height: auto;
+            background: transparent; display: block;
+            filter: drop-shadow(0 0 60px rgba(100,255,58,0.06));
+            border: none; outline: none;
         }
-
         .why-logo .caption {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            opacity: 0.5;
-            letter-spacing: 0.06em;
-            font-weight: 400;
+            font-size: 0.85rem; color: var(--text-secondary);
+            opacity: 0.5; letter-spacing: 0.06em; font-weight: 400;
         }
 
         /* ===== COMMENTS ===== */
-        .comments {
-            padding: 60px 0 100px;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .comments .section-label,
-        .comments .section-title,
-        .comments .section-sub {
-            text-align: center;
-        }
-
-        .comments .section-sub {
-            margin: 0 auto 40px;
-        }
+        .comments { padding: 60px 0 100px; background: rgba(255,255,255,0.01); }
+        .comments .section-label, .comments .section-title, .comments .section-sub { text-align: center; }
+        .comments .section-sub { margin: 0 auto 40px; }
 
         .comments-banner {
             width: 100%;
@@ -749,302 +606,112 @@
             margin: 0 auto 40px;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow-glow);
-            border: 1px solid rgba(100, 255, 58, 0.06);
+            border: 1px solid rgba(100,255,58,0.06);
+            animation: bannerGlow 3s ease-in-out infinite;
+        }
+        @keyframes bannerGlow {
+            0%,100% { box-shadow: 0 0 20px rgba(100,255,58,0.1), 0 0 40px rgba(100,255,58,0.03); }
+            50% { box-shadow: 0 0 40px rgba(100,255,58,0.3), 0 0 80px rgba(100,255,58,0.08); }
         }
 
         .comments-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            aspect-ratio: 2527 / 380;
+            width: 100%; height: auto; display: block;
+            object-fit: cover; aspect-ratio: 2527 / 380;
         }
 
-        .google-form-iframe {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: block;
-        }
-
+        .google-form-iframe { width: 100%; max-width: 1200px; margin: 0 auto; display: block; }
         .google-form-iframe iframe {
-            width: 100%;
-            height: 816px;
-            border: none;
-            display: block;
-            filter: invert(1) hue-rotate(180deg);
-            background: #fff;
+            width: 100%; height: 816px; border: none; display: block;
+            filter: invert(1) hue-rotate(180deg); background: #fff;
         }
 
         /* ===== DOWNLOAD ===== */
-        .download {
-            padding: 60px 0 100px;
-            text-align: center;
-        }
-        .download .section-sub {
-            margin: 0 auto 40px;
-        }
-
-        .download-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-
+        .download { padding: 60px 0 100px; text-align: center; }
+        .download .section-sub { margin: 0 auto 40px; }
+        .download-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
         .btn-store {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-sm);
-            padding: 14px 32px;
-            text-decoration: none;
-            color: #fff;
-            transition: var(--transition);
-            font-family: var(--font);
-            min-width: 200px;
+            display: inline-flex; align-items: center; gap: 14px;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-sm); padding: 14px 32px;
+            text-decoration: none; color: #fff; transition: var(--transition);
+            font-family: var(--font); min-width: 200px;
         }
         .btn-store:hover {
-            background: rgba(100, 255, 58, 0.06);
-            border-color: rgba(100, 255, 58, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(100,255,58,0.06); border-color: rgba(100,255,58,0.15);
+            transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
-        .btn-store .text .small {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-secondary);
-            font-weight: 450;
-            display: block;
-        }
-        .btn-store .text .big {
-            font-size: 1.05rem;
-            font-weight: 600;
-            display: block;
-            margin-top: 1px;
-        }
+        .btn-store .text .small { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); font-weight: 450; display: block; }
+        .btn-store .text .big { font-size: 1.05rem; font-weight: 600; display: block; margin-top: 1px; }
 
         /* ===== FOOTER ===== */
-        footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-        .footer-inner {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-        }
+        footer { padding: 60px 0 40px; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+        .footer-brand { display: flex; align-items: center; gap: 12px; }
+        .footer-brand img { height: 32px; width: auto; }
+        .footer-brand .brand-text { font-weight: 700; font-size: 1.1rem; }
+        .footer-brand .brand-text span { color: var(--green); }
+        .footer-brand .tagline { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.4; letter-spacing: 0.02em; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 450; transition: var(--transition); }
+        .footer-links a:hover { color: var(--green); }
+        .footer-copy { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.3; letter-spacing: 0.02em; }
 
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .footer-brand img {
-            height: 32px;
-            width: auto;
-        }
-        .footer-brand .brand-text {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        .footer-brand .brand-text span {
-            color: var(--green);
-        }
-        .footer-brand .tagline {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            opacity: 0.4;
-            letter-spacing: 0.02em;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 450;
-            transition: var(--transition);
-        }
-        .footer-links a:hover {
-            color: var(--green);
-        }
-
-        .footer-copy {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            opacity: 0.3;
-            letter-spacing: 0.02em;
-        }
-
-        /* ============================================================ */
         /* ===== RESPONSIVE ===== */
-        /* ============================================================ */
-
         @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero p {
-                max-width: 100%;
-            }
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .why-logo {
-                order: -1;
-            }
-            .why-video {
-                max-width: 200px;
-            }
-            .google-form-iframe iframe {
-                height: 750px;
-            }
+            .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+            .hero h1 .highlight { font-size: 1.2em; }
+            .hero-logo-video { max-width: 160px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; gap: 40px; }
+            .why-logo { order: -1; }
+            .why-video { max-width: 200px; }
+            .google-form-iframe iframe { height: 750px; }
         }
 
         @media (max-width: 768px) {
-            .hero-video {
-                max-width: 220px;
-            }
-            .google-form-iframe iframe {
-                height: 680px;
-            }
+            .google-form-iframe iframe { height: 680px; }
+            .hero-logo-video { max-width: 140px; }
         }
 
         @media (max-width: 640px) {
-            .hero {
-                padding: 80px 0 30px;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            #typed-text {
-                font-size: 2.8rem !important;
-            }
-            .hero p {
-                font-size: 0.95rem;
-            }
-            .hero-features {
-                gap: 12px 20px;
-            }
-            .hero-features span {
-                font-size: 0.8rem;
-            }
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .stat-item .number {
-                font-size: 2rem;
-            }
-            .why-card {
-                padding: 28px 20px;
-            }
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn-store {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-links {
-                justify-content: center;
-            }
-            .header-inner {
-                flex-wrap: nowrap;
-                justify-content: space-between;
-            }
-            .header-badge {
-                display: none;
-            }
-            /* مخفی کردن لینک‌های متنی اما نگه‌داشتن دکمه دانلود و آیکون‌های اجتماعی */
-            .nav-actions a:not(.btn-neon-download):not(.social-icon) {
-                display: none;
-            }
-            .logo img {
-                height: 28px;
-            }
-            .logo .badge-free {
-                font-size: 0.5rem;
-                padding: 1px 8px;
-            }
-            .btn-neon-download {
-                padding: 6px 16px;
-                font-size: 0.7rem !important;
-            }
-            .comments-banner {
-                border-radius: var(--radius-sm);
-            }
-            .google-form-iframe iframe {
-                height: 620px;
-            }
-            .hero-features span {
-                font-size: 0.8rem;
-            }
+            .hero { padding: 80px 0 30px; }
+            .hero h1 { font-size: 2.2rem; }
+            #typed-text { font-size: 2.8rem !important; }
+            .hero h1 .highlight { font-size: 1.1em; }
+            .hero p { font-size: 0.95rem; }
+            .hero-features { gap: 12px 20px; }
+            .hero-features span { font-size: 0.8rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 16px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .stat-item .number { font-size: 2rem; }
+            .why-card { padding: 28px 20px; }
+            .download-buttons { flex-direction: column; align-items: center; }
+            .btn-store { width: 100%; max-width: 280px; justify-content: center; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .header-inner { flex-wrap: nowrap; justify-content: space-between; }
+            .header-badge { display: none; }
+            .nav-actions a:not(.btn-neon-download):not(.social-icon) { display: none; }
+            .logo img { height: 28px; }
+            .logo .badge-free { font-size: 0.5rem; padding: 1px 8px; }
+            .btn-neon-download { padding: 6px 16px; font-size: 0.7rem !important; }
+            .comments-banner { border-radius: var(--radius-sm); }
+            .google-form-iframe iframe { height: 620px; }
+            .hero-logo-video { max-width: 110px; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            #typed-text {
-                font-size: 2.2rem !important;
-            }
-            .hero p {
-                font-size: 0.95rem;
-            }
-            .hero-features span {
-                font-size: 0.7rem;
-            }
-            .google-form-iframe iframe {
-                height: 570px;
-            }
-            .btn-primary {
-                padding: 12px 28px;
-                font-size: 0.85rem;
-            }
-            .btn-ghost {
-                padding: 8px 18px;
-                font-size: 0.8rem;
-            }
+            .hero h1 { font-size: 1.8rem; }
+            #typed-text { font-size: 2.2rem !important; }
+            .hero p { font-size: 0.95rem; }
+            .hero-features span { font-size: 0.7rem; }
+            .google-form-iframe iframe { height: 570px; }
+            .btn-primary { padding: 12px 28px; font-size: 0.85rem; }
+            .btn-ghost { padding: 8px 18px; font-size: 0.8rem; }
         }
 
-        @media (min-width: 641px) {
-            .header-badge {
-                display: flex;
-            }
-        }
+        @media (min-width: 641px) { .header-badge { display: flex; } }
 
         /* ===== ANIMATIONS ===== */
         .fade-up {
@@ -1052,58 +719,25 @@
             transform: translateY(30px);
             animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        .fade-up-d1 {
-            animation-delay: 0.10s;
-        }
-        .fade-up-d2 {
-            animation-delay: 0.20s;
-        }
-        .fade-up-d3 {
-            animation-delay: 0.30s;
-        }
-        .fade-up-d4 {
-            animation-delay: 0.40s;
-        }
-        .fade-up-d5 {
-            animation-delay: 0.50s;
-        }
-        .fade-up-d6 {
-            animation-delay: 0.60s;
-        }
+        .fade-up-d1 { animation-delay: 0.10s; }
+        .fade-up-d2 { animation-delay: 0.20s; }
+        .fade-up-d3 { animation-delay: 0.30s; }
+        .fade-up-d4 { animation-delay: 0.40s; }
+        .fade-up-d5 { animation-delay: 0.50s; }
+        .fade-up-d6 { animation-delay: 0.60s; }
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
 
         .glow-orb-bg {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; border-radius: 50%; filter: blur(120px);
+            pointer-events: none; z-index: 0;
         }
-        .glow-orb-bg.g1 {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            right: -100px;
-            background: rgba(100, 255, 58, 0.03);
-        }
-        .glow-orb-bg.g2 {
-            width: 300px;
-            height: 300px;
-            bottom: 0;
-            left: -80px;
-            background: rgba(100, 255, 58, 0.02);
-        }
+        .glow-orb-bg.g1 { width: 400px; height: 400px; top: -100px; right: -100px; background: rgba(100,255,58,0.03); }
+        .glow-orb-bg.g2 { width: 300px; height: 300px; bottom: 0; left: -80px; background: rgba(100,255,58,0.02); }
     </style>
 </head>
 <body>
 
-    <!-- ===== DECORATIVE GLOW ===== -->
     <div class="glow-orb-bg g1"></div>
     <div class="glow-orb-bg g2"></div>
 
@@ -1154,6 +788,9 @@
 
         <div class="container hero-grid">
             <div class="hero-content">
+                <video autoplay loop muted playsinline class="hero-logo-video fade-up fade-up-d1">
+                    <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
+                </video>
                 <h1 class="fade-up fade-up-d1">
                     <span id="typed-text"></span> <br />
                     <span class="highlight">Free VPN</span>
@@ -1188,42 +825,27 @@
     <section class="features" id="features">
         <div class="container">
             <span class="section-label fade-up">ویژگی‌ها</span>
-            <h2 class="section-title fade-up fade-up-d1">
-                همه‌چیز در <span>یکجا</span>
-            </h2>
-            <p class="section-sub fade-up fade-up-d2">
-                چهار ستون قدرت V2C — امنیت، سرعت، دسترسی جهانی و آزادی بی‌نهایت.
-            </p>
+            <h2 class="section-title fade-up fade-up-d1">همه‌چیز در <span>یکجا</span></h2>
+            <p class="section-sub fade-up fade-up-d2">چهار ستون قدرت V2C — امنیت، سرعت، دسترسی جهانی و آزادی بی‌نهایت.</p>
 
             <div class="features-grid">
                 <div class="feature-card fade-up fade-up-d3">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                    </div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
                     <h3>رمزنگاری نظامی</h3>
                     <p>امنیت AES-256 — استاندارد جهانی برای محافظت از داده‌های شما.</p>
                 </div>
-
                 <div class="feature-card fade-up fade-up-d4">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
                     <h3>سرعت فوق‌العاده</h3>
                     <p>سرورهای بهینه‌شده برای پخش 4K و بازی بدون تأخیر.</p>
                 </div>
-
                 <div class="feature-card fade-up fade-up-d5">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    </div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
                     <h3>سرورهای جهانی</h3>
                     <p>دسترسی به بیش از ۵۰ کشور با یک کلیک.</p>
                 </div>
-
                 <div class="feature-card fade-up fade-up-d6">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
-                    </div>
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
                     <h3>بی‌نهایت</h3>
                     <p>بدون محدودیت در پهنای باند، ترافیک یا زمان استفاده.</p>
                 </div>
@@ -1231,20 +853,20 @@
         </div>
     </section>
 
-    <!-- ===== STATS ===== -->
+    <!-- ===== STATS (شمارنده افزایشی) ===== -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item fade-up">
-                    <div class="number">۱۵M+</div>
+                    <div class="number"><span class="count" data-target="100">0</span>K+</div>
                     <div class="label">کاربران</div>
                 </div>
                 <div class="stat-item fade-up fade-up-d1">
-                    <div class="number">۹۹٫۹۹%</div>
+                    <div class="number"><span class="count" data-target="99.99">0</span>%</div>
                     <div class="label">در دسترس بودن</div>
                 </div>
                 <div class="stat-item fade-up fade-up-d2">
-                    <div class="number">۱۰۰%</div>
+                    <div class="number"><span class="count" data-target="100">0</span>%</div>
                     <div class="label">رایگان</div>
                 </div>
                 <div class="stat-item fade-up fade-up-d3">
@@ -1261,29 +883,13 @@
             <div class="why-card fade-up">
                 <h2>چرا <span>V2C</span>؟</h2>
                 <div class="why-list">
-                    <div class="item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        بدون ثبت‌نام
-                    </div>
-                    <div class="item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        پهنای باند نامحدود
-                    </div>
-                    <div class="item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        بدون تبلیغ
-                    </div>
-                    <div class="item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        اتصال سریع
-                    </div>
-                    <div class="item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-                        پروتکل‌های مدرن
-                    </div>
+                    <div class="item"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> بدون ثبت‌نام</div>
+                    <div class="item"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> پهنای باند نامحدود</div>
+                    <div class="item"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> بدون تبلیغ</div>
+                    <div class="item"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> اتصال سریع</div>
+                    <div class="item"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> پروتکل‌های مدرن</div>
                 </div>
             </div>
-
             <div class="why-logo fade-up fade-up-d2">
                 <video autoplay loop muted playsinline class="why-video">
                     <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
@@ -1297,21 +903,15 @@
     <section class="comments" id="comments">
         <div class="container">
             <div class="comments-banner fade-up">
-                <img src="https://s34.picofile.com/file/8491003850/%DB%8C.png" alt="V2C Comments Banner" />
+                <img src="https://github.com/V2Cye/Download/blob/main/%DB%8C.png?raw=true" alt="V2C Comments Banner" />
             </div>
 
             <span class="section-label fade-up">نظرات</span>
-            <h2 class="section-title fade-up fade-up-d1">
-                نظر خود را <span>بنویسید</span>
-            </h2>
-            <p class="section-sub fade-up fade-up-d2">
-                تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.
-            </p>
+            <h2 class="section-title fade-up fade-up-d1">نظر خود را <span>بنویسید</span></h2>
+            <p class="section-sub fade-up fade-up-d2">تجربه خود را با V2C به اشتراک بگذارید و به دیگران کمک کنید.</p>
 
             <div class="google-form-iframe fade-up fade-up-d3">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">
-                    Loading…
-                </iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
         </div>
     </section>
@@ -1320,27 +920,17 @@
     <section class="download" id="download">
         <div class="container">
             <span class="section-label fade-up">دانلود</span>
-            <h2 class="section-title fade-up fade-up-d1">
-                همین حالا <span>شروع کن</span>
-            </h2>
-            <p class="section-sub fade-up fade-up-d2">
-                V2C را روی دستگاه خود نصب کن و از اینترنت آزاد لذت ببر.
-            </p>
+            <h2 class="section-title fade-up fade-up-d1">همین حالا <span>شروع کن</span></h2>
+            <p class="section-sub fade-up fade-up-d2">V2C را روی دستگاه خود نصب کن و از اینترنت آزاد لذت ببر.</p>
 
             <div class="download-buttons fade-up fade-up-d3">
                 <a href="#" class="btn-store">
                     <span style="font-size:1.6rem;line-height:1;">⤵</span>
-                    <span class="text">
-                        <span class="small">دریافت مستقیم </span>
-                        <span class="big">APK</span>
-                    </span>
+                    <span class="text"><span class="small">دریافت مستقیم </span><span class="big">APK</span></span>
                 </a>
                 <a href="#" class="btn-store">
                     <span style="font-size:1.6rem;line-height:1;">▶</span>
-                    <span class="text">
-                        <span class="small">دریافت از</span>
-                        <span class="big">Google Play</span>
-                    </span>
+                    <span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span>
                 </a>
             </div>
         </div>
@@ -1361,27 +951,17 @@
                 <a href="#download">دانلود</a>
                 <a href="#">حریم خصوصی</a>
             </div>
-            <div class="footer-copy">
-                &copy; 2026 V2C VPN — تمامی حقوق محفوظ است.
-            </div>
+            <div class="footer-copy">&copy; 2026 V2C VPN — تمامی حقوق محفوظ است.</div>
         </div>
     </footer>
 
-    <!-- ============================================================ -->
     <!-- ===== SCRIPT ===== -->
-    <!-- ============================================================ -->
     <script>
-        // ===== HEADER SCROLL =====
+        // header scroll
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
 
-        // ===== SMOOTH SCROLL =====
+        // smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -1389,65 +969,60 @@
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
-                    const offset = 80;
-                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    const top = target.getBoundingClientRect().top + window.scrollY - 80;
                     window.scrollTo({ top, behavior: 'smooth' });
                 }
             });
         });
 
-        // ===== FADE-UP OBSERVER =====
+        // fade-up observer
         const fadeEls = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.style.animationPlayState = 'running'; });
         }, { threshold: 0.1 });
+        fadeEls.forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
+        fadeEls.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.style.animationPlayState = 'running'; });
 
-        fadeEls.forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
-        });
-
-        fadeEls.forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight) {
-                el.style.animationPlayState = 'running';
-            }
-        });
-
-        // ===== TYPED.JS =====
-        document.addEventListener('DOMContentLoaded', function() {
-            const typed = new Typed('#typed-text', {
+        // typed.js
+        document.addEventListener('DOMContentLoaded', () => {
+            new Typed('#typed-text', {
                 strings: [
                     '<span class="typed-blue">Unlimited</span>',
                     '<span class="typed-yellow">FAST</span>',
                     '<span class="typed-red">secure</span>'
                 ],
-                typeSpeed: 200,
-                backSpeed: 150,
-                backDelay: 1400,
-                startDelay: 300,
-                loop: true,
-                showCursor: false,
-                contentType: 'html'
+                typeSpeed: 200, backSpeed: 150, backDelay: 1400, startDelay: 300,
+                loop: true, showCursor: false, contentType: 'html'
             });
         });
 
-        try {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('✅ Service Worker ثبت شد'))
-                    .catch(err => console.warn('⚠️ Service Worker ثبت نشد:', err));
-            }
-        } catch (e) {
-            console.log('ℹ️ Service Worker پشتیبانی نمی‌شود');
+        // ===== Counter Animation =====
+        const counters = document.querySelectorAll('.count');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    const update = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = target * progress;
+                        el.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(2);
+                        if (progress < 1) requestAnimationFrame(update);
+                    };
+                    requestAnimationFrame(update);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(() => console.log('✅ SW')).catch(() => {});
         }
-
-        console.log('✅ سایت V2C با موفقیت بارگذاری شد!');
-        console.log('💬 سیستم نظرات با Google Form فعال است (تم تاریک با فیلتر)');
     </script>
-
 </body>
 </html>
