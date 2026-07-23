@@ -153,9 +153,8 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             background: rgba(9, 9, 9, 0.50);
-            /* bevel سبز با border-bottom گرادیان */
-            border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, transparent, #64FF3A, #2DFF8F, #64FF3A, transparent) 1;
+            /* خط منو با رنگ تیره‌تر (شفافیت کمتر) */
+            border-bottom: 2px solid rgba(100, 255, 58, 0.15);
             transition: var(--transition);
         }
         header.scrolled {
@@ -248,12 +247,11 @@
         .nav-actions a:hover {
             color: var(--green);
         }
-        /* کمرنگ‌تر کردن V2C در منو */
         .nav-actions a .v2c-dim {
             color: rgba(100, 255, 58, 0.45);
         }
 
-        /* ===== دکمه دانلود هدر (همراه با گرادیانت هفت‌رنگ) ===== */
+        /* ===== دکمه دانلود هدر (گرادیانت تیره‌تر و سریع‌تر) ===== */
         .btn-neon-download {
             position: relative;
             display: inline-flex;
@@ -272,12 +270,12 @@
             overflow: hidden;
             cursor: pointer;
             z-index: 1;
-            /* گرادیانت هفت‌رنگ متحرک */
-            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            /* گرادیانت تیره‌تر با سرعت بیشتر (2s) */
+            background: linear-gradient(124deg, #4a0e0e, #3d0f0f, #4a3a0e, #2a3a0e, #0e3a1a, #0e2a3a, #1a0e3a, #3a0e3a, #4a0e0e);
             background-size: 1800% 1800%;
-            animation: rainbowGlow 12s ease infinite;
+            animation: rainbowGlow 2s ease infinite;
             color: #fff;
-            box-shadow: 0 0 25px rgba(0, 255, 50, 0.25);
+            box-shadow: 0 0 25px rgba(0, 255, 50, 0.15);
         }
         .btn-neon-download::before {
             content: '';
@@ -286,7 +284,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transition: left 0.6s ease;
             z-index: -1;
         }
@@ -295,12 +293,8 @@
         }
         .btn-neon-download:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(0, 255, 50, 0.6), 0 0 90px rgba(0, 255, 50, 0.3);
+            box-shadow: 0 0 50px rgba(0, 255, 50, 0.4);
             color: #fff;
-        }
-        .btn-neon-download .neon-line {
-            display: none;
-            /* حذف افکت قبلی */;
         }
 
         @keyframes rainbowGlow {
@@ -322,7 +316,7 @@
             fill: none;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO با ویدیوی پس‌زمینه ===== */
         .hero {
             height: 100vh;
             display: flex;
@@ -332,24 +326,29 @@
             padding: 80px 0 30px;
             margin-top: 60px;
             min-height: 600px;
-            /* گرادیان پس‌زمینه متحرک به جای ویدیو */
-            background: radial-gradient(circle at 30% 40%, rgba(100, 255, 58, 0.08), transparent 60%),
-                radial-gradient(circle at 70% 60%, rgba(0, 200, 255, 0.05), transparent 50%),
-                #090909;
-            animation: bgShift 8s ease-in-out infinite alternate;
         }
-        @keyframes bgShift {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 100% 100%;
-            }
+
+        /* ویدیوی پس‌زمینه با تیرگی و مات */
+        .hero-bg-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+            filter: brightness(0.4) blur(4px);
+            /* تیره و مات */;
         }
 
         .hero-overlay {
-            display: none;
-            /* غیرفعال */;
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: rgba(9, 9, 9, 0.5);
+            /* لایه تیره روی ویدیو */
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
         }
 
         .hero-grid {
@@ -362,64 +361,43 @@
             width: 100%;
         }
 
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .hero-logo-video {
-            max-width: 160px;
-            width: 100%;
-            height: auto;
-            background: transparent;
-            border: none;
-            outline: none;
-            display: block;
-            filter: drop-shadow(0 0 40px #a0ce60);
-            margin-bottom: 5px;
-        }
-
-        /* ===== عنوان اصلی با چرخش سه‌بعدی V2C ===== */
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            /* بزرگ‌تر در موبایل و تبلت */
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.03em;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: -6px;
-            /* نزدیک‌تر */;
         }
 
+        /* افکت حرکتی جدید برای V2C (محو-ظاهر و حرکت نور) */
         .hero h1 .highlight {
             display: inline-block;
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 2em;
+            font-size: 1em;
             font-weight: 900;
-            text-shadow: 0 0 20px rgba(100, 255, 58, 0.4), 0 0 40px rgba(100, 255, 58, 0.2);
-            animation: glowPulseText 2.5s ease-in-out infinite, rotate3D 8s linear infinite;
-            transform-style: preserve-3d;
-            perspective: 800px;
-            backface-visibility: hidden;
-            will-change: transform;
-            /* overlap با typed-text */;
+            text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 40px rgba(100, 255, 58, 0.1);
+            animation: glowPulseText 2.5s ease-in-out infinite, slideFadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+            animation-delay: 0.1s;
         }
 
-        @keyframes rotate3D {
+        @keyframes slideFadeIn {
             0% {
-                transform: rotateY(0deg);
+                opacity: 0;
+                transform: translateY(15px);
             }
             100% {
-                transform: rotateY(360deg);
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -429,17 +407,19 @@
                 text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 60px rgba(100, 255, 58, 0.1);
             }
             50% {
-                text-shadow: 0 0 35px rgba(100, 255, 58, 0.8), 0 0 70px rgba(100, 255, 58, 0.4);
+                text-shadow: 0 0 35px rgba(100, 255, 58, 0.7), 0 0 70px rgba(100, 255, 58, 0.3);
             }
         }
 
         #typed-text {
-            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 4.5vw, 3.8rem);
             font-weight: 800;
             display: inline-block;
             line-height: 1.1;
             margin-top: -18px;
-            /* overlap با V2C */;
+            animation: slideFadeIn 1s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
         }
         .typed-blue {
             color: #3b82f6;
@@ -462,13 +442,12 @@
             text-shadow: 0 0 30px rgba(34, 211, 238, 0.8);
         }
 
-        /* ===== کادر قرمز گرادیانتی برای "ساخته شده با ❤️ برای ایرانیان" ===== */
         .hero-sub {
             font-size: 1rem;
             color: #fff;
             max-width: 460px;
             line-height: 1.7;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
             padding: 10px 24px;
             display: inline-block;
             border: 2px solid transparent;
@@ -522,7 +501,6 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 16px;
-            /* فاصله دکمه‌ها */;
             justify-content: center;
             margin-top: 12px;
         }
@@ -867,14 +845,14 @@
             gap: 16px;
         }
 
-        /* دکمه‌های دانلود با گرادیانت هفت‌رنگ */
+        /* دکمه‌های دانلود با گرادیانت تیره‌تر و سریع‌تر (2s) */
         .btn-store {
             display: inline-flex;
             align-items: center;
             gap: 14px;
-            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            background: linear-gradient(124deg, #4a0e0e, #3d0f0f, #4a3a0e, #2a3a0e, #0e3a1a, #0e2a3a, #1a0e3a, #3a0e3a, #4a0e0e);
             background-size: 1800% 1800%;
-            animation: rainbowGlow 10s ease infinite;
+            animation: rainbowGlow 2s ease infinite;
             border: 2px solid transparent;
             border-radius: var(--radius-sm);
             padding: 14px 32px;
@@ -966,17 +944,11 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: clamp(2rem, 6vw, 3.2rem);
-            }
-            .hero h1 .highlight {
-                font-size: 0.85em;
+                font-size: clamp(2.8rem, 6vw, 4.2rem);
             }
             #typed-text {
-                font-size: clamp(1.6rem, 5vw, 2.8rem);
+                font-size: clamp(1.8rem, 4.5vw, 3rem);
                 margin-top: -14px;
-            }
-            .hero-logo-video {
-                max-width: 130px;
             }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1006,14 +978,11 @@
                 padding: 70px 0 30px;
             }
             .hero h1 {
-                font-size: 1.9rem;
+                font-size: 2.8rem;
             }
             #typed-text {
                 font-size: 2rem !important;
                 margin-top: -12px;
-            }
-            .hero-logo-video {
-                max-width: 110px;
             }
             .google-form-iframe iframe {
                 height: 680px;
@@ -1025,18 +994,11 @@
                 padding: 60px 0 20px;
             }
             .hero h1 {
-                font-size: 1.7rem;
-            }
-            .hero h1 .highlight {
-                font-size: 0.8em;
+                font-size: 2.4rem;
             }
             #typed-text {
                 font-size: 1.8rem !important;
                 margin-top: -8px;
-            }
-            .hero p {
-                font-size: 0.9rem;
-                padding: 8px 14px;
             }
             .hero-features {
                 gap: 8px 16px;
@@ -1053,10 +1015,6 @@
                 padding: 8px 16px;
                 font-size: 0.85rem;
             }
-            .hero-logo-video {
-                max-width: 90px;
-            }
-
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -1120,14 +1078,11 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 2rem;
             }
             #typed-text {
                 font-size: 1.6rem !important;
                 margin-top: -4px;
-            }
-            .hero p {
-                font-size: 0.85rem;
             }
             .hero-features span {
                 font-size: 0.7rem;
@@ -1227,8 +1182,12 @@
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO با ویدیوی پس‌زمینه -->
     <section class="hero" id="hero">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+            <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/vid.webm" type="video/webm">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="hero-grid">
             <h1 class="fade-up fade-up-d1">
                 <span class="highlight">V2C</span>
