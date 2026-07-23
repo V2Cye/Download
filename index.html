@@ -245,19 +245,21 @@
             color: var(--green);
         }
 
-        /* ===== دکمه نئونی دانلود (با گلس) ===== */
+        /* ===== دکمه نئونی دانلود (سبزتر) ===== */
         .btn-neon-download {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 8px 28px;
-            background: rgba(100, 255, 58, 0.1);
+            background: rgba(0, 255, 50, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            color: var(--green);
+            color: #00ff41;
             font-family: var(--font);
             font-weight: 700;
             font-size: 0.85rem;
-            border: 1px solid rgba(100, 255, 58, 0.5);
+            border: 2px solid #64FF3A;
             border-radius: 50px;
             text-decoration: none;
             text-transform: uppercase;
@@ -265,7 +267,7 @@
             transition: all 0.3s ease;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(100, 255, 58, 0.1);
+            box-shadow: 0 0 25px rgba(0, 255, 50, 0.25);
             z-index: 1;
         }
 
@@ -276,7 +278,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(100, 255, 58, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 50, 0.6), transparent);
             transition: left 0.6s ease;
             z-index: -1;
         }
@@ -286,9 +288,9 @@
         }
 
         .btn-neon-download:hover {
-            background: var(--green);
+            background: #64FF3A;
             color: #000;
-            box-shadow: 0 0 40px rgba(100, 255, 58, 0.4), 0 0 80px rgba(100, 255, 58, 0.2);
+            box-shadow: 0 0 50px rgba(0, 255, 50, 0.6), 0 0 90px rgba(0, 255, 50, 0.3);
             transform: scale(1.05);
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
@@ -300,9 +302,9 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--green), transparent, var(--green), transparent);
+            background: conic-gradient(from 0deg, transparent, #64FF3A, transparent, #64FF3A, transparent);
             animation: rotateNeon 4s linear infinite;
-            opacity: 0.3;
+            opacity: 0.4;
             z-index: -2;
             filter: blur(10px);
         }
@@ -317,7 +319,15 @@
         }
 
         .btn-neon-download:hover .neon-line {
-            opacity: 0.6;
+            opacity: 0.7;
+        }
+
+        /* ===== آیکون‌های اجتماعی ===== */
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
         }
 
         /* ===== HERO ===== */
@@ -330,13 +340,14 @@
             padding: 100px 0 60px;
         }
 
-        .hero-bg {
+        .hero-bg-video {
             position: absolute;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 0;
-            background: url('https://s34.picofile.com/file/8490999342/v2c_bg.png') center center / cover no-repeat;
             filter: brightness(0.7) saturate(1.1);
-            transform: scale(1.02);
         }
 
         .hero-overlay {
@@ -352,7 +363,7 @@
             position: relative;
             z-index: 2;
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: 1fr;
             gap: 40px;
             align-items: center;
             width: 100%;
@@ -362,7 +373,10 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            max-width: 620px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            align-items: center;
         }
 
         .hero h1 {
@@ -371,7 +385,6 @@
             line-height: 1.05;
             letter-spacing: -0.04em;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-            padding: 12px 24px;
             display: inline-block;
             width: fit-content;
         }
@@ -428,6 +441,7 @@
             flex-wrap: wrap;
             gap: 20px 32px;
             margin-top: 4px;
+            justify-content: center;
         }
         .hero-features span {
             display: inline-flex;
@@ -453,6 +467,7 @@
             align-items: center;
             gap: 16px;
             margin-top: 8px;
+            justify-content: center;
         }
 
         /* دکمه اصلی با گلس سبز */
@@ -514,98 +529,6 @@
             color: var(--green);
             background: rgba(100, 255, 58, 0.1);
             border-color: rgba(100, 255, 58, 0.35);
-        }
-
-        /* ===== لوگوی ویدیویی (بدون کادر) ===== */
-        .hero-logo-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .hero-video {
-            max-width: 350px;
-            width: 100%;
-            height: auto;
-            position: relative;
-            z-index: 2;
-            background: transparent;
-            border: none;
-            outline: none;
-            display: block;
-            filter: drop-shadow(0 0 30px rgba(100, 255, 58, 0.1));
-        }
-
-        /* ===== نیم‌دایره متحرک دور ویدیو ===== */
-        .orbit-container {
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .orbit-ring {
-            display: none;
-        }
-
-        .orbit-item {
-            position: absolute;
-            width: auto;
-            padding: 8px 18px;
-            background: rgba(9, 9, 9, 0.8);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(100, 255, 58, 0.2);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--green);
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            box-shadow: 0 0 20px rgba(100, 255, 58, 0.04);
-            transform: translate(-50%, -50%);
-            animation: floatItem 3s ease-in-out infinite;
-        }
-
-        .orbit-item:nth-child(4) {
-            top: 2%;
-            left: 50%;
-            animation-delay: 0s;
-        }
-        .orbit-item:nth-child(5) {
-            top: 10%;
-            left: 12%;
-            animation-delay: 0.4s;
-        }
-        .orbit-item:nth-child(6) {
-            top: 10%;
-            left: 88%;
-            animation-delay: 0.8s;
-        }
-        .orbit-item:nth-child(7) {
-            top: 28%;
-            left: 2%;
-            animation-delay: 1.2s;
-        }
-        .orbit-item:nth-child(8) {
-            top: 28%;
-            left: 98%;
-            animation-delay: 1.6s;
-        }
-
-        @keyframes floatItem {
-            0%, 100% {
-                transform: translate(-50%, -50%) translateY(0px);
-            }
-            50% {
-                transform: translate(-50%, -50%) translateY(-10px);
-            }
         }
 
         /* ===== FEATURES ===== */
@@ -784,12 +707,18 @@
             flex-direction: column;
             gap: 12px;
         }
-        .why-logo img {
+
+        .why-video {
             max-width: 280px;
             width: 100%;
             height: auto;
-            filter: drop-shadow(0 0 60px rgba(100, 255, 58, 0.04));
+            background: transparent;
+            display: block;
+            filter: drop-shadow(0 0 60px rgba(100, 255, 58, 0.06));
+            border: none;
+            outline: none;
         }
+
         .why-logo .caption {
             font-size: 0.85rem;
             color: var(--text-secondary);
@@ -962,53 +891,17 @@
         /* ===== RESPONSIVE ===== */
         /* ============================================================ */
 
-        @media (max-width: 1200px) {
-            .orbit-container {
-                width: 380px;
-                height: 380px;
-            }
-            .hero-video {
-                max-width: 300px;
-            }
-        }
-
         @media (max-width: 1024px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
                 text-align: center;
             }
             .hero-content {
-                align-items: center;
                 max-width: 100%;
             }
             .hero p {
                 max-width: 100%;
             }
-            .hero-features {
-                justify-content: center;
-            }
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .hero-logo-wrapper {
-                order: -1;
-                padding: 10px;
-            }
-            .hero-video {
-                max-width: 280px;
-            }
-
-            .orbit-container {
-                width: 320px;
-                height: 320px;
-            }
-            .orbit-item {
-                font-size: 0.75rem;
-                padding: 6px 14px;
-            }
-
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1022,7 +915,7 @@
             .why-logo {
                 order: -1;
             }
-            .why-logo img {
+            .why-video {
                 max-width: 200px;
             }
             .google-form-iframe iframe {
@@ -1031,14 +924,6 @@
         }
 
         @media (max-width: 768px) {
-            .orbit-container {
-                width: 280px;
-                height: 280px;
-            }
-            .orbit-item {
-                font-size: 0.7rem;
-                padding: 5px 12px;
-            }
             .hero-video {
                 max-width: 220px;
             }
@@ -1057,43 +942,15 @@
             #typed-text {
                 font-size: 2.8rem !important;
             }
-
-            .hero-logo-wrapper {
-                padding: 5px;
+            .hero p {
+                font-size: 0.95rem;
             }
-            .hero-video {
-                max-width: 180px;
+            .hero-features {
+                gap: 12px 20px;
             }
-
-            .orbit-container {
-                width: 240px;
-                height: 240px;
+            .hero-features span {
+                font-size: 0.8rem;
             }
-            .orbit-item {
-                font-size: 0.6rem;
-                padding: 4px 10px;
-            }
-            .orbit-item:nth-child(4) {
-                top: 1%;
-                left: 50%;
-            }
-            .orbit-item:nth-child(5) {
-                top: 8%;
-                left: 10%;
-            }
-            .orbit-item:nth-child(6) {
-                top: 8%;
-                left: 90%;
-            }
-            .orbit-item:nth-child(7) {
-                top: 22%;
-                left: 1%;
-            }
-            .orbit-item:nth-child(8) {
-                top: 22%;
-                left: 99%;
-            }
-
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -1124,7 +981,15 @@
             .footer-links {
                 justify-content: center;
             }
-            .header-inner .nav-actions a:not(.btn-neon-download) {
+            .header-inner {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            .header-badge {
+                display: none;
+            }
+            /* مخفی کردن لینک‌های متنی اما نگه‌داشتن دکمه دانلود و آیکون‌های اجتماعی */
+            .nav-actions a:not(.btn-neon-download):not(.social-icon) {
                 display: none;
             }
             .logo img {
@@ -1138,30 +1003,14 @@
                 padding: 6px 16px;
                 font-size: 0.7rem !important;
             }
-            .hero-features {
-                gap: 12px 20px;
-            }
-            .hero-features span {
-                font-size: 0.8rem;
-            }
-
             .comments-banner {
                 border-radius: var(--radius-sm);
             }
-
             .google-form-iframe iframe {
                 height: 620px;
             }
-
-            .header-inner {
-                flex-wrap: nowrap;
-                justify-content: space-between;
-            }
-            .header-badge {
-                display: none;
-            }
-            .header-inner .nav-actions a:not(.btn-neon-download) {
-                display: none;
+            .hero-features span {
+                font-size: 0.8rem;
             }
         }
 
@@ -1178,23 +1027,9 @@
             .hero-features span {
                 font-size: 0.7rem;
             }
-
-            .orbit-container {
-                width: 200px;
-                height: 200px;
-            }
-            .orbit-item {
-                font-size: 0.5rem;
-                padding: 2px 8px;
-            }
-            .hero-video {
-                max-width: 140px;
-            }
-
             .google-form-iframe iframe {
                 height: 570px;
             }
-
             .btn-primary {
                 padding: 12px 28px;
                 font-size: 0.85rem;
@@ -1293,19 +1128,33 @@
                     <span class="neon-line"></span>
                     دانلود
                 </a>
+                <a href="https://instagram.com/example" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://t.me/iV2Ci" target="_blank" class="social-icon" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </a>
             </div>
         </div>
     </header>
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
-        <div class="hero-bg"></div>
+        <video autoplay loop muted playsinline class="hero-bg-video">
+            <source src="https://raw.githubusercontent.com/V2Cye/Download/main/vid.webm" type="video/webm">
+        </video>
         <div class="hero-overlay"></div>
 
         <div class="container hero-grid">
-
             <div class="hero-content">
-                <h1 class="fade-up fade-up-d1 glass">
+                <h1 class="fade-up fade-up-d1">
                     <span id="typed-text"></span> <br />
                     <span class="highlight">Free VPN</span>
                 </h1>
@@ -1332,22 +1181,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- ===== لوگوی ویدیویی متحرک (بدون کادر) ===== -->
-            <div class="hero-logo-wrapper fade-up fade-up-d5">
-                <div class="orbit-container">
-                    <div class="orbit-ring"></div>
-                    <span class="orbit-item">🔒 امن</span>
-                    <span class="orbit-item">🌍 جهانی</span>
-                    <span class="orbit-item">📡 بدون محدودیت</span>
-                    <span class="orbit-item">🛡️ AES-256</span>
-                    <span class="orbit-item">💯 رایگان</span>
-                </div>
-                <video autoplay loop muted playsinline class="hero-video">
-                    <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
-                </video>
-            </div>
-
         </div>
     </section>
 
@@ -1425,7 +1258,6 @@
     <!-- ===== WHY ===== -->
     <section class="why" id="why">
         <div class="container why-grid">
-
             <div class="why-card fade-up">
                 <h2>چرا <span>V2C</span>؟</h2>
                 <div class="why-list">
@@ -1453,17 +1285,17 @@
             </div>
 
             <div class="why-logo fade-up fade-up-d2">
-                <img src="https://s34.picofile.com/file/8490997350/GRouteTransparentBlack.png" alt="V2C Free" />
+                <video autoplay loop muted playsinline class="why-video">
+                    <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
+                </video>
                 <span class="caption">— رایگان همیشگی —</span>
             </div>
-
         </div>
     </section>
 
     <!-- ===== COMMENTS ===== -->
     <section class="comments" id="comments">
         <div class="container">
-
             <div class="comments-banner fade-up">
                 <img src="https://s34.picofile.com/file/8491003850/%DB%8C.png" alt="V2C Comments Banner" />
             </div>
@@ -1481,7 +1313,6 @@
                     Loading…
                 </iframe>
             </div>
-
         </div>
     </section>
 
