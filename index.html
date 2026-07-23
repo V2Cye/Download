@@ -240,7 +240,6 @@
             color: rgba(100, 255, 58, 0.45);
         }
 
-        /* ===== منوی Terms در هدر ===== */
         .terms-dropdown {
             position: relative;
             display: inline-block;
@@ -289,7 +288,6 @@
             transform: translateY(0);
         }
 
-        /* ===== دکمه دانلود هدر ===== */
         .btn-neon-download {
             position: relative;
             display: inline-flex;
@@ -353,7 +351,7 @@
             fill: none;
         }
 
-        /* ===== HERO با ویدیوی پس‌زمینه ===== */
+        /* ===== HERO ===== */
         .hero {
             height: 100vh;
             display: flex;
@@ -373,7 +371,6 @@
             object-fit: cover;
             object-position: center;
             z-index: 0;
-            /* تیرگی 30% */
             filter: brightness(0.70) blur(2px);
         }
 
@@ -381,7 +378,6 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            /* تیرگی 30% */
             background: rgba(10, 10, 10, 0.30);
         }
 
@@ -396,9 +392,9 @@
             gap: 4px;
         }
 
-        /* ===== V2C با افکت بزرگ‌شدن (گرو) ===== */
+        /* ===== V2C با افکت بزرگ‌شدن + RTL fix ===== */
         .hero h1 {
-            font-size: clamp(3.6rem, 8vw, 6.5rem);
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -0.03em;
@@ -415,6 +411,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            direction: ltr;
+            unicode-bidi: embed;
             background: var(--green-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -422,19 +420,12 @@
             font-weight: 900;
             font-size: 1em;
             text-shadow: 0 0 20px rgba(100, 255, 58, 0.3), 0 0 40px rgba(100, 255, 58, 0.1);
-            animation: slideFadeIn 1s ease-out forwards;
-            opacity: 0;
-            transform: translateY(10px);
-            animation-delay: 0.1s;
-            position: relative;
-            gap: 0.04em;
-        }
-
-        /* ===== افکت بزرگ‌شدن (گرو) روی کل V2C ===== */
-        .hero h1 .highlight {
             animation: slideFadeIn 1s ease-out forwards, growShrink 2.8s ease-in-out infinite;
             animation-delay: 0.1s, 1.2s;
             transform-origin: center;
+            opacity: 0;
+            gap: 0.04em;
+            position: relative;
         }
 
         @keyframes growShrink {
@@ -447,7 +438,6 @@
             }
         }
 
-        /* هاله نور حرفه‌ای که از روی V2C رد می‌شود */
         .hero h1 .highlight::after {
             content: '';
             position: absolute;
@@ -514,7 +504,7 @@
 
         .hero-sub-box .sub-text {
             font-size: clamp(0.9rem, 1.6vw, 1.3rem);
-            font-weight: 600;
+            font-weight: 700;
             color: var(--green);
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
             display: flex;
@@ -522,7 +512,6 @@
             justify-content: center;
             gap: 6px;
             flex-wrap: wrap;
-            font-weight: 700;
             text-align: center;
         }
         .hero-sub-box .sub-text .heart {
@@ -559,42 +548,6 @@
             display: inline-block;
         }
 
-        /* ===== کادر راهنمای نصب (زیر متن اصلی) ===== */
-        .install-guide-glass {
-            max-width: 720px;
-            width: 100%;
-            margin: 10px auto 12px;
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-sm);
-            padding: 16px 24px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-        }
-        .install-guide-glass .guide-line {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin: 0;
-            padding: 1px 0;
-            text-align: center;
-        }
-        .install-guide-glass .guide-line strong {
-            color: var(--green);
-            font-weight: 600;
-        }
-        .install-guide-glass .guide-line .highlight-step {
-            color: #fff;
-            font-weight: 500;
-        }
-        .install-guide-glass .guide-line:last-child {
-            color: rgba(255, 255, 255, 0.40);
-            font-size: 0.7rem;
-            margin-top: 2px;
-        }
-
         .hero-features {
             display: flex;
             flex-wrap: wrap;
@@ -626,8 +579,8 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 16px;
             justify-content: center;
+            gap: 12px;
             margin-top: 8px;
         }
 
@@ -681,7 +634,44 @@
             border-color: rgba(100, 255, 58, 0.35);
         }
 
-        /* ===== بخش‌های پایین سایت با بگراند تیره (نه سبز) ===== */
+        /* ===== دکمه نارنجی راهنمای نصب ===== */
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: linear-gradient(145deg, #ff8c00, #e67600);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 10px 22px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font);
+            box-shadow: 0 0 30px rgba(255, 140, 0, 0.25);
+            text-align: center;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 140, 0, 0.3);
+        }
+        .btn-orange:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 140, 0, 0.5);
+            background: linear-gradient(145deg, #ff9a1a, #e67600);
+            color: #fff;
+        }
+        .btn-orange .small-text {
+            font-weight: 400;
+            font-size: 0.6rem;
+            opacity: 0.9;
+            display: block;
+            line-height: 1.4;
+            margin-top: 1px;
+        }
+
+        /* ===== بخش‌های پایین سایت با بگراند تیره ===== */
         .features,
         .stats,
         .why,
@@ -693,7 +683,6 @@
             overflow: hidden;
         }
 
-        /* دایره‌های نوسان‌دار سبز (به‌عنوان اکسنت) */
         .features::before,
         .stats::before,
         .why::before,
@@ -1062,7 +1051,6 @@
             border-color: transparent;
         }
 
-        /* ===== دستگاه‌های پشتیبانی‌شده ===== */
         .supported-devices {
             margin-top: 40px;
             padding: 24px 32px;
@@ -1093,7 +1081,6 @@
             font-size: 0.8rem;
         }
 
-        /* ===== کادر اطلاعات APK ===== */
         .apk-info-box {
             margin-top: 40px;
             padding: 28px 32px;
@@ -1328,7 +1315,7 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: clamp(3rem, 6vw, 4.8rem);
+                font-size: clamp(2.6rem, 6vw, 4.5rem);
             }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1349,13 +1336,6 @@
             .google-form-iframe iframe {
                 height: 750px;
             }
-            .install-guide-glass {
-                max-width: 90%;
-                padding: 14px 18px;
-            }
-            .install-guide-glass .guide-line {
-                font-size: 0.75rem;
-            }
             .terms-dropdown-content {
                 min-width: 160px;
                 font-size: 0.75rem;
@@ -1375,6 +1355,16 @@
                 height: 180px;
                 filter: blur(60px);
             }
+            .hero-actions {
+                gap: 10px;
+            }
+            .btn-orange {
+                font-size: 0.7rem;
+                padding: 8px 16px;
+            }
+            .btn-orange .small-text {
+                font-size: 0.55rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1384,7 +1374,7 @@
                 padding: 70px 0 30px;
             }
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.6rem;
             }
             .hero-sub-box {
                 padding: 4px 16px;
@@ -1402,14 +1392,6 @@
             }
             .google-form-iframe iframe {
                 height: 680px;
-            }
-            .install-guide-glass {
-                padding: 12px 14px;
-                border-radius: 12px;
-            }
-            .install-guide-glass .guide-line {
-                font-size: 0.7rem;
-                line-height: 1.6;
             }
             .apk-info-box {
                 padding: 20px;
@@ -1448,6 +1430,14 @@
                 height: 140px;
                 filter: blur(50px);
             }
+            .btn-orange {
+                font-size: 0.65rem;
+                padding: 6px 14px;
+                line-height: 1.4;
+            }
+            .btn-orange .small-text {
+                font-size: 0.5rem;
+            }
         }
 
         @media (max-width: 640px) {
@@ -1455,7 +1445,7 @@
                 padding: 60px 0 20px;
             }
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem !important;
             }
             .hero-sub-box .sub-text {
                 font-size: 0.75rem;
@@ -1535,15 +1525,7 @@
                 height: 620px;
             }
             .hero-actions {
-                gap: 12px;
-            }
-            .install-guide-glass {
-                padding: 10px 12px;
-                border-radius: 10px;
-            }
-            .install-guide-glass .guide-line {
-                font-size: 0.6rem;
-                line-height: 1.5;
+                gap: 10px;
             }
             .apk-info-box {
                 padding: 16px;
@@ -1587,11 +1569,18 @@
                 height: 100px;
                 filter: blur(40px);
             }
+            .btn-orange {
+                font-size: 0.6rem;
+                padding: 6px 12px;
+            }
+            .btn-orange .small-text {
+                font-size: 0.45rem;
+            }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem !important;
             }
             .hero-sub-box .sub-text {
                 font-size: 0.65rem;
@@ -1607,7 +1596,7 @@
                 height: 570px;
             }
             .hero-actions {
-                gap: 10px;
+                gap: 8px;
             }
             .btn-primary {
                 padding: 8px 18px;
@@ -1629,15 +1618,19 @@
             .terms-modal .term-section .term-body {
                 font-size: 0.65rem;
             }
-            .install-guide-glass .guide-line {
-                font-size: 0.55rem;
-            }
             .features::before,
             .stats::before,
             .why::before {
                 width: 70px;
                 height: 70px;
                 filter: blur(30px);
+            }
+            .btn-orange {
+                font-size: 0.55rem;
+                padding: 4px 10px;
+            }
+            .btn-orange .small-text {
+                font-size: 0.4rem;
             }
         }
 
@@ -1715,7 +1708,6 @@
                 <a href="#features">ویژگی‌ها</a>
                 <a href="#why">چرا <span class="v2c-dim">V2C</span></a>
                 <a href="#comments">نظرات</a>
-                <!-- Terms of Service Dropdown -->
                 <div class="terms-dropdown">
                     <a href="#">قوانین</a>
                     <div class="terms-dropdown-content">
@@ -1740,7 +1732,7 @@
         </div>
     </header>
 
-    <!-- HERO با ویدیوی پس‌زمینه (تیرگی 30%) -->
+    <!-- HERO -->
     <section class="hero" id="hero">
         <video autoplay loop muted playsinline class="hero-bg-video">
             <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/vid.webm" type="video/webm">
@@ -1749,16 +1741,16 @@
 
         <div class="hero-grid">
 
-            <!-- V2C عنوان اصلی (با افکت بزرگ‌شدن و هاله) -->
+            <!-- V2C عنوان اصلی (اصلاح شده برای RTL) -->
             <h1 class="fade-up fade-up-d1">
                 <span class="highlight">
-                    <span class="char-v">V</span>
-                    <span class="char-2">2</span>
-                    <span class="char-c">C</span>
+                    <span>V</span>
+                    <span>2</span>
+                    <span>C</span>
                 </span>
             </h1>
 
-            <!-- کادر "ســاخته شده با ❤️ برای ایرانیان" (سبز + قلب‌های قرمز درخشان) -->
+            <!-- کادر "ســاخته شده با ❤️ برای ایرانیان" -->
             <div class="hero-sub-box fade-up fade-up-d2">
                 <span class="sub-text">
                     <span class="heart">❤️</span>
@@ -1769,25 +1761,16 @@
                 </span>
             </div>
 
-            <!-- کادر راهنمای نصب (زیر متن اصلی، تمام خط) -->
-            <div class="install-guide-glass fade-up fade-up-d3">
-                <div class="guide-line"><strong>برنامه را نصب کنید.</strong></div>
-                <div class="guide-line"><span class="highlight-step">روی اتصال بزنید.</span> V2C بهترین سرور موجود را انتخاب می‌کند.</div>
-                <div class="guide-line">در صورت قطع یا کند شدن اتصال، برنامه سرور دیگری را امتحان می‌کند.</div>
-                <div class="guide-line">پس از اتصال، می‌توانید مانند همیشه از اینترنت استفاده کنید.</div>
-                <div class="guide-line" style="color:rgba(255,255,255,0.35);font-size:0.7rem;">تمام این مراحل تنها در چند ثانیه انجام می‌شود.</div>
-            </div>
-
             <!-- ویژگی‌ها -->
-            <div class="hero-features fade-up fade-up-d4">
+            <div class="hero-features fade-up fade-up-d3">
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
                 <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
             </div>
 
-            <!-- دکمه‌های اقدام -->
-            <div class="hero-actions fade-up fade-up-d5">
+            <!-- دکمه‌های اقدام (راهنمای نصب به صورت دکمه نارنجی) -->
+            <div class="hero-actions fade-up fade-up-d4">
                 <a href="#download" class="btn-primary glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     دانلود کنید
@@ -1795,6 +1778,11 @@
                 <a href="https://github.com/V2Cye" target="_blank" class="btn-ghost glass">
                     سازنده و سورس
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <!-- دکمه نارنجی راهنمای نصب -->
+                <a href="#" class="btn-orange fade-up fade-up-d4" style="text-decoration:none;">
+                    📋 <span style="font-weight:700;">راهنمای نصب</span>
+                    <span class="small-text">نصب کنید · روی اتصال بزنید · سرور خودکار · رفع قطعی · اینترنت آزاد</span>
                 </a>
             </div>
         </div>
@@ -1876,7 +1864,6 @@
                 <a href="#" class="btn-store dim"><span style="font-size:1.6rem;">▶</span><span class="text"><span class="small">دریافت از</span><span class="big">Google Play</span></span></a>
             </div>
 
-            <!-- کادر اطلاعات APK -->
             <div class="apk-info-box fade-up fade-up-d4">
                 <div class="info-row">
                     <span class="label"><span class="warning-icon">⚠</span> نسخه</span>
@@ -1892,7 +1879,6 @@
                 </div>
             </div>
 
-            <!-- دستگاه‌های پشتیبانی‌شده -->
             <div class="supported-devices fade-up fade-up-d5">
                 <div class="title">📱 دستگاه‌های پشتیبانی‌شده</div>
                 <div class="list">
@@ -1903,7 +1889,6 @@
                 </div>
             </div>
 
-            <!-- لینک قوانین -->
             <div style="margin-top:28px;font-size:0.8rem;color:rgba(255,255,255,0.50);">
                 با دانلود، نصب یا استفاده از V2C، شما با
                 <a href="#" id="termsModalTrigger2" class="terms-link">قوانین</a>
