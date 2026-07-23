@@ -7,7 +7,8 @@
     <link rel="icon" href="https://s34.picofile.com/file/8490997326/favicon.png" type="image/png" />
 
     <!-- ===== CDN Typed.js ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
+    </script>
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -128,6 +129,17 @@
             line-height: 1.7;
         }
 
+        /* ===== GLASS EFFECT (روون و بدون هنگی) ===== */
+        .glass {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            transform: translateZ(0);
+            will-change: backdrop-filter;
+        }
+
         /* ===== HEADER ===== */
         header {
             position: fixed;
@@ -181,7 +193,6 @@
             margin-right: 2px;
         }
 
-        /* ===== بج وسط هدر ===== */
         .header-badge {
             display: flex;
             align-items: center;
@@ -234,17 +245,19 @@
             color: var(--green);
         }
 
-        /* ===== دکمه نئونی دانلود ===== */
+        /* ===== دکمه نئونی دانلود (با گلس) ===== */
         .btn-neon-download {
             position: relative;
             display: inline-block;
             padding: 8px 28px;
-            background: transparent;
+            background: rgba(100, 255, 58, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: var(--green);
             font-family: var(--font);
             font-weight: 700;
             font-size: 0.85rem;
-            border: 2px solid var(--green);
+            border: 1px solid rgba(100, 255, 58, 0.5);
             border-radius: 50px;
             text-decoration: none;
             text-transform: uppercase;
@@ -277,6 +290,8 @@
             color: #000;
             box-shadow: 0 0 40px rgba(100, 255, 58, 0.4), 0 0 80px rgba(100, 255, 58, 0.2);
             transform: scale(1.05);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
 
         .btn-neon-download .neon-line {
@@ -356,6 +371,9 @@
             line-height: 1.05;
             letter-spacing: -0.04em;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            padding: 12px 24px;
+            display: inline-block;
+            width: fit-content;
         }
         .hero h1 .highlight {
             background: var(--green-gradient);
@@ -396,10 +414,13 @@
 
         .hero p {
             font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 460px;
             line-height: 1.7;
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            padding: 12px 20px;
+            display: inline-block;
+            width: fit-content;
         }
 
         .hero-features {
@@ -409,13 +430,15 @@
             margin-top: 4px;
         }
         .hero-features span {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 450;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
         }
         .hero-features span svg {
             color: var(--green);
@@ -432,57 +455,68 @@
             margin-top: 8px;
         }
 
+        /* دکمه اصلی با گلس سبز */
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--green);
-            color: #000;
+            background: rgba(100, 255, 58, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--green);
             font-weight: 600;
             font-size: 1rem;
             padding: 14px 38px;
             border-radius: 100px;
-            border: none;
+            border: 1px solid rgba(100, 255, 58, 0.45);
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             font-family: var(--font);
-            box-shadow: 0 0 40px rgba(100, 255, 58, 0.15);
+            box-shadow: 0 0 40px rgba(100, 255, 58, 0.1);
+            will-change: backdrop-filter;
         }
         .btn-primary:hover {
             transform: scale(1.04);
+            background: var(--green);
+            color: #000;
+            border-color: var(--green);
             box-shadow: 0 0 60px rgba(100, 255, 58, 0.30);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
         .btn-primary svg {
             width: 20px;
             height: 20px;
         }
 
+        /* دکمه گوست با گلس سفید */
         .btn-ghost {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: var(--transition);
             font-family: var(--font);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 10px 24px;
             border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
+            will-change: backdrop-filter;
         }
         .btn-ghost:hover {
             color: var(--green);
-            background: rgba(100, 255, 58, 0.06);
-            border-color: rgba(100, 255, 58, 0.15);
+            background: rgba(100, 255, 58, 0.1);
+            border-color: rgba(100, 255, 58, 0.35);
         }
 
-        /* ===== لوگوی بزرگ با سایز بسیار بزرگتر ===== */
+        /* ===== لوگوی ویدیویی (بدون کادر) ===== */
         .hero-logo-wrapper {
             position: relative;
             display: flex;
@@ -491,65 +525,23 @@
             padding: 20px;
         }
 
-        .hero-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 30px 40px;
-            background: rgba(9, 9, 9, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 30px rgba(100, 255, 58, 0.15);
-            transition: var(--transition);
-            position: relative;
-            z-index: 2;
-            min-width: 240px;
-            animation: glowPulseLogo 2.5s ease-in-out infinite;
-        }
-
-        @keyframes glowPulseLogo {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(100, 255, 58, 0.2), 0 0 40px rgba(100, 255, 58, 0.05);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(100, 255, 58, 0.6), 0 0 80px rgba(100, 255, 58, 0.3), 0 0 120px rgba(100, 255, 58, 0.1);
-            }
-        }
-
-        .hero-logo:hover {
-            border-color: rgba(100, 255, 58, 0.15);
-            transform: scale(1.02);
-        }
-
-        /* ===== تغییر سایز لوگو به بسیار بزرگتر ===== */
-        .hero-logo img {
-            max-width: 280px; /* از 180 به 280 */
+        .hero-video {
+            max-width: 350px;
             width: 100%;
             height: auto;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            border: none;
+            outline: none;
             display: block;
-            filter: drop-shadow(0 0 30px rgba(100, 255, 58, 0.06));
-            transition: max-width 0.3s ease;
+            filter: drop-shadow(0 0 30px rgba(100, 255, 58, 0.1));
         }
 
-        .hero-logo .badge-free-lg {
-            font-size: 0.8rem;
-            font-weight: 600;
-            background: var(--green);
-            color: #000;
-            padding: 6px 20px;
-            border-radius: 100px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        /* ===== نیم‌دایره بالایی با برچسب‌های متحرک ===== */
+        /* ===== نیم‌دایره متحرک دور ویدیو ===== */
         .orbit-container {
             position: absolute;
-            width: 420px; /* بزرگتر برای هماهنگی با لوگو */
+            width: 420px;
             height: 420px;
             top: 50%;
             left: 50%;
@@ -605,12 +597,6 @@
             top: 28%;
             left: 98%;
             animation-delay: 1.6s;
-        }
-
-        .orbit-item:nth-child(9),
-        .orbit-item:nth-child(10),
-        .orbit-item:nth-child(11) {
-            display: none;
         }
 
         @keyframes floatItem {
@@ -981,12 +967,8 @@
                 width: 380px;
                 height: 380px;
             }
-            .hero-logo {
-                padding: 24px 32px;
-                min-width: 200px;
-            }
-            .hero-logo img {
-                max-width: 240px;
+            .hero-video {
+                max-width: 300px;
             }
         }
 
@@ -1014,16 +996,8 @@
                 order: -1;
                 padding: 10px;
             }
-            .hero-logo {
-                flex-direction: row;
-                gap: 20px;
-                padding: 20px 32px;
-                width: fit-content;
-                margin: 0 auto;
-                min-width: auto;
-            }
-            .hero-logo img {
-                max-width: 200px;
+            .hero-video {
+                max-width: 280px;
             }
 
             .orbit-container {
@@ -1065,15 +1039,8 @@
                 font-size: 0.7rem;
                 padding: 5px 12px;
             }
-            .hero-logo {
-                padding: 16px 24px;
-            }
-            .hero-logo img {
-                max-width: 160px;
-            }
-            .hero-logo .badge-free-lg {
-                font-size: 0.65rem;
-                padding: 4px 14px;
+            .hero-video {
+                max-width: 220px;
             }
             .google-form-iframe iframe {
                 height: 680px;
@@ -1094,19 +1061,8 @@
             .hero-logo-wrapper {
                 padding: 5px;
             }
-            .hero-logo {
-                flex-direction: column;
-                padding: 16px 20px;
-                gap: 10px;
-                width: 100%;
-                max-width: 200px;
-            }
-            .hero-logo img {
-                max-width: 140px;
-            }
-            .hero-logo .badge-free-lg {
-                font-size: 0.6rem;
-                padding: 3px 12px;
+            .hero-video {
+                max-width: 180px;
             }
 
             .orbit-container {
@@ -1231,12 +1187,8 @@
                 font-size: 0.5rem;
                 padding: 2px 8px;
             }
-            .hero-logo {
-                max-width: 160px;
-                padding: 12px 16px;
-            }
-            .hero-logo img {
-                max-width: 110px;
+            .hero-video {
+                max-width: 140px;
             }
 
             .google-form-iframe iframe {
@@ -1353,39 +1305,37 @@
         <div class="container hero-grid">
 
             <div class="hero-content">
-                <h1 class="fade-up fade-up-d1">
+                <h1 class="fade-up fade-up-d1 glass">
                     <span id="typed-text"></span> <br />
                     <span class="highlight">Free VPN</span>
                 </h1>
 
-                <p class="fade-up fade-up-d2">
+                <p class="fade-up fade-up-d2 glass">
                     اینترنت بدون مرز را با سرعت برق‌آسا تجربه کن.
                 </p>
 
                 <div class="hero-features fade-up fade-up-d3">
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
+                    <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg> نامحدود</span>
+                    <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> امن</span>
+                    <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> فوق‌سریع</span>
+                    <span class="glass"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> سرورهای جهانی</span>
                 </div>
 
                 <div class="hero-actions fade-up fade-up-d4">
-                    <a href="#download" class="btn-primary">
+                    <a href="#download" class="btn-primary glass">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         دانلود کنید
                     </a>
-                    <a href="https://github.com/V2Cye" target="_blank" class="btn-ghost">
+                    <a href="https://github.com/V2Cye" target="_blank" class="btn-ghost glass">
                         سازنده و سورس
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                     </a>
                 </div>
             </div>
 
-            <!-- ===== لوگوی بزرگ با سایز بسیار بزرگتر ===== -->
+            <!-- ===== لوگوی ویدیویی متحرک (بدون کادر) ===== -->
             <div class="hero-logo-wrapper fade-up fade-up-d5">
                 <div class="orbit-container">
-                    <div class="orbit-ring"></div>
-                    <div class="orbit-ring"></div>
                     <div class="orbit-ring"></div>
                     <span class="orbit-item">🔒 امن</span>
                     <span class="orbit-item">🌍 جهانی</span>
@@ -1393,10 +1343,9 @@
                     <span class="orbit-item">🛡️ AES-256</span>
                     <span class="orbit-item">💯 رایگان</span>
                 </div>
-                <div class="hero-logo">
-                    <img src="https://s34.picofile.com/file/8490997350/GRouteTransparentBlack.png" alt="V2C Free" />
-                    <span class="badge-free-lg">رایگان</span>
-                </div>
+                <video autoplay loop muted playsinline class="hero-video">
+                    <source src="https://raw.githubusercontent.com/V2Cye/Download/refs/heads/main/logo.webm" type="video/webm">
+                </video>
             </div>
 
         </div>
@@ -1667,7 +1616,6 @@
 
         console.log('✅ سایت V2C با موفقیت بارگذاری شد!');
         console.log('💬 سیستم نظرات با Google Form فعال است (تم تاریک با فیلتر)');
-        console.log('📌 لینک فرم: https://docs.google.com/forms/d/e/1FAIpQLSdvGWagEwIwOb4ZV-rc5cZBqJZzw6V7HBA3UxoAi7nG1h076g/viewform');
     </script>
 
 </body>
